@@ -6,7 +6,7 @@
 /*   By: inwagner <inwagner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 18:25:32 by inwagner          #+#    #+#             */
-/*   Updated: 2024/06/09 14:52:06 by inwagner         ###   ########.fr       */
+/*   Updated: 2024/06/09 15:06:09 by inwagner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ class PhoneBook {
 		static void print_field(const std::string& field);
 		static void print_search(const Contact& contact, const int& id);
 		static bool validate_input(const std::string& input);
+		static bool validate_number(const std::string& number);
 
 	public:
 		// Default Constructor

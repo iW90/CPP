@@ -6,7 +6,7 @@
 /*   By: inwagner <inwagner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 18:25:40 by inwagner          #+#    #+#             */
-/*   Updated: 2024/06/09 14:52:27 by inwagner         ###   ########.fr       */
+/*   Updated: 2024/06/09 15:14:46 by inwagner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ bool PhoneBook::validate_input(const std::string& input) {
 		}
 	}
 
-	std::cerr << "Invalid input." << std::endl;
+	std::cerr << "Invalid input.";
 	return false;
 }
 
@@ -79,7 +79,7 @@ std::string PhoneBook::get_input(const std::string str) {
 	std::cout << str;
 	
 	do {
-		//std::cin.clear();
+		std::cin.clear();
 		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 		std::getline(std::cin, input);
 		
@@ -90,11 +90,27 @@ std::string PhoneBook::get_input(const std::string str) {
 	return input;
 }
 
+bool PhoneBook::validate_number(const std::string& number) {
+	for (size_t i = 0; i < number.size(); ++i) {
+        if (!isdigit(number[i])) {
+			std::cerr << "The phone number must have only digits." << std::endl;
+            return false;
+		}
+    }
+
+	return true;
+}
+
 void PhoneBook::add_new_contact(void) {
 	std::string fname = get_input("First name: ");
 	std::string lname = get_input("Last name: ");
 	std::string nick = get_input("Nickname: ");
-	std::string number = get_input("Phone number: ");
+	std::string number;
+	while (true) {
+		number = get_input("Phone number (only digits): ");
+		if (validate_number(number))
+			break;
+	}
 	std::string secret = get_input("Darkest secret: ");
 	
 	Contact contact(fname, lname, nick, number, secret);
@@ -173,7 +189,7 @@ void PhoneBook::search_contact_by_id(void) {
 
 	if (contact.getFirstName().empty())
 	{
-		std::cerr << "Nothing here.\n" << std::endl;
+		std::cerr << "Slot empty.\n" << std::endl;
 		return ;
 	}
 
