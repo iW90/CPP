@@ -6,7 +6,7 @@
 /*   By: inwagner <inwagner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 18:32:20 by inwagner          #+#    #+#             */
-/*   Updated: 2024/06/08 17:41:29 by inwagner         ###   ########.fr       */
+/*   Updated: 2024/06/09 11:12:51 by inwagner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int main(void) {
 			std::cout << option << std::endl;
 			break;
 		} else
-			std::cout << "Invalid option." << std::endl;	
+			std::cerr << "Invalid option." << std::endl;	
 	}
 	return 0;
 }

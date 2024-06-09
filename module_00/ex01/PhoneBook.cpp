@@ -6,7 +6,7 @@
 /*   By: inwagner <inwagner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 18:25:40 by inwagner          #+#    #+#             */
-/*   Updated: 2024/06/08 18:32:27 by inwagner         ###   ########.fr       */
+/*   Updated: 2024/06/09 12:14:47 by inwagner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,37 +62,43 @@ void PhoneBook::set_contact(int index, Contact contact) {
 		◦ The contact fields are: first name, last name, nickname, phone number, and
 		darkest secret. A saved contact can’t have empty fields.
 */
-std::string PhoneBook::validate_contact(std::string str) {
+
+bool PhoneBook::validate_input(std::string input) {
+	std::cerr << input << std::endl;
+	
+	for (size_t i = 0; i < input.length(); ++i) {
+		if (!isspace(input[i])) {
+			return true;
+		}
+	}
+
+	std::cerr << "Invalid input." << std::endl;
+	return false;
+}
+
+std::string PhoneBook::get_input(std::string str) {
 	std::string input;
-	bool allSpaces = true;
+	bool isValid;
 	
 	do {
 		std::cout << str;
 		std::cin >> input;
-		std::cout << std::endl;
 		
-		for (size_t i = 0; i < input.length(); ++i) {
-			if (!isspace(input[i])) {
-				allSpaces = false;
-				break;
-			}
-		}
+		isValid = validate_input(input);
+			
+	} while (!isValid);
 
-		if (input.empty() || allSpaces)
-			std::cout << "Invalid input." << std::endl;
-	} while (input.empty() || allSpaces);
-
-	return input;
+	return str;
 }
 
 void PhoneBook::add_new_contact(void) {
-	Contact contact(
-		validate_contact("Firt name: "),
-		validate_contact("Last name: "),
-		validate_contact("Nickname: "),
-		validate_contact("Phone number: "),
-		validate_contact("Darkest secret: ")
-	);
+	std::string fname = get_input("First name: ");
+	std::string lname = get_input("Last name: ");
+	std::string nick = get_input("Nickname: ");
+	std::string number = get_input("Phone number: ");
+	std::string secret = get_input("Darkest secret: ");
+	
+	Contact contact(fname, lname, nick, number, secret);
 			
 	int index = -1;
 	static int oldest = 0;
@@ -103,13 +109,10 @@ void PhoneBook::add_new_contact(void) {
 			break;
 		}
 	}
-	if (index == -1) {
-		index = oldest;
-		if (++oldest > 7)
-			oldest = 0;
-	}
+	if (index < 0)
+		index = (oldest++ % 8);
 
-	phonebook[index] = contact;
+	set_contact(index, contact);
 }
 
 
@@ -143,11 +146,11 @@ void PhoneBook::search_contact_by_id(void) {
 		std::cin >> id;
 		
 		if (id < 0 || id >= 8)
-			std::cout << "The index must be between 0 and 7." << std::endl;
+			std::cerr << "The index must be between 0 and 7." << std::endl;
 	} while (id < 0 || id >= 8);
 
 	std::stringstream index;
-    index << id;
+	index << id;
 	std::string id_str = index.str();
 	
 	Contact contact = get_contact_by_id(id);
