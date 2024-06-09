@@ -6,7 +6,7 @@
 /*   By: inwagner <inwagner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 18:25:40 by inwagner          #+#    #+#             */
-/*   Updated: 2024/06/09 16:28:13 by inwagner         ###   ########.fr       */
+/*   Updated: 2024/06/09 17:48:39 by inwagner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,11 +76,11 @@ bool PhoneBook::_validate_input(const std::string& input) {
 std::string PhoneBook::_get_input(const std::string str) {
 	bool isValid = false;
 	std::string input;
+	std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 	
 	do {
 		std::cout << str << std::flush;
 		std::cin.clear();
-		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 		std::getline(std::cin, input);
 		
 		isValid = _validate_input(input);
@@ -153,14 +153,26 @@ void PhoneBook::_print_field(const std::string& field) {
 	}
 }
 
-void PhoneBook::_print_search(const Contact& contact, const int& id) {
-	std::cout << "---------------------------------------------" << std::endl;
-	_print_field("Index");
+
+void PhoneBook::_print_contact_by_id(const Contact& contact) {
+	std::cout << "--------------------------------------------------------" << std::endl;
 	_print_field("FirstName");
 	_print_field("LastName");
-	_print_field("NickName");
+	_print_field("Nick");
+	_print_field("Phone");
+	_print_field("Secret");
 	std::cout << "|" << std::endl;
-	std::cout << "---------------------------------------------" << std::endl;
+	std::cout << "--------------------------------------------------------" << std::endl;
+	_print_field(contact.getFirstName());
+	_print_field(contact.getLastName());
+	_print_field(contact.getNickname());
+	_print_field(contact.getPhoneNumber());
+	_print_field(contact.getDarkestSecret());
+	std::cout << "|" << std::endl;
+	std::cout << "--------------------------------------------------------" << std::endl;
+}
+
+void PhoneBook::_print_contact(const Contact& contact, const int& id) {
 	std::cout << std::right << "|";
 	std::cout.width(10);
 	std::cout << std::right << id << std::flush;
@@ -168,7 +180,23 @@ void PhoneBook::_print_search(const Contact& contact, const int& id) {
 	_print_field(contact.getLastName());
 	_print_field(contact.getNickname());
 	std::cout << "|" << std::endl;
+}
+
+void PhoneBook::_display_contacts_list(PhoneBook& phonebook) {
 	std::cout << "---------------------------------------------" << std::endl;
+	_print_field("Index");
+	_print_field("FirstName");
+	_print_field("LastName");
+	_print_field("NickName");
+	std::cout << "|" << std::endl;
+	std::cout << "---------------------------------------------" << std::endl;
+	for (int i = 0; i < 8; ++i) {
+		Contact contact = phonebook.get_contact_by_id(i);
+		if (contact.getFirstName().empty())
+			break ;
+		_print_contact(contact, i + 1);
+	}
+	std::cout << "---------------------------------------------\n" << std::endl;
 }
 
 void PhoneBook::search_contact_by_id(void) {
@@ -178,14 +206,14 @@ void PhoneBook::search_contact_by_id(void) {
 		std::cin.clear();
 		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 		std::cin >> id;
-		if (std::cin.fail() || id < 0 || id >= 8)
-			std::cerr << "The index must be a number between 0 and 7." << std::endl;
+		if (std::cin.fail() || id <= 0 || id > 8)
+			std::cerr << "The index must be a number between 1 and 8." << std::endl;
 		else {
 			break;
 		}
 	}
 	
-	Contact contact = get_contact_by_id(id);
+	Contact contact = get_contact_by_id(--id);
 
 	if (contact.getFirstName().empty())
 	{
@@ -193,5 +221,10 @@ void PhoneBook::search_contact_by_id(void) {
 		return ;
 	}
 
-	_print_search(contact, id);	
+	_print_contact_by_id(contact);
+}
+
+void PhoneBook::display_contacts(void) {
+	_display_contacts_list(*this);
+	search_contact_by_id();	
 }

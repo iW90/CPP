@@ -6,7 +6,7 @@
 /*   By: inwagner <inwagner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 18:32:20 by inwagner          #+#    #+#             */
-/*   Updated: 2024/06/09 16:19:38 by inwagner         ###   ########.fr       */
+/*   Updated: 2024/06/09 17:45:33 by inwagner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int main(void) {
 		if (option == "ADD")
 			phonebook.add_new_contact();
 		else if (option == "SEARCH")
-			phonebook.search_contact_by_id();
+			phonebook.display_contacts();
 		else if (option == "EXIT")
 			break;
 		else

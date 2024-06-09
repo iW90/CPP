@@ -6,7 +6,7 @@
 /*   By: inwagner <inwagner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 18:25:32 by inwagner          #+#    #+#             */
-/*   Updated: 2024/06/09 16:26:01 by inwagner         ###   ########.fr       */
+/*   Updated: 2024/06/09 17:44:08 by inwagner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,12 @@ class PhoneBook {
 
 		static std::string _get_input(const std::string str);
 		static void _print_field(const std::string& field);
-		static void _print_search(const Contact& contact, const int& id);
+		static void _print_contact(const Contact& contact, const int& id);
+		static void _print_contact_by_id(const Contact& contact);
+		static void _display_contacts_list(PhoneBook& phonebook);
 		static bool _validate_input(const std::string& input);
 		static bool _validate_number(const std::string& number);
+		
 
 	public:
 		// Default Constructor
@@ -57,6 +60,7 @@ class PhoneBook {
 		// Features
 		void add_new_contact(void);
 		void search_contact_by_id(void);
+		void display_contacts(void);
 };
 
 #endif //PHONEBOOK_HPP
