@@ -6,7 +6,7 @@
 /*   By: inwagner <inwagner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 18:25:40 by inwagner          #+#    #+#             */
-/*   Updated: 2024/06/09 15:31:08 by inwagner         ###   ########.fr       */
+/*   Updated: 2024/06/09 15:50:02 by inwagner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,14 +69,14 @@ bool PhoneBook::validate_input(const std::string& input) {
 		}
 	}
 
-	std::cerr << "Invalid input.";
+	std::cerr << "Invalid input." << std::flush;
 	return false;
 }
 
-std::string& PhoneBook::get_input(const std::string str) {
+std::string PhoneBook::get_input(const std::string str) {
 	bool isValid = false;
 	std::string input;
-	std::cout << str;
+	std::cout << str << std::flush;
 	
 	do {
 		std::cin.clear();
@@ -146,10 +146,10 @@ void PhoneBook::print_field(const std::string& field) {
 	std::cout << "|";
 	if (field.length() > 10) {
 		std::cout.width(10);
-		std::cout << std::right << field.substr(0, 9) + ".";
+		std::cout << std::right << field.substr(0, 9) + "." << std::flush;
 	} else {
 		std::cout.width(10);
-		std::cout << std::right << field;
+		std::cout << std::right << field << std::flush;
 	}
 }
 
@@ -163,7 +163,7 @@ void PhoneBook::print_search(const Contact& contact, const int& id) {
 	std::cout << "---------------------------------------------" << std::endl;
 	std::cout << std::right << "|";
 	std::cout.width(10);
-	std::cout << std::right << id;
+	std::cout << std::right << id << std::flush;
 	print_field(contact.getFirstName());
 	print_field(contact.getLastName());
 	print_field(contact.getNickname());
