@@ -6,7 +6,7 @@
 /*   By: inwagner <inwagner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 18:25:40 by inwagner          #+#    #+#             */
-/*   Updated: 2024/06/09 15:50:02 by inwagner         ###   ########.fr       */
+/*   Updated: 2024/06/09 16:17:36 by inwagner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,16 +69,16 @@ bool PhoneBook::validate_input(const std::string& input) {
 		}
 	}
 
-	std::cerr << "Invalid input." << std::flush;
+	std::cerr << "Invalid input." << std::endl;
 	return false;
 }
 
 std::string PhoneBook::get_input(const std::string str) {
 	bool isValid = false;
 	std::string input;
-	std::cout << str << std::flush;
 	
 	do {
+		std::cout << str << std::flush;
 		std::cin.clear();
 		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 		std::getline(std::cin, input);
