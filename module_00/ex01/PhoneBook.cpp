@@ -6,7 +6,7 @@
 /*   By: inwagner <inwagner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 18:25:40 by inwagner          #+#    #+#             */
-/*   Updated: 2024/06/09 15:14:46 by inwagner         ###   ########.fr       */
+/*   Updated: 2024/06/09 15:31:08 by inwagner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ Contact PhoneBook::get_contact_by_id(int id) {
 		return Contact();
 }
 
-void PhoneBook::set_contact(int index, Contact contact) {
+void PhoneBook::set_contact(int index, Contact& contact) {
 	if (index >= 0 && index < 8)
 		phonebook[index] = contact;	
 }
@@ -73,7 +73,7 @@ bool PhoneBook::validate_input(const std::string& input) {
 	return false;
 }
 
-std::string PhoneBook::get_input(const std::string str) {
+std::string& PhoneBook::get_input(const std::string str) {
 	bool isValid = false;
 	std::string input;
 	std::cout << str;

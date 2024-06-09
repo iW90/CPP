@@ -6,7 +6,7 @@
 /*   By: inwagner <inwagner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 18:25:32 by inwagner          #+#    #+#             */
-/*   Updated: 2024/06/09 15:06:09 by inwagner         ###   ########.fr       */
+/*   Updated: 2024/06/09 15:30:53 by inwagner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ class PhoneBook {
 	private:
 		Contact phonebook[8];
 
-		static std::string get_input(const std::string str);
+		static std::string& get_input(const std::string str);
 		static void print_field(const std::string& field);
 		static void print_search(const Contact& contact, const int& id);
 		static bool validate_input(const std::string& input);
@@ -50,7 +50,7 @@ class PhoneBook {
 
 		// Getters and Setters
 		Contact get_contact_by_id(int id);
-		void set_contact(int index, Contact contact);
+		void set_contact(int index, Contact& contact);
 
 		// Features
 		void add_new_contact(void);
