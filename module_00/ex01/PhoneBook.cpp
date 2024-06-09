@@ -6,7 +6,7 @@
 /*   By: inwagner <inwagner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 18:25:40 by inwagner          #+#    #+#             */
-/*   Updated: 2024/06/09 12:14:47 by inwagner         ###   ########.fr       */
+/*   Updated: 2024/06/09 14:34:12 by inwagner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,8 +64,6 @@ void PhoneBook::set_contact(int index, Contact contact) {
 */
 
 bool PhoneBook::validate_input(std::string input) {
-	std::cerr << input << std::endl;
-	
 	for (size_t i = 0; i < input.length(); ++i) {
 		if (!isspace(input[i])) {
 			return true;
@@ -77,18 +75,20 @@ bool PhoneBook::validate_input(std::string input) {
 }
 
 std::string PhoneBook::get_input(std::string str) {
+	bool isValid = false;
 	std::string input;
-	bool isValid;
+	std::cout << str;
 	
 	do {
-		std::cout << str;
-		std::cin >> input;
+		//std::cin.clear();
+		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+		std::getline(std::cin, input);
 		
 		isValid = validate_input(input);
 			
 	} while (!isValid);
 
-	return str;
+	return input;
 }
 
 void PhoneBook::add_new_contact(void) {
@@ -140,20 +140,28 @@ void PhoneBook::printField(const std::string& field) {
 }
 
 void PhoneBook::search_contact_by_id(void) {
-	int id = -1;
+	int id;
+	bool isValid = true;
 
-	do {
+	while (isValid) {
+		std::cin.clear();
+		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 		std::cin >> id;
-		
-		if (id < 0 || id >= 8)
-			std::cerr << "The index must be between 0 and 7." << std::endl;
-	} while (id < 0 || id >= 8);
+		if (std::cin.fail() || id < 0 || id >= 8)
+			std::cerr << "The index must be a number between 0 and 7." << std::endl;
+		else {
+			isValid = false;
+		}
 
-	std::stringstream index;
-	index << id;
-	std::string id_str = index.str();
+	}
 	
 	Contact contact = get_contact_by_id(id);
+
+	if (contact.getFirstName().empty())
+	{
+		std::cerr << "Nothing here.\n" << std::endl;
+		return ;
+	}
 
 	std::cout << "---------------------------------------------" << std::endl;
 	printField("Index");
@@ -162,7 +170,9 @@ void PhoneBook::search_contact_by_id(void) {
 	printField("NickName");
 	std::cout << "|" << std::endl;
 	std::cout << "---------------------------------------------" << std::endl;
-	printField(index.str());
+	std::cout << std::right << "|";
+	std::cout.width(10);
+	std::cout << std::right << id;
 	printField(contact.getFirstName());
 	printField(contact.getLastName());
 	printField(contact.getNickname());

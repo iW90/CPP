@@ -6,7 +6,7 @@
 /*   By: inwagner <inwagner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 18:32:20 by inwagner          #+#    #+#             */
-/*   Updated: 2024/06/09 11:12:51 by inwagner         ###   ########.fr       */
+/*   Updated: 2024/06/09 13:59:24 by inwagner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,17 +17,19 @@ int main(void) {
 	PhoneBook phonebook;
 	
 	while (true) {
-		std::cout << "Choose an option" << std::endl;
+		std::cout << "Choose an option:" << std::endl;
+		std::cout << "\t> ADD" << std::endl;
+		std::cout << "\t> SEARCH" << std::endl;
+		std::cout << "\t> EXIT" << std::endl;
 		std::cin >> option;
 
 		if (option == "ADD")
 			phonebook.add_new_contact();
 		else if (option == "SEARCH")
 			phonebook.search_contact_by_id();
-		else if (option == "EXIT") {
-			std::cout << option << std::endl;
+		else if (option == "EXIT")
 			break;
-		} else
+		else
 			std::cerr << "Invalid option." << std::endl;	
 	}
 	return 0;
