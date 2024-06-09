@@ -6,7 +6,7 @@
 /*   By: inwagner <inwagner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 18:25:40 by inwagner          #+#    #+#             */
-/*   Updated: 2024/06/09 16:17:36 by inwagner         ###   ########.fr       */
+/*   Updated: 2024/06/09 16:19:29 by inwagner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,11 +92,11 @@ std::string PhoneBook::get_input(const std::string str) {
 
 bool PhoneBook::validate_number(const std::string& number) {
 	for (size_t i = 0; i < number.size(); ++i) {
-        if (!isdigit(number[i])) {
+		if (!isdigit(number[i])) {
 			std::cerr << "The phone number must have only digits." << std::endl;
-            return false;
+			return false;
 		}
-    }
+	}
 
 	return true;
 }

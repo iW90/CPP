@@ -6,9 +6,11 @@
 /*   By: inwagner <inwagner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 18:25:32 by inwagner          #+#    #+#             */
-/*   Updated: 2024/06/09 15:50:17 by inwagner         ###   ########.fr       */
+/*   Updated: 2024/06/09 16:21:50 by inwagner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#pragma once
 
 #ifndef PHONEBOOK_HPP
 # define PHONEBOOK_HPP
@@ -57,4 +59,4 @@ class PhoneBook {
 		void search_contact_by_id(void);
 };
 
-#endif
+#endif //PHONEBOOK_HPP

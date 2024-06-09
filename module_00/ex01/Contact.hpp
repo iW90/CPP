@@ -6,9 +6,11 @@
 /*   By: inwagner <inwagner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 18:31:13 by inwagner          #+#    #+#             */
-/*   Updated: 2024/06/08 15:10:19 by inwagner         ###   ########.fr       */
+/*   Updated: 2024/06/09 16:21:35 by inwagner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#pragma once
 
 #ifndef CONTACT_HPP
 # define CONTACT_HPP
@@ -53,4 +55,4 @@ class Contact {
 		void setDarkestSecret(const std::string& secret);
 };
 
-#endif
+#endif //CONTACT_HPP
