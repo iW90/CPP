@@ -6,7 +6,7 @@
 /*   By: inwagner <inwagner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 18:25:40 by inwagner          #+#    #+#             */
-/*   Updated: 2024/06/09 16:19:29 by inwagner         ###   ########.fr       */
+/*   Updated: 2024/06/09 16:28:13 by inwagner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,13 @@ PhoneBook::PhoneBook() {}
 
 // Constructor
 PhoneBook::PhoneBook(const Contact& contact) {
-	phonebook[0] = contact;
+	_phonebook[0] = contact;
 }
 
 // Copy Constructor
 PhoneBook::PhoneBook(const PhoneBook& other) {
 	for (int i = 0; i < 8; ++i) {
-		phonebook[i] = other.phonebook[i];
+		_phonebook[i] = other._phonebook[i];
 	}
 }
 
@@ -31,7 +31,7 @@ PhoneBook::PhoneBook(const PhoneBook& other) {
 PhoneBook& PhoneBook::operator=(const PhoneBook& other) {
 	if (this != &other) {
 		for (int i = 0; i < 8; ++i) {
-			phonebook[i] = other.phonebook[i];
+			_phonebook[i] = other._phonebook[i];
 		}
 	}
 	return *this;
@@ -43,14 +43,14 @@ PhoneBook::~PhoneBook() {}
 // Getters and Setters
 Contact PhoneBook::get_contact_by_id(int id) {
 	if (id >= 0 && id < 8)
-		return phonebook[id];
+		return _phonebook[id];
 	else
 		return Contact();
 }
 
 void PhoneBook::set_contact(int index, Contact& contact) {
 	if (index >= 0 && index < 8)
-		phonebook[index] = contact;	
+		_phonebook[index] = contact;	
 }
 
 // Features
@@ -62,7 +62,7 @@ void PhoneBook::set_contact(int index, Contact& contact) {
 		◦ The contact fields are: first name, last name, nickname, phone number, and
 		darkest secret. A saved contact can’t have empty fields.
 */
-bool PhoneBook::validate_input(const std::string& input) {
+bool PhoneBook::_validate_input(const std::string& input) {
 	for (size_t i = 0; i < input.length(); ++i) {
 		if (!isspace(input[i])) {
 			return true;
@@ -73,7 +73,7 @@ bool PhoneBook::validate_input(const std::string& input) {
 	return false;
 }
 
-std::string PhoneBook::get_input(const std::string str) {
+std::string PhoneBook::_get_input(const std::string str) {
 	bool isValid = false;
 	std::string input;
 	
@@ -83,14 +83,14 @@ std::string PhoneBook::get_input(const std::string str) {
 		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 		std::getline(std::cin, input);
 		
-		isValid = validate_input(input);
+		isValid = _validate_input(input);
 			
 	} while (!isValid);
 
 	return input;
 }
 
-bool PhoneBook::validate_number(const std::string& number) {
+bool PhoneBook::_validate_number(const std::string& number) {
 	for (size_t i = 0; i < number.size(); ++i) {
 		if (!isdigit(number[i])) {
 			std::cerr << "The phone number must have only digits." << std::endl;
@@ -102,16 +102,16 @@ bool PhoneBook::validate_number(const std::string& number) {
 }
 
 void PhoneBook::add_new_contact(void) {
-	std::string fname = get_input("First name: ");
-	std::string lname = get_input("Last name: ");
-	std::string nick = get_input("Nickname: ");
+	std::string fname = _get_input("First name: ");
+	std::string lname = _get_input("Last name: ");
+	std::string nick = _get_input("Nickname: ");
 	std::string number;
 	while (true) {
-		number = get_input("Phone number (only digits): ");
-		if (validate_number(number))
+		number = _get_input("Phone number (only digits): ");
+		if (_validate_number(number))
 			break;
 	}
-	std::string secret = get_input("Darkest secret: ");
+	std::string secret = _get_input("Darkest secret: ");
 	
 	Contact contact(fname, lname, nick, number, secret);
 			
@@ -119,7 +119,7 @@ void PhoneBook::add_new_contact(void) {
 	static int oldest = 0;
 	
 	for (int i = 0; i < 8; ++i) {
-		if (phonebook[i].getFirstName().empty()) {
+		if (_phonebook[i].getFirstName().empty()) {
 			index = i;
 			break;
 		}
@@ -142,7 +142,7 @@ void PhoneBook::add_new_contact(void) {
 		is out of range or wrong, define a relevant behavior. Otherwise, display the
 		contact information, one field per line.
 */
-void PhoneBook::print_field(const std::string& field) {
+void PhoneBook::_print_field(const std::string& field) {
 	std::cout << "|";
 	if (field.length() > 10) {
 		std::cout.width(10);
@@ -153,20 +153,20 @@ void PhoneBook::print_field(const std::string& field) {
 	}
 }
 
-void PhoneBook::print_search(const Contact& contact, const int& id) {
+void PhoneBook::_print_search(const Contact& contact, const int& id) {
 	std::cout << "---------------------------------------------" << std::endl;
-	print_field("Index");
-	print_field("FirstName");
-	print_field("LastName");
-	print_field("NickName");
+	_print_field("Index");
+	_print_field("FirstName");
+	_print_field("LastName");
+	_print_field("NickName");
 	std::cout << "|" << std::endl;
 	std::cout << "---------------------------------------------" << std::endl;
 	std::cout << std::right << "|";
 	std::cout.width(10);
 	std::cout << std::right << id << std::flush;
-	print_field(contact.getFirstName());
-	print_field(contact.getLastName());
-	print_field(contact.getNickname());
+	_print_field(contact.getFirstName());
+	_print_field(contact.getLastName());
+	_print_field(contact.getNickname());
 	std::cout << "|" << std::endl;
 	std::cout << "---------------------------------------------" << std::endl;
 }
@@ -193,5 +193,5 @@ void PhoneBook::search_contact_by_id(void) {
 		return ;
 	}
 
-	print_search(contact, id);	
+	_print_search(contact, id);	
 }

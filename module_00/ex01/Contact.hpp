@@ -6,7 +6,7 @@
 /*   By: inwagner <inwagner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 18:31:13 by inwagner          #+#    #+#             */
-/*   Updated: 2024/06/09 16:21:35 by inwagner         ###   ########.fr       */
+/*   Updated: 2024/06/09 16:23:05 by inwagner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,11 @@
 // Stands for a phonebook contact.
 class Contact {
 	private:
-		std::string     first_name;
-		std::string     last_name;
-		std::string     nickname;
-		std::string     phone_number;
-		std::string     darkest_secret;
+		std::string     _first_name;
+		std::string     _last_name;
+		std::string     _nickname;
+		std::string     _phone_number;
+		std::string     _darkest_secret;
 		
 	public:
 		// Default Constructor

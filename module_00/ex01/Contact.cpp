@@ -6,7 +6,7 @@
 /*   By: inwagner <inwagner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 18:31:20 by inwagner          #+#    #+#             */
-/*   Updated: 2024/06/09 16:19:46 by inwagner         ###   ########.fr       */
+/*   Updated: 2024/06/09 16:25:30 by inwagner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,25 +14,25 @@
 
 // Default Constructor
 Contact::Contact() 
-: first_name(""), last_name(""), nickname(""), phone_number(""), darkest_secret("") {}
+: _first_name(""), _last_name(""), _nickname(""), _phone_number(""), _darkest_secret("") {}
 
 // Constructor
 Contact::Contact(const std::string& fname, const std::string& lname, const std::string& nick, const std::string& number, const std::string& secret) 
-: first_name(fname), last_name(lname), nickname(nick), phone_number(number), darkest_secret(secret) {}
+: _first_name(fname), _last_name(lname), _nickname(nick), _phone_number(number), _darkest_secret(secret) {}
 
 // Copy Constructor
 Contact::Contact(const Contact& other)
-: first_name(other.first_name), last_name(other.last_name), 
-nickname(other.nickname), phone_number(other.phone_number), darkest_secret(other.darkest_secret) {}
+: _first_name(other._first_name), _last_name(other._last_name), 
+_nickname(other._nickname), _phone_number(other._phone_number), _darkest_secret(other._darkest_secret) {}
 
 // Copy Assignment Operator
 Contact& Contact::operator=(const Contact& other) {
 	if (this != &other) {
-		first_name = other.first_name;
-		last_name = other.last_name;
-		nickname = other.nickname;
-		phone_number = other.phone_number;
-		darkest_secret = other.darkest_secret;
+		_first_name = other._first_name;
+		_last_name = other._last_name;
+		_nickname = other._nickname;
+		_phone_number = other._phone_number;
+		_darkest_secret = other._darkest_secret;
 	}
 	return *this;
 }
@@ -42,41 +42,41 @@ Contact::~Contact() {}
 
 // Getters and Setters
 std::string Contact::getFirstName() const {
-	return first_name;
+	return _first_name;
 }
 
 void Contact::setFirstName(const std::string& fname) {
-	first_name = fname;
+	_first_name = fname;
 }
 
 std::string Contact::getLastName() const {
-	return last_name;
+	return _last_name;
 }
 
 void Contact::setLastName(const std::string& lname) {
-	last_name = lname;
+	_last_name = lname;
 }
 
 std::string Contact::getNickname() const {
-	return nickname;
+	return _nickname;
 }
 
 void Contact::setNickname(const std::string& nick) {
-	nickname = nick;
+	_nickname = nick;
 }
 
 std::string Contact::getPhoneNumber() const {
-	return phone_number;
+	return _phone_number;
 }
 
 void Contact::setPhoneNumber(const std::string& number) {
-	phone_number = number;
+	_phone_number = number;
 }
 
 std::string Contact::getDarkestSecret() const {
-	return darkest_secret;
+	return _darkest_secret;
 }
 
 void Contact::setDarkestSecret(const std::string& secret) {
-	darkest_secret = secret;
+	_darkest_secret = secret;
 }

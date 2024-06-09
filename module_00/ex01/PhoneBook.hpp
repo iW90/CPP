@@ -6,7 +6,7 @@
 /*   By: inwagner <inwagner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 18:25:32 by inwagner          #+#    #+#             */
-/*   Updated: 2024/06/09 16:21:50 by inwagner         ###   ########.fr       */
+/*   Updated: 2024/06/09 16:26:01 by inwagner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,13 @@
 // Please note that dynamic allocation is forbidden.
 class PhoneBook {
 	private:
-		Contact phonebook[8];
+		Contact _phonebook[8];
 
-		static std::string get_input(const std::string str);
-		static void print_field(const std::string& field);
-		static void print_search(const Contact& contact, const int& id);
-		static bool validate_input(const std::string& input);
-		static bool validate_number(const std::string& number);
+		static std::string _get_input(const std::string str);
+		static void _print_field(const std::string& field);
+		static void _print_search(const Contact& contact, const int& id);
+		static bool _validate_input(const std::string& input);
+		static bool _validate_number(const std::string& number);
 
 	public:
 		// Default Constructor
