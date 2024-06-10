@@ -6,7 +6,7 @@
 /*   By: inwagner <inwagner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 18:32:20 by inwagner          #+#    #+#             */
-/*   Updated: 2024/06/09 17:45:33 by inwagner         ###   ########.fr       */
+/*   Updated: 2024/06/10 20:27:00 by inwagner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int main(void) {
 		std::cout << "\t> ADD" << std::endl;
 		std::cout << "\t> SEARCH" << std::endl;
 		std::cout << "\t> EXIT" << std::endl;
-		std::cin >> option;
+		std::getline(std::cin, option);
 
 		if (option == "ADD")
 			phonebook.add_new_contact();
@@ -30,7 +30,7 @@ int main(void) {
 		else if (option == "EXIT")
 			break;
 		else
-			std::cerr << "Invalid option." << std::endl;	
+			std::cerr << "Invalid option.\n" << std::endl;	
 	}
 	return 0;
 }

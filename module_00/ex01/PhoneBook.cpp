@@ -6,7 +6,7 @@
 /*   By: inwagner <inwagner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 18:25:40 by inwagner          #+#    #+#             */
-/*   Updated: 2024/06/09 17:48:39 by inwagner         ###   ########.fr       */
+/*   Updated: 2024/06/10 20:28:51 by inwagner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,11 +76,9 @@ bool PhoneBook::_validate_input(const std::string& input) {
 std::string PhoneBook::_get_input(const std::string str) {
 	bool isValid = false;
 	std::string input;
-	std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 	
 	do {
 		std::cout << str << std::flush;
-		std::cin.clear();
 		std::getline(std::cin, input);
 		
 		isValid = _validate_input(input);
@@ -112,6 +110,7 @@ void PhoneBook::add_new_contact(void) {
 			break;
 	}
 	std::string secret = _get_input("Darkest secret: ");
+	std::cout << std::endl;
 	
 	Contact contact(fname, lname, nick, number, secret);
 			
@@ -169,7 +168,7 @@ void PhoneBook::_print_contact_by_id(const Contact& contact) {
 	_print_field(contact.getPhoneNumber());
 	_print_field(contact.getDarkestSecret());
 	std::cout << "|" << std::endl;
-	std::cout << "--------------------------------------------------------" << std::endl;
+	std::cout << "--------------------------------------------------------\n" << std::endl;
 }
 
 void PhoneBook::_print_contact(const Contact& contact, const int& id) {
@@ -203,14 +202,11 @@ void PhoneBook::search_contact_by_id(void) {
 	int id;
 
 	while (true) {
-		std::cin.clear();
-		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 		std::cin >> id;
 		if (std::cin.fail() || id <= 0 || id > 8)
 			std::cerr << "The index must be a number between 1 and 8." << std::endl;
-		else {
+		else
 			break;
-		}
 	}
 	
 	Contact contact = get_contact_by_id(--id);
@@ -225,6 +221,10 @@ void PhoneBook::search_contact_by_id(void) {
 }
 
 void PhoneBook::display_contacts(void) {
+	if (_phonebook[0].getFirstName().empty()) {
+		std::cout << "Phonebook is empty.\n" << std::endl;
+		return ;
+	}
 	_display_contacts_list(*this);
 	search_contact_by_id();	
 }
