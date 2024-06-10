@@ -6,7 +6,7 @@
 /*   By: inwagner <inwagner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 18:25:40 by inwagner          #+#    #+#             */
-/*   Updated: 2024/06/10 20:28:51 by inwagner         ###   ########.fr       */
+/*   Updated: 2024/06/10 20:43:59 by inwagner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -199,17 +199,17 @@ void PhoneBook::_display_contacts_list(PhoneBook& phonebook) {
 }
 
 void PhoneBook::search_contact_by_id(void) {
-	int id;
+	std::string input;
 
 	while (true) {
-		std::cin >> id;
-		if (std::cin.fail() || id <= 0 || id > 8)
+		std::getline(std::cin, input);
+		if (input.length() != 1 || input[0] < '1' || input[0] > '8')
 			std::cerr << "The index must be a number between 1 and 8." << std::endl;
 		else
 			break;
 	}
 	
-	Contact contact = get_contact_by_id(--id);
+	Contact contact = get_contact_by_id(input[0] - '1');
 
 	if (contact.getFirstName().empty())
 	{
