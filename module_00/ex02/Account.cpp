@@ -6,7 +6,7 @@
 /*   By: inwagner <inwagner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/09 16:12:06 by inwagner          #+#    #+#             */
-/*   Updated: 2024/06/10 22:42:19 by inwagner         ###   ########.fr       */
+/*   Updated: 2024/06/11 20:12:28 by inwagner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ bool Account::makeWithdrawal(int withdrawal) {
 void Account::displayStatus(void) const {
 	_displayTimestamp();
 	//[19920104_091532] index:0;amount:42;deposits:0;withdrawals:0
-	std::cout << "index:" << _accountIndex << ";amount:" << _amount << ";deposits:" << getNbDeposits() << ";withdrawals:" << getNbWithdrawals() << std::endl;
+	std::cout << "index:" << _accountIndex << ";amount:" << _amount << ";deposits:" << _nbDeposits << ";withdrawals:" << _nbWithdrawals << std::endl;
 }
 
 void Account::displayAccountsInfos(void) {
