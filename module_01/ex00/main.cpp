@@ -6,7 +6,7 @@
 /*   By: inwagner <inwagner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 20:34:36 by inwagner          #+#    #+#             */
-/*   Updated: 2024/06/11 21:46:39 by inwagner         ###   ########.fr       */
+/*   Updated: 2024/06/12 07:41:43 by inwagner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,21 @@
 
 int main() {
 	// Construtor
-	Zombie zombieCreator("Papa Zombie");
+	Zombie zomBreeder("Mama Zombie");
+	zomBreeder.announce();
 
 	// Memória heap, alocado com new
-    Zombie* zombieBaby = zombieCreator.newZombie("Zumbebê");
+    Zombie* unDad = zomBreeder.newZombie("Papa Zombie");
 
-	std::cout << "\n" << std::endl;
+	std::cout << "" << std::endl;
 
 	// Memória stack, alocado dinamicamente 
-    Zombie zombieBrother("Zombão");
-    zombieBrother.randomChump("Zombão");
+    zomBreeder.randomChump("Zumbebê");
 
-	std::cout << "\n" << std::endl;
+	std::cout << "" << std::endl;
 
 	// Alocação com new requer delete
-    delete zombieBaby;
+    delete unDad;
 
 	return 0;
 }
