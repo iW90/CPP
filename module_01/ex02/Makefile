@@ -6,10 +6,9 @@
 #    By: inwagner <inwagner@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/16 10:59:20 by inwagner          #+#    #+#              #
-#    Updated: 2024/06/16 10:59:39 by inwagner         ###   ########.fr        #
+#    Updated: 2024/06/16 17:27:05 by inwagner         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
-
 
 # TITLE
 NAME	:=	zumba

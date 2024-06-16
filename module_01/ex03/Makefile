@@ -6,10 +6,9 @@
 #    By: inwagner <inwagner@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/16 11:13:36 by inwagner          #+#    #+#              #
-#    Updated: 2024/06/16 11:23:31 by inwagner         ###   ########.fr        #
+#    Updated: 2024/06/16 17:26:59 by inwagner         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
-
 
 # TITLE
 NAME	:=	human_attack
