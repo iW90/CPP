@@ -6,7 +6,7 @@
 /*   By: inwagner <inwagner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/16 11:13:29 by inwagner          #+#    #+#             */
-/*   Updated: 2024/06/16 13:58:51 by inwagner         ###   ########.fr       */
+/*   Updated: 2024/06/16 14:12:51 by inwagner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,6 @@ HumanA::~HumanA() {}
 void HumanA::attack(void)
 {
 	std::cout << _name;
-	std::cout << "attacks with their ";
+	std::cout << " attacks with their ";
 	std::cout << _weapon.getType() << std::endl;
 }
