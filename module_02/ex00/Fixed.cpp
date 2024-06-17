@@ -6,13 +6,13 @@
 /*   By: inwagner <inwagner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/16 18:41:44 by inwagner          #+#    #+#             */
-/*   Updated: 2024/06/16 19:12:44 by inwagner         ###   ########.fr       */
+/*   Updated: 2024/06/16 19:50:11 by inwagner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.hpp"
 
-const int _FRAC_BITS = 8;
+const int Fixed::_FRAC_BITS = 8;
 
 Fixed::Fixed() : _fixed_point(0) {
 	std::cout << "Default constructor called" << std::endl;
