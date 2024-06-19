@@ -6,7 +6,7 @@
 #    By: inwagner <inwagner@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/19 18:34:58 by inwagner          #+#    #+#              #
-#    Updated: 2024/06/19 18:35:29 by inwagner         ###   ########.fr        #
+#    Updated: 2024/06/19 20:04:02 by inwagner         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,9 @@ FLAGS	:=	-Wall -Wextra -Werror -Wshadow -std=c++98 -I $(HSRC)
 FTS		:=	main.cpp \
 			Animal.cpp \
 			Dog.cpp \
-			Cat.cpp
+			Cat.cpp \
+			WrongCat.cpp \
+			WrongAnimal.cpp
 			
 OBJ		:=	$(FTS:%.cpp=$(OSRC)/%.o)
 
