@@ -6,7 +6,7 @@
 /*   By: inwagner <inwagner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 19:23:59 by inwagner          #+#    #+#             */
-/*   Updated: 2024/06/19 08:03:27 by inwagner         ###   ########.fr       */
+/*   Updated: 2024/06/19 09:41:17 by inwagner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@ class ScavTrap : public ClapTrap {
 		bool isGuardMode()const;
 		void setGuardMode(bool mode);
 
-		void guardGate();
 		void attack(const std::string &target);
+		void guardGate();
 };
 
 #endif //SCAVTRAP_HPP

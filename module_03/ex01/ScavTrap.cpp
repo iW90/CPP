@@ -6,7 +6,7 @@
 /*   By: inwagner <inwagner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 19:23:53 by inwagner          #+#    #+#             */
-/*   Updated: 2024/06/19 08:34:12 by inwagner         ###   ########.fr       */
+/*   Updated: 2024/06/19 09:40:32 by inwagner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,6 @@
 
 ScavTrap::~ScavTrap() {
 	std::cout << "[ScavTrap] Destructor called" << std::endl;
-}
-
-bool ScavTrap::isGuardMode()const {
-	return _guardMode;
-}
-
-void ScavTrap::setGuardMode(bool mode) {
-	_guardMode = mode;
 }
 
 ScavTrap::ScavTrap() {
@@ -51,10 +43,15 @@ ScavTrap& ScavTrap::operator=(const ScavTrap& other) {
 	return *this;
 }
 
-void ScavTrap::guardGate() {
-	_guardMode = !_guardMode;
-	std::cout << "ScavTrap " << getName() << " now in Gate Keeper Mode" << std::endl;
+
+bool ScavTrap::isGuardMode()const {
+	return _guardMode;
 }
+
+void ScavTrap::setGuardMode(bool mode) {
+	_guardMode = mode;
+}
+
 
 void ScavTrap::attack(const std::string &target) {
 	if (getEP() < 1) {
@@ -68,4 +65,9 @@ void ScavTrap::attack(const std::string &target) {
 	setEP(getEP() - 1);
 	std::cout << "ScavTrap " << getName() << " attacks " << target << ", causing " << getDamage() << " points of damage!" << std::endl;
 	return ;
+}
+
+void ScavTrap::guardGate() {
+	_guardMode = !_guardMode;
+	std::cout << "ScavTrap " << getName() << " now in Gate Keeper Mode" << std::endl;
 }
