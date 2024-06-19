@@ -6,7 +6,7 @@
 /*   By: inwagner <inwagner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 17:48:50 by inwagner          #+#    #+#             */
-/*   Updated: 2024/06/19 08:33:02 by inwagner         ###   ########.fr       */
+/*   Updated: 2024/06/19 12:21:55 by inwagner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,9 +51,9 @@ int main(void) {
 	
 	{
 		ScavTrap Scaviking("Scaviking");
-		ScavTrap Scavenger("Scavender");
+		ScavTrap Scavenger("Scavenger");
 
-		Scaviking.attack("Scavender");
+		Scaviking.attack("Scavenger");
 		Scavenger.takeDamage(Scaviking.getDamage());
 		Scavenger.attack("Scaviking");
 		Scaviking.takeDamage(Scavenger.getDamage());
