@@ -6,7 +6,7 @@
 /*   By: inwagner <inwagner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 17:48:44 by inwagner          #+#    #+#             */
-/*   Updated: 2024/06/18 18:41:33 by inwagner         ###   ########.fr       */
+/*   Updated: 2024/06/19 07:26:33 by inwagner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ class ClapTrap {
 		int _energypoints;
 		int _attackdamage;
 
+	protected:
 		ClapTrap();
-
 
 	public:
 		ClapTrap(std::string name);
