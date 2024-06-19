@@ -6,7 +6,7 @@
 #    By: inwagner <inwagner@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/19 08:39:42 by inwagner          #+#    #+#              #
-#    Updated: 2024/06/19 08:41:07 by inwagner         ###   ########.fr        #
+#    Updated: 2024/06/19 10:53:42 by inwagner         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,7 @@ FLAGS	:=	-Wall -Wextra -Werror -std=c++98 -I $(HSRC)
 FTS		:=	main.cpp \
 			ClapTrap.cpp \
 			ScavTrap.cpp \
-			DiamondTrap.cpp
+			FragTrap.cpp
 			
 OBJ		:=	$(FTS:%.cpp=$(OSRC)/%.o)
 
