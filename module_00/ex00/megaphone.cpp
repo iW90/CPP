@@ -6,7 +6,7 @@
 /*   By: inwagner <inwagner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 21:24:14 by inwagner          #+#    #+#             */
-/*   Updated: 2024/06/08 12:49:47 by inwagner         ###   ########.fr       */
+/*   Updated: 2024/06/20 14:44:33 by inwagner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,7 @@ void megaphone(int argc, char **argv)
 	}
 	std::cout << std::endl;
 }
-		for (std::string::const_iterator it = str.begin(); it != str.end(); ++it) {
-			std::cout << static_cast<char>(toupper(*it));
-		}
+
 int	main(int argc, char **argv)
 {
 	if (argc > 1)
