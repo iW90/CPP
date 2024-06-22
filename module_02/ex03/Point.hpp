@@ -6,7 +6,7 @@
 /*   By: inwagner <inwagner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 20:07:37 by inwagner          #+#    #+#             */
-/*   Updated: 2024/06/18 14:46:36 by inwagner         ###   ########.fr       */
+/*   Updated: 2024/06/22 18:30:20 by inwagner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,9 @@ class Point {
 		Fixed _x;
 		Fixed _y;
 
+		static bool _collinearity(Point const a, Point const b, Point const point);
+		static Fixed _orientation(Point const p1, Point const p2, Point const p3);
+
 	public:
 		Point();
 		Point(const Fixed& x, const Fixed& y);
@@ -31,9 +34,12 @@ class Point {
 		~Point();
 
 		Point& operator=(const Point& other);
-	
-		bool bsp(Point const a, Point const b, Point const c, Point const point);
 
+		Fixed getX() const;
+		Fixed getY() const;
+	
+
+		static bool bsp(Point const a, Point const b, Point const c, Point const point);
 };
 
 #endif //POINT_HPP

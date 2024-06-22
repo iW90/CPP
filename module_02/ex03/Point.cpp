@@ -6,7 +6,7 @@
 /*   By: inwagner <inwagner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 13:22:22 by inwagner          #+#    #+#             */
-/*   Updated: 2024/06/18 14:43:52 by inwagner         ###   ########.fr       */
+/*   Updated: 2024/06/22 18:27:58 by inwagner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,3 +28,10 @@ Point& Point::operator=(const Point& other) {
 
 Point::~Point() {}
 
+Fixed Point::getX() const {
+  return _x;
+}
+
+Fixed Point::getY() const {
+  return _y;
+}
