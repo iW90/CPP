@@ -6,13 +6,14 @@
 /*   By: inwagner <inwagner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 13:22:33 by inwagner          #+#    #+#             */
-/*   Updated: 2024/06/22 18:31:38 by inwagner         ###   ########.fr       */
+/*   Updated: 2024/06/22 19:00:25 by inwagner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Point.hpp"
-
-int main(void) {
+/// @brief 
+/// @param other 
+/// @return int main(void) {
 	Point a(0.0f, 0.0f);
 	Point b(5.0f, 0.0f);
 	Point c(2.5f, 5.0f);
