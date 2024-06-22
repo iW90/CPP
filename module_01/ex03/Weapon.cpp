@@ -6,7 +6,7 @@
 /*   By: inwagner <inwagner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/16 11:13:38 by inwagner          #+#    #+#             */
-/*   Updated: 2024/06/16 11:48:47 by inwagner         ###   ########.fr       */
+/*   Updated: 2024/06/22 14:26:22 by inwagner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,7 @@ Weapon::Weapon(std::string type) : _type(type) {}
 
 Weapon::~Weapon() {}
 
-const std::string &Weapon::getType(void)
-{
+const std::string& Weapon::getType(void) {
 	return _type;
 }
 
