@@ -6,13 +6,13 @@
 /*   By: inwagner <inwagner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 21:23:17 by inwagner          #+#    #+#             */
-/*   Updated: 2024/06/12 22:24:34 by inwagner         ###   ########.fr       */
+/*   Updated: 2024/06/22 14:14:16 by inwagner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Zombie.hpp"
 
-Zombie *Zombie::zombieHorde(int N, std::string name)
+Zombie* Zombie::zombieHorde(int N, std::string name)
 {
 	if (N < 1)
 		return NULL;
