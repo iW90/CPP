@@ -6,7 +6,7 @@
 /*   By: inwagner <inwagner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 08:43:48 by inwagner          #+#    #+#             */
-/*   Updated: 2024/06/19 09:41:29 by inwagner         ###   ########.fr       */
+/*   Updated: 2024/06/23 11:19:56 by inwagner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,13 @@ FragTrap::FragTrap() {
 
 FragTrap::FragTrap(std::string name) : ClapTrap(name) {
 	setHP(100);
-    setEP(100);
-    setDamage(30);
+	setEP(100);
+	setDamage(30);
 	std::cout << "[FragTrap] Default Constructor called" << std::endl;
 }
 
 FragTrap::FragTrap(const FragTrap& other) : ClapTrap(other) {
-    std::cout << "[FragTrap] Copy Constructor called" << std::endl;
+	std::cout << "[FragTrap] Copy Constructor called" << std::endl;
 }
 
 FragTrap& FragTrap::operator=(const FragTrap& other) {

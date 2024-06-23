@@ -6,7 +6,7 @@
 /*   By: inwagner <inwagner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 08:43:45 by inwagner          #+#    #+#             */
-/*   Updated: 2024/06/23 09:39:17 by inwagner         ###   ########.fr       */
+/*   Updated: 2024/06/23 11:03:20 by inwagner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # include <string>
 # include "ClapTrap.hpp"
 
-class FragTrap : public ClapTrap {
+class FragTrap : virtual public ClapTrap {
 	private:
 
 
@@ -32,7 +32,7 @@ class FragTrap : public ClapTrap {
 		FragTrap& operator=(const FragTrap &other);		// copy operator constructor
 		virtual ~FragTrap();							// destructor
 
-		virtual void attack(const std::string &target);
+		void attack(const std::string &target);
 		void highFivesGuys(void);
 	
 };

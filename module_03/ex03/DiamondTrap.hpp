@@ -6,7 +6,7 @@
 /*   By: inwagner <inwagner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 11:03:31 by inwagner          #+#    #+#             */
-/*   Updated: 2024/06/19 12:29:52 by inwagner         ###   ########.fr       */
+/*   Updated: 2024/06/23 11:03:48 by inwagner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 # include "FragTrap.hpp"
 # include "ScavTrap.hpp"
 
-class DiamondTrap : public ClapTrap, public FragTrap, public ScavTrap {
+class DiamondTrap : public FragTrap, public ScavTrap {
 	private:
 		std::string _name;
 

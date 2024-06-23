@@ -6,7 +6,7 @@
 /*   By: inwagner <inwagner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 17:48:50 by inwagner          #+#    #+#             */
-/*   Updated: 2024/06/19 12:28:28 by inwagner         ###   ########.fr       */
+/*   Updated: 2024/06/23 11:59:36 by inwagner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,15 +48,30 @@ int main(void) {
 	}
 	
 	std::cout << std::endl;
-	std::cout << "Now is time to fight!!!" << std::endl;
+	std::cout << "Now is time to fight!!!\n" << std::endl;
 	std::cout << std::endl;
 	
 	{
+		ClapTrap clap("Claperson");
 		FragTrap freg("Fragmanimus");
 		ScavTrap scav("Scavóvisky");
-		DiamondTrap dia("Hyoga");
+		DiamondTrap diad("Hyoga");
+
+		std::cout << "\n" << std::endl;
+
+		clap.attack("Claperson");
+		freg.attack("Fragmanimus");
+		scav.attack("Scavóvisky");
+		diad.attack("Hyoga");
+
+		std::cout << "\n" << std::endl;
 		
-		std::cout << "Fragments accept and take double damage from the special electric attack High Five and become paralyzed!" << std::endl;
+		clap.takeDamage(500);
+		freg.takeDamage(500);
+		scav.takeDamage(500);
+		diad.takeDamage(500);
+		
+		std::cout << "\nThe initial mold came with a factory defect, and now all the Traps are experiencing a short circuit.\n" << std::endl;
 	}
 
   return 0;
