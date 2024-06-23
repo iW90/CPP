@@ -6,7 +6,7 @@
 /*   By: inwagner <inwagner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 19:23:59 by inwagner          #+#    #+#             */
-/*   Updated: 2024/06/19 09:41:17 by inwagner         ###   ########.fr       */
+/*   Updated: 2024/06/23 09:38:59 by inwagner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,12 @@ class ScavTrap : public ClapTrap {
 		ScavTrap(std::string name);						// default constructor
 		ScavTrap(ScavTrap const &other);				// copy constructor
 		ScavTrap& operator=(const ScavTrap &other);		// copy operator constructor
-		~ScavTrap();									// destructor
+		virtual ~ScavTrap();							// destructor
 
 		bool isGuardMode()const;
 		void setGuardMode(bool mode);
 
-		void attack(const std::string &target);
+		virtual void attack(const std::string &target);
 		void guardGate();
 };
 

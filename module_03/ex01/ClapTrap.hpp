@@ -6,7 +6,7 @@
 /*   By: inwagner <inwagner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 17:48:44 by inwagner          #+#    #+#             */
-/*   Updated: 2024/06/18 20:06:46 by inwagner         ###   ########.fr       */
+/*   Updated: 2024/06/23 09:37:21 by inwagner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ class ClapTrap {
 	public:
 		ClapTrap(std::string name);
 		ClapTrap(const ClapTrap& other);
-		~ClapTrap();
+		virtual ~ClapTrap();
 
 		ClapTrap& operator=(const ClapTrap& other);
 
@@ -45,7 +45,7 @@ class ClapTrap {
 		int getDamage()const;
 		void setDamage(const int damage);
 
-		void attack(const std::string& target);
+		virtual void attack(const std::string& target);
 		void takeDamage(unsigned int amount);
 		void beRepaired(unsigned int amount);
 	

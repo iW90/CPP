@@ -6,7 +6,7 @@
 /*   By: inwagner <inwagner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 08:43:45 by inwagner          #+#    #+#             */
-/*   Updated: 2024/06/19 09:41:11 by inwagner         ###   ########.fr       */
+/*   Updated: 2024/06/23 09:39:17 by inwagner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,9 @@ class FragTrap : public ClapTrap {
 		FragTrap(std::string name);						// default constructor
 		FragTrap(FragTrap const &other);				// copy constructor
 		FragTrap& operator=(const FragTrap &other);		// copy operator constructor
-		~FragTrap();									// destructor
+		virtual ~FragTrap();							// destructor
 
-		void attack(const std::string &target);
+		virtual void attack(const std::string &target);
 		void highFivesGuys(void);
 	
 };
