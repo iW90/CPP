@@ -6,7 +6,7 @@
 /*   By: inwagner <inwagner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 20:45:29 by inwagner          #+#    #+#             */
-/*   Updated: 2024/06/19 21:04:45 by inwagner         ###   ########.fr       */
+/*   Updated: 2024/06/27 20:02:04 by inwagner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 #ifndef AMATERIA_HPP
 # define AMATERIA_HPP
 
-# include <iostream>
 # include <string>
 # include "ICharacter.hpp"
 

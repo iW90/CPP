@@ -6,7 +6,7 @@
 /*   By: inwagner <inwagner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 20:55:46 by inwagner          #+#    #+#             */
-/*   Updated: 2024/06/19 21:03:07 by inwagner         ###   ########.fr       */
+/*   Updated: 2024/06/27 19:57:12 by inwagner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,5 @@ std::string const& AMateria::getType() const {
 }
 
 void AMateria::use(ICharacter& target) {
-    (void)target; // Evita avisos de "unused parameter"
+    target.getName();
 }

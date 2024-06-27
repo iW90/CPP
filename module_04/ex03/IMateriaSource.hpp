@@ -6,7 +6,7 @@
 /*   By: inwagner <inwagner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 20:47:45 by inwagner          #+#    #+#             */
-/*   Updated: 2024/06/19 20:54:34 by inwagner         ###   ########.fr       */
+/*   Updated: 2024/06/27 20:08:41 by inwagner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ class IMateriaSource
 {
 	public:
 		virtual ~IMateriaSource() {}
-		virtual void learnMateria(AMateria*) = 0;
+	    virtual void learnMateria(AMateria* m) = 0;
 		virtual AMateria* createMateria(std::string const & type) = 0;
 };
 

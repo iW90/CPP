@@ -6,7 +6,7 @@
 /*   By: inwagner <inwagner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 20:48:16 by inwagner          #+#    #+#             */
-/*   Updated: 2024/06/19 20:50:47 by inwagner         ###   ########.fr       */
+/*   Updated: 2024/06/27 20:00:27 by inwagner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,3 @@ int main() {
 	delete src;
 	return 0;
 }
-
-/*
-	Output:
-		$> clang++ -W -Wall -Werror *.cpp
-		$> ./a.out | cat -e
-		* shoots an ice bolt at bob *$
-		* heals bob's wounds *$
-*/
