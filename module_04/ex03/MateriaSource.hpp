@@ -6,7 +6,7 @@
 /*   By: inwagner <inwagner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 19:10:04 by inwagner          #+#    #+#             */
-/*   Updated: 2024/06/27 19:50:33 by inwagner         ###   ########.fr       */
+/*   Updated: 2024/06/29 12:01:20 by inwagner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,19 +15,24 @@
 
 # include "IMateriaSource.hpp"
 # include "AMateria.hpp"
+# include "Ice.hpp"
+# include "Cure.hpp"
 
-class MateriaSource : public IMateriaSource
-{
-private:
-    AMateria* templates[4];
+class MateriaSource : public IMateriaSource {
+	private:
+		AMateria*    _memory[4];
+		unsigned int _idx;
 
-public:
-    MateriaSource();
-    MateriaSource(MateriaSource const & other);
-    MateriaSource& operator=(MateriaSource const & other);
-    virtual ~MateriaSource();
-    void learnMateria(AMateria* m);
-    AMateria* createMateria(std::string const & type);
+	public:
+		~MateriaSource();                                   	// Destructor
+		MateriaSource();                                    	// Default constructor
+		MateriaSource(const MateriaSource& other);            	// Copy constructor
+		MateriaSource& operator=(const MateriaSource& other); 	// Copy assignment operator overload
+		
+		void learnMateria(AMateria*);
+		AMateria* createMateria(std::string const & type);
+		AMateria* getMateria( unsigned int idx );
+		AMateria** getMaterias();
 };
 
 #endif

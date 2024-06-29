@@ -6,7 +6,7 @@
 /*   By: inwagner <inwagner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 21:05:20 by inwagner          #+#    #+#             */
-/*   Updated: 2024/06/27 19:19:24 by inwagner         ###   ########.fr       */
+/*   Updated: 2024/06/29 11:20:30 by inwagner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,17 +17,17 @@
 
 # include "AMateria.hpp"
 # include "ICharacter.hpp"
-# include <iostream>
+# include "IMateriaSource.hpp"
 
 class Cure : public AMateria {
-public:
-    Cure();
-    virtual ~Cure();
-    Cure(const Cure & other);
-    Cure & operator=(const Cure & other);
+    public:
+        ~Cure();                            // Destructor
+        Cure();                             // Default constructor
+        Cure(const Cure& other);              // Copy constructor
+        Cure& operator=(const Cure& other);   // Copy assignment operator overload
 
-    virtual AMateria* clone() const;
-    virtual void use(ICharacter& target);
+        virtual AMateria* clone() const;
+        virtual void use(ICharacter& target);
 };
 
 #endif //CURE_HPP

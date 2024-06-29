@@ -6,7 +6,7 @@
 /*   By: inwagner <inwagner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 20:47:04 by inwagner          #+#    #+#             */
-/*   Updated: 2024/06/27 20:12:42 by inwagner         ###   ########.fr       */
+/*   Updated: 2024/06/29 10:29:17 by inwagner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,11 @@
 # define ICHARACTER_HPP
 
 # include "AMateria.hpp"
-# include <string>
+# include <iostream>
 
 class AMateria;
 
-class ICharacter
-{
+class ICharacter {
 	public:
 		virtual ~ICharacter() {}
 		virtual std::string const & getName() const = 0;

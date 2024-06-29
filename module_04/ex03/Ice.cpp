@@ -6,27 +6,34 @@
 /*   By: inwagner <inwagner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 21:08:06 by inwagner          #+#    #+#             */
-/*   Updated: 2024/06/27 19:53:50 by inwagner         ###   ########.fr       */
+/*   Updated: 2024/06/29 11:22:32 by inwagner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Ice.hpp"
 
-Ice::Ice() : AMateria("ice") {}
+Ice::Ice() : AMateria("ice") {
+	//std::cout << "Ice constructor is called" << std::endl;
+}
 
-Ice::~Ice() {}
+Ice::~Ice() {
+	//std::cout << "Ice destructor is called" << std::endl;
+}
 
-Ice::Ice(const Ice & other) : AMateria(other) {}
+Ice::Ice(const Ice& other) : AMateria(other) {
+	//std::cout << "Ice copy constructor is called" << std::endl;
+	*this = other;
+}
 
-Ice & Ice::operator=(const Ice & other) {
-	if (this != &other) {
-		AMateria::operator=(other);
-	}
-	return *this;
+Ice& Ice::operator=(const Ice& other) {
+	//std::cout << "Ice copy assignment operator overload called" << std::endl;
+    if (this != &other)
+		*this = other;
+    return (*this);
 }
 
 AMateria* Ice::clone() const {
-	return new Ice(*this);
+	return (new Ice());
 }
 
 void Ice::use(ICharacter& target) {
