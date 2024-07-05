@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   Character.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: inwagner <inwagner@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: inwagner <inwagner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 21:16:26 by inwagner          #+#    #+#             */
-/*   Updated: 2024/06/29 11:59:18 by inwagner         ###   ########.fr       */
+/*   Updated: 2024/07/05 19:05:48 by inwagner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Character.hpp"
 
 Character::Character() {
-    //std::cout << "Character default constructor is called" << std::endl;
+	//std::cout << "Character default constructor is called" << std::endl;
 }
 
 Character::Character( std::string const & name ) {
@@ -35,27 +35,26 @@ Character::~Character() {
 Character::Character(const Character& other) {
 	//std::cout << "Character copy constructor is called" << std::endl;
 	if (this != &other) {
-		for(int i = 0; i < 4; i++) {
-			if (this->_inventory[i] != NULL)
-				delete this->_inventory[i];
-		}
+		this->_name = other._name;
+		this->_idx = other._idx;
+		for(int i = 0; i < 4; i++)
+			this->_inventory[i] = (other._inventory[i] != NULL) ? other._inventory[i]->clone() : NULL;
 	}
 	*this = other;
 }
 
 Character& Character::operator=(const Character& other) {
 	//std::cout << "Character copy assignment operator overload called" << std::endl;
-    // Impossible to change name because it's constant
 	if (this != &other) {
-		for(int i = 0; i < 4; i++) {
-			if (this->_inventory[i] != NULL)
-				delete this->_inventory[i];
-			this->_inventory[i] = other._inventory[i];
-			this->_name = other.getName();
-			this->_idx = other._idx;
-		}
+		this->_name = other.getName();
+		this->_idx = other._idx;
+        for (int i = 0; i < 4; ++i) {
+            AMateria* newMateria = (other._inventory[i] != NULL) ? other._inventory[i]->clone() : NULL;
+            delete this->_inventory[i];
+            this->_inventory[i] = newMateria;
+        }
 	}
-    return (*this);
+	return (*this);
 }
 
 std::string const & Character::getName() const {

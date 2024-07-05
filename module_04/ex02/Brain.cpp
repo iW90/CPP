@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Brain.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: inwagner <inwagner@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: inwagner <inwagner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 20:17:57 by inwagner          #+#    #+#             */
-/*   Updated: 2024/06/19 20:35:41 by inwagner         ###   ########.fr       */
+/*   Updated: 2024/07/05 18:38:42 by inwagner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,11 @@ Brain::Brain(Brain& other) {
 }
 
 Brain& Brain::operator=(Brain& other) {
-	std::cout << "[Brain] Assign operator called" << std::endl;
+    std::cout << "[Brain] Assign operator called" << std::endl;
     if (this != &other) {
         for (int i = 0; i < 100; ++i) {
-            _ideas[i] = other._ideas[i];
+            delete _ideas[i];
+            _ideas[i] = new Idea(*(other._ideas[i]));
         }
     }
     return *this;

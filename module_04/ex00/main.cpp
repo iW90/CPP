@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: inwagner <inwagner@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: inwagner <inwagner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 12:33:35 by inwagner          #+#    #+#             */
-/*   Updated: 2024/06/19 20:06:22 by inwagner         ###   ########.fr       */
+/*   Updated: 2024/06/29 17:11:29 by inwagner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,8 @@ int main() {
 	}
 	{
 		std::cout << "\nStranger Animals:" << std::endl;
-		const WrongCat* cat = new WrongCat();
-		const WrongCat* animal = new WrongAnimal();
+		const WrongAnimal* animal = new WrongAnimal();
+		const WrongAnimal* cat = new WrongCat();
 		std::cout << cat->getType() << " " << std::endl;
 		cat->makeSound();
 		animal->makeSound();

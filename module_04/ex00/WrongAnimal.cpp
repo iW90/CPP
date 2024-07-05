@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   WrongAnimal.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: inwagner <inwagner@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: inwagner <inwagner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 19:31:10 by inwagner          #+#    #+#             */
-/*   Updated: 2024/06/19 20:04:46 by inwagner         ###   ########.fr       */
+/*   Updated: 2024/06/29 17:13:26 by inwagner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,11 @@ WrongAnimal::~WrongAnimal() {
 	std::cout << "[WrongAnimal] Destructor called" << std::endl;
 }
 
-WrongAnimal::WrongAnimal() {
-	setType("WrongAnimal");
+WrongAnimal::WrongAnimal() : _type("WrongAnimal") {
 	std::cout << "[WrongAnimal] Default Constructor called" << std::endl;
 }
 
-WrongAnimal::WrongAnimal(WrongAnimal& other) : WrongCat() {
+WrongAnimal::WrongAnimal(WrongAnimal& other) {
 	std::cout << "[WrongAnimal] Copy constructor called" << std::endl;
     *this = other;
 }
@@ -29,10 +28,18 @@ WrongAnimal::WrongAnimal(WrongAnimal& other) : WrongCat() {
 WrongAnimal& WrongAnimal::operator=(WrongAnimal& other) {
 	std::cout << "[WrongAnimal] Assign operator called" << std::endl;
 	if (this != &other)
-		_type = other._type;
+		setType(other.getType());
 	return *this;
 }
 
+std::string WrongAnimal::getType() const {
+	return _type;
+}
+
+void WrongAnimal::setType(std::string type) {
+	_type = type;
+}
+
 void WrongAnimal::makeSound()const {
-	std::cout << "AuAu" << std::endl;
+	std::cout << "zzz" << std::endl;
 }

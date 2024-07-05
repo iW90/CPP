@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   WrongCat.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: inwagner <inwagner@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: inwagner <inwagner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 19:30:59 by inwagner          #+#    #+#             */
-/*   Updated: 2024/06/19 19:44:26 by inwagner         ###   ########.fr       */
+/*   Updated: 2024/06/29 17:12:17 by inwagner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,12 @@
 #ifndef WRONGCAT_HPP
 # define WRONGCAT_HPP
 
-# include "Animal.hpp"
+# include "WrongAnimal.hpp"
 
-class WrongCat {
+class WrongCat : public WrongAnimal {
 	private:
 
 	protected:
-		std::string _type;
 
 	public:
 		virtual ~WrongCat();
@@ -29,10 +28,7 @@ class WrongCat {
 		WrongCat(WrongCat& other);
 		WrongCat& operator=(WrongCat& other);
 
-		std::string getType()const;
-		void setType(std::string type);
-
-		virtual void makeSound()const;
+		void makeSound()const;
 };
 
 #endif //WRONGCAT_HPP

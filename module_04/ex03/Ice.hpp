@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Ice.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: inwagner <inwagner@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: inwagner <inwagner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 21:05:24 by inwagner          #+#    #+#             */
-/*   Updated: 2024/06/29 11:20:52 by inwagner         ###   ########.fr       */
+/*   Updated: 2024/07/05 18:57:46 by inwagner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@
 
 class Ice : public AMateria {
 	public:
-		~Ice(); 						// Destructor
-		Ice(); 							// Default constructor
-		Ice(const Ice& other); 			// Copy constructor
-		Ice& operator=(const Ice& other); // Copy assignment operator overload
+		~Ice(); 							// Destructor
+		Ice(); 								// Default constructor
+		Ice(const Ice& other); 				// Copy constructor
+		Ice& operator=(const Ice& other); 	// Copy assignment operator overload
 
 		virtual AMateria* clone() const;
 		virtual void use(ICharacter& target);
