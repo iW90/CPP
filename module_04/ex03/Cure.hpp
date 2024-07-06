@@ -6,7 +6,7 @@
 /*   By: inwagner <inwagner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 21:05:20 by inwagner          #+#    #+#             */
-/*   Updated: 2024/06/29 11:20:30 by inwagner         ###   ########.fr       */
+/*   Updated: 2024/07/06 13:10:02 by inwagner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,10 @@
 
 class Cure : public AMateria {
     public:
-        ~Cure();                            // Destructor
-        Cure();                             // Default constructor
-        Cure(const Cure& other);              // Copy constructor
-        Cure& operator=(const Cure& other);   // Copy assignment operator overload
+        ~Cure();                                // Destructor
+        Cure();                                 // Default constructor
+        Cure(const Cure& other);                // Copy constructor
+        Cure& operator=(const Cure& other);     // Copy assignment operator overload
 
         virtual AMateria* clone() const;
         virtual void use(ICharacter& target);

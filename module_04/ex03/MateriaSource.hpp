@@ -6,7 +6,7 @@
 /*   By: inwagner <inwagner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 19:10:04 by inwagner          #+#    #+#             */
-/*   Updated: 2024/06/29 12:01:20 by inwagner         ###   ########.fr       */
+/*   Updated: 2024/07/06 13:45:11 by inwagner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@
 class MateriaSource : public IMateriaSource {
 	private:
 		AMateria*    _memory[4];
-		unsigned int _idx;
 
 	public:
 		~MateriaSource();                                   	// Destructor
@@ -31,8 +30,7 @@ class MateriaSource : public IMateriaSource {
 		
 		void learnMateria(AMateria*);
 		AMateria* createMateria(std::string const & type);
-		AMateria* getMateria( unsigned int idx );
-		AMateria** getMaterias();
+		AMateria* getMateria( int idx ) const;
 };
 
 #endif

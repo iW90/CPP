@@ -6,7 +6,7 @@
 /*   By: inwagner <inwagner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 20:45:29 by inwagner          #+#    #+#             */
-/*   Updated: 2024/06/29 11:13:19 by inwagner         ###   ########.fr       */
+/*   Updated: 2024/07/06 12:13:08 by inwagner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ class AMateria {
 		std::string const& getType() const; 			// Returns the materia type
 		
 		virtual AMateria* clone() const = 0;			// Método virtual puro para clonar
-		virtual void use(ICharacter& target); 			// Método virtual para usar a materia
+		virtual void use(ICharacter& target) = 0; 		// Método virtual para usar a materia
 };
 
 #endif //AMATERIA_HPP

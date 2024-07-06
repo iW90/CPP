@@ -6,7 +6,7 @@
 #    By: inwagner <inwagner@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/19 20:55:18 by inwagner          #+#    #+#              #
-#    Updated: 2024/06/29 11:17:09 by inwagner         ###   ########.fr        #
+#    Updated: 2024/07/06 14:02:07 by inwagner         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,7 +41,7 @@ $(OSRC)/%.o: $(SRC)%.cpp
 	@mkdir -p $(@D)
 	@c++ $(FLAGS) -c $< -o $@
 
-val: all
+val: re
 	@valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./${NAME} || echo ""
 
 clean:

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Character.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: inwagner <inwagner@student.42.fr>          +#+  +:+       +#+        */
+/*   By: inwagner <inwagner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 19:08:33 by inwagner          #+#    #+#             */
-/*   Updated: 2024/07/05 18:47:05 by inwagner         ###   ########.fr       */
+/*   Updated: 2024/07/06 12:58:39 by inwagner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ class Character : public ICharacter {
 	private:
 		std::string _name;
 		AMateria*   _inventory[4];
-		int         _idx;
+		AMateria*	_trash[10];
 		Character();                                	// Default constructor
 
 	public:
