@@ -6,7 +6,7 @@
 /*   By: inwagner <inwagner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 20:48:16 by inwagner          #+#    #+#             */
-/*   Updated: 2024/07/06 13:59:43 by inwagner         ###   ########.fr       */
+/*   Updated: 2024/07/06 14:15:36 by inwagner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,16 @@ int main( void ) {
 	me->equip(tmp);
 	tmp = src->createMateria("ice");
 	me->equip(tmp);
+
+	std::cout << "\nUses" << std::endl;
+
+	me->use(0, *bob);
+	me->use(1, *bob);
+	me->use(2, *bob);
+
+	std::cout << "\nUnequip" << std::endl;
+	
+	me->unequip(0);
 
 	std::cout << "\nUses" << std::endl;
 

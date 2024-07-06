@@ -6,7 +6,7 @@
 /*   By: inwagner <inwagner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 21:16:26 by inwagner          #+#    #+#             */
-/*   Updated: 2024/07/06 14:07:35 by inwagner         ###   ########.fr       */
+/*   Updated: 2024/07/06 14:15:03 by inwagner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,10 +99,10 @@ void Character::unequip(int idx) {
 		std::cout << this->_name << " has nothing equipped at slot " << idx << " so he can't unequip it." << std::endl;
 	else {
 		for (int i = 0; i < 10; ++i) {
-			if (this->_trash[i] != NULL) {
+			if (this->_trash[i] == NULL) {
 				this->_trash[i] = (this->_inventory)[idx];
 				this->_inventory[idx] = NULL;
-				std::cout << this->_name << " unequipped " << _trash[i] << " from slot "<< idx << std::endl;
+				std::cout << this->_name << " unequip " << _trash[i]->getType() << " from slot "<< idx << std::endl;
 				return ;
 			}
 		}
@@ -111,8 +111,8 @@ void Character::unequip(int idx) {
 }
 
 void Character::use(int idx, ICharacter& target) {
-	if (idx > 0 || idx <= 4)
+	if ((idx > 0 || idx <= 4) && _inventory[idx] != NULL)
 		this->_inventory[idx]->use(target);
 	else
-		std::cout << "The index is wrong." << std::endl;
+		std::cout << "Unable to use." << std::endl;
 }
