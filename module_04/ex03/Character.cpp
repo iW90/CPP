@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Character.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: inwagner <inwagner@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: inwagner <inwagner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 21:16:26 by inwagner          #+#    #+#             */
-/*   Updated: 2024/07/06 14:15:03 by inwagner         ###   ########.fr       */
+/*   Updated: 2024/07/06 15:17:36 by inwagner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,7 +111,7 @@ void Character::unequip(int idx) {
 }
 
 void Character::use(int idx, ICharacter& target) {
-	if ((idx > 0 || idx <= 4) && _inventory[idx] != NULL)
+	if ((idx > 0 && idx <= 4) && _inventory[idx] != NULL)
 		this->_inventory[idx]->use(target);
 	else
 		std::cout << "Unable to use." << std::endl;

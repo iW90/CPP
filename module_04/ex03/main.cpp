@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: inwagner <inwagner@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: inwagner <inwagner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 20:48:16 by inwagner          #+#    #+#             */
-/*   Updated: 2024/07/06 14:15:36 by inwagner         ###   ########.fr       */
+/*   Updated: 2024/07/06 18:06:15 by inwagner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,9 @@ int main( void ) {
 	std::cout << "\nUnequip" << std::endl;
 	
 	me->unequip(0);
+	me->unequip(3);
 
-	std::cout << "\nUses" << std::endl;
+	std::cout << "\nReuses" << std::endl;
 
 	me->use(0, *bob);
 	me->use(1, *bob);
