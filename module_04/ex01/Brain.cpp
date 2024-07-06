@@ -6,7 +6,7 @@
 /*   By: inwagner <inwagner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 20:17:57 by inwagner          #+#    #+#             */
-/*   Updated: 2024/07/06 10:29:33 by inwagner         ###   ########.fr       */
+/*   Updated: 2024/07/06 10:51:43 by inwagner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,28 +18,32 @@ Brain::~Brain() {
 
 Brain::Brain() {
     std::cout << "[Brain] Default constructor called" << std::endl;
+    for (int i = 0; i < 100; ++i)
+        _ideas[i] = "";
 }
 
-Brain::Brain(Brain& other) {
-    *this = other;
+Brain::Brain(const Brain& other) {
     std::cout << "[Brain] Copy constructor called" << std::endl;
+    for (int i = 0; i < 100; ++i)
+        _ideas[i] = other._ideas[i];
 }
 
-Brain& Brain::operator=(Brain& other) {
+Brain& Brain::operator=(const Brain& other) {
     std::cout << "[Brain] Assign operator called" << std::endl;
-    if (this != &other)
+    if (this != &other) {
         for (int i = 0; i < 100; ++i)
             _ideas[i] = other._ideas[i];
+    }
     return *this;
 }
 
-void Brain::setIdea(const std::string idea, int idx) {
+void Brain::setIdea(const std::string& idea, int idx) {
     if (idx < 0 || idx > 99)
-        return ;
+        return;
     _ideas[idx] = idea;
 }
 
-const std::string Brain::getIdea(int idx) const {
+const std::string& Brain::getIdea(int idx) const {
     static std::string invalid = "Invalid index";
     if (idx < 0 || idx > 99)
         return invalid;

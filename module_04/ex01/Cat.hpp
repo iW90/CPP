@@ -6,7 +6,7 @@
 /*   By: inwagner <inwagner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 12:37:40 by inwagner          #+#    #+#             */
-/*   Updated: 2024/07/06 09:40:11 by inwagner         ###   ########.fr       */
+/*   Updated: 2024/07/06 10:53:43 by inwagner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ class Cat : public Animal {
 	public:
 		~Cat();
 		Cat();
-		Cat(Cat& other);
-		Cat& operator=(Cat& other);
+		Cat(const Cat& other);
+		Cat& operator=(const Cat& other);
 
 		void makeSound() const;
 

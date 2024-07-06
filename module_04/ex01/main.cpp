@@ -6,7 +6,7 @@
 /*   By: inwagner <inwagner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 12:33:35 by inwagner          #+#    #+#             */
-/*   Updated: 2024/07/06 10:26:29 by inwagner         ###   ########.fr       */
+/*   Updated: 2024/07/06 12:00:53 by inwagner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,14 +47,36 @@ int main() {
     //     }
     // }
     {
-        std::cout << "Deep copy tests" << std::endl;
-        Dog originalToto;
+        std::cout << "\nCat deep copy tests" << std::endl;
+        Cat originalMimi;
         
-        originalToto.setIdea("Bark to door", 5);
-        std::cout << originalToto.getIdea(5) << std::endl;
+        originalMimi.setIdea("Make purrr", 5);
+        std::cout << originalMimi.getIdea(5) << std::endl;
 
-        Dog cloneToto = originalToto;
-        // std::cout << cloneToto.getIdea(5) << std::endl;
+        originalMimi.setIdea("Make purrrrrrrrrrr", 5);
+
+        Cat cloneMimi = originalMimi;
+        originalMimi.setIdea("Make purrr", 5);
+        
+        std::cout << cloneMimi.getIdea(5) << std::endl;
+        std::cout << originalMimi.getIdea(5) << std::endl;
+
+        cloneMimi.makeSound();
+    }
+    {
+        std::cout << "\nDog deep copy tests" << std::endl;
+        Dog basic;
+        basic.setIdea("Bite your ankle", 77);
+        {
+            Dog tmp = basic;
+            tmp.setIdea("Be a good boy", 77);
+            std::cout << tmp.getIdea(77) << std::endl;
+        }    
+        std::cout << basic.getIdea(77) << std::endl;
+    }
+    {
+        Animal* animal = new Dog;
+        delete animal;
     }
 	return 0;
 }

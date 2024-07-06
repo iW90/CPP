@@ -6,7 +6,7 @@
 /*   By: inwagner <inwagner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 20:18:05 by inwagner          #+#    #+#             */
-/*   Updated: 2024/06/19 20:33:53 by inwagner         ###   ########.fr       */
+/*   Updated: 2024/07/06 10:51:09 by inwagner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,16 +20,16 @@
 
 class Brain {
 	private:
-
-	protected:
 		std::string _ideas[100];
 
 	public:
 		~Brain();
 		Brain();
-		Brain(Brain& Brain);
-		Brain& operator=(Brain& other);
-	
+		Brain(const Brain& Brain);
+		Brain& operator=(const Brain& other);
+
+		void setIdea(const std::string& idea, int idx);
+		const std::string& getIdea(int idx) const;
 };
 
 #endif //BRAIN_HPP

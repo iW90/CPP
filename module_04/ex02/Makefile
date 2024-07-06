@@ -6,7 +6,7 @@
 #    By: inwagner <inwagner@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/19 20:39:18 by inwagner          #+#    #+#              #
-#    Updated: 2024/06/19 20:43:33 by inwagner         ###   ########.fr        #
+#    Updated: 2024/07/06 11:35:57 by inwagner         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ FLAGS	:=	-Wall -Wextra -Werror -Wshadow -std=c++98 -I $(HSRC)
 
 # OBJECTS
 FTS		:=	main.cpp \
-			Animal.cpp \
+			AAnimal.cpp \
 			Dog.cpp \
 			Cat.cpp \
 			Brain.cpp

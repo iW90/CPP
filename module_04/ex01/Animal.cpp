@@ -6,7 +6,7 @@
 /*   By: inwagner <inwagner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 12:34:13 by inwagner          #+#    #+#             */
-/*   Updated: 2024/07/06 08:57:05 by inwagner         ###   ########.fr       */
+/*   Updated: 2024/07/06 10:59:13 by inwagner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,12 @@ Animal::Animal() : _type("Animal") {
 	std::cout << "[Animal] Default constructor called" << std::endl;
 }
 
-Animal::Animal(Animal& other) {
+Animal::Animal(const Animal& other) {
     *this = other;
 	std::cout << "[Animal] Copy constructor called" << std::endl;
 }
 
-Animal& Animal::operator=(Animal& other) {
+Animal& Animal::operator=(const Animal& other) {
 	std::cout << "[Animal] Assign operator called" << std::endl;
 	if (this != &other)
 		_type = other._type;

@@ -6,7 +6,7 @@
 /*   By: inwagner <inwagner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 12:34:10 by inwagner          #+#    #+#             */
-/*   Updated: 2024/07/06 08:56:58 by inwagner         ###   ########.fr       */
+/*   Updated: 2024/07/06 10:59:18 by inwagner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ class Animal {
 	public:
 		virtual ~Animal();
 		Animal();
-		Animal(Animal& animal);
-		Animal& operator=(Animal& other);
+		Animal(const Animal& animal);
+		Animal& operator=(const Animal& other);
 		
 		std::string getType() const;
 		void setType(std::string type);

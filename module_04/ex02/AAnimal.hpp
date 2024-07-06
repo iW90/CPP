@@ -1,40 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.hpp                                         :+:      :+:    :+:   */
+/*   AAnimal.hpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: inwagner <inwagner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 12:34:10 by inwagner          #+#    #+#             */
-/*   Updated: 2024/06/19 20:41:17 by inwagner         ###   ########.fr       */
+/*   Updated: 2024/07/06 11:33:28 by inwagner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
-#ifndef ANIMAL_HPP
-# define ANIMAL_HPP
+#ifndef AANIMAL_HPP
+# define AANIMAL_HPP
 
 # include <iostream>
 # include <string>
 
-class Animal {
+class AAnimal {
 	private:
 
 
 	protected:
-		Animal();
 		std::string _type;
+		AAnimal();
 
 	public:
-		virtual ~Animal();
-		Animal(Animal& animal);
-		Animal& operator=(Animal& other);
+		virtual ~AAnimal();
+		AAnimal(const AAnimal& animal);
+		AAnimal& operator=(const AAnimal& other);
 		
-		std::string getType()const;
+		std::string getType() const;
 		void setType(std::string type);
 	
-		virtual void makeSound()const;
+		virtual void makeSound() const = 0;
 };
 
-#endif //ANIMAL_HPP
+#endif //AANIMAL_HPP
