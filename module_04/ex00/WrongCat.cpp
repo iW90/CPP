@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   WrongCat.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: inwagner <inwagner@student.42.fr>          +#+  +:+       +#+        */
+/*   By: inwagner <inwagner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 19:31:03 by inwagner          #+#    #+#             */
-/*   Updated: 2024/06/29 17:12:54 by inwagner         ###   ########.fr       */
+/*   Updated: 2024/07/06 08:58:16 by inwagner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ WrongCat::WrongCat() {
 	std::cout << "[WrongCat] Default constructor called" << std::endl;
 }
 
-WrongCat::WrongCat(WrongCat &other) : WrongAnimal() {
+WrongCat::WrongCat(WrongCat &other) : WrongAnimal(other) {
 	std::cout << "[WrongCat] Copy constructor called" << std::endl;
 	*this = other;
 }
@@ -33,6 +33,6 @@ WrongCat &WrongCat::operator=(WrongCat &other) {
 	return *this;
 }
 
-void WrongCat::makeSound()const {
-	std::cout << "Miau" << std::endl;
+void WrongCat::makeSound() const {
+	std::cout << "Wrong Miau" << std::endl;
 }

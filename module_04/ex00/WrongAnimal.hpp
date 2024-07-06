@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   WrongAnimal.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: inwagner <inwagner@student.42.fr>          +#+  +:+       +#+        */
+/*   By: inwagner <inwagner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 19:31:07 by inwagner          #+#    #+#             */
-/*   Updated: 2024/06/29 17:12:27 by inwagner         ###   ########.fr       */
+/*   Updated: 2024/07/06 08:58:12 by inwagner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,10 @@ class WrongAnimal {
 		WrongAnimal(WrongAnimal& Wronganimal);
 		WrongAnimal& operator=(WrongAnimal& other);
 
-		std::string getType()const;
+		std::string getType() const;
 		void setType(std::string type);
 	
-		void makeSound()const;
+		void makeSound() const;
 };
 
 #endif //WRONGANIMAL_HPP

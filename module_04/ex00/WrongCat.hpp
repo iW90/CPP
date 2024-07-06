@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   WrongCat.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: inwagner <inwagner@student.42.fr>          +#+  +:+       +#+        */
+/*   By: inwagner <inwagner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 19:30:59 by inwagner          #+#    #+#             */
-/*   Updated: 2024/06/29 17:12:17 by inwagner         ###   ########.fr       */
+/*   Updated: 2024/07/06 08:58:24 by inwagner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ class WrongCat : public WrongAnimal {
 		WrongCat(WrongCat& other);
 		WrongCat& operator=(WrongCat& other);
 
-		void makeSound()const;
+		void makeSound() const;
 };
 
 #endif //WRONGCAT_HPP

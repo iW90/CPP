@@ -6,7 +6,7 @@
 /*   By: inwagner <inwagner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 12:34:10 by inwagner          #+#    #+#             */
-/*   Updated: 2024/06/19 19:24:42 by inwagner         ###   ########.fr       */
+/*   Updated: 2024/07/06 08:56:58 by inwagner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,10 @@ class Animal {
 		Animal(Animal& animal);
 		Animal& operator=(Animal& other);
 		
-		std::string getType()const;
+		std::string getType() const;
 		void setType(std::string type);
 	
-		virtual void makeSound()const;
+		virtual void makeSound() const;
 };
 
 #endif //ANIMAL_HPP

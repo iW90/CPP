@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   WrongAnimal.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: inwagner <inwagner@student.42.fr>          +#+  +:+       +#+        */
+/*   By: inwagner <inwagner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 19:31:10 by inwagner          #+#    #+#             */
-/*   Updated: 2024/06/29 17:13:26 by inwagner         ###   ########.fr       */
+/*   Updated: 2024/07/06 08:57:55 by inwagner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,6 @@ void WrongAnimal::setType(std::string type) {
 	_type = type;
 }
 
-void WrongAnimal::makeSound()const {
-	std::cout << "zzz" << std::endl;
+void WrongAnimal::makeSound() const {
+	std::cout << "Wrong Animal Sound" << std::endl;
 }

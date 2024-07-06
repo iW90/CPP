@@ -6,7 +6,7 @@
 /*   By: inwagner <inwagner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 12:34:13 by inwagner          #+#    #+#             */
-/*   Updated: 2024/06/19 19:55:34 by inwagner         ###   ########.fr       */
+/*   Updated: 2024/07/06 08:57:05 by inwagner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,6 @@ void Animal::setType(std::string type) {
 	_type = type;
 }
 
-void Animal::makeSound()const {
-	std::cout << "" << std::endl;
+void Animal::makeSound() const {
+	std::cout << "Animal Sound" << std::endl;
 }

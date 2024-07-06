@@ -6,7 +6,7 @@
 /*   By: inwagner <inwagner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 12:37:04 by inwagner          #+#    #+#             */
-/*   Updated: 2024/06/19 19:25:20 by inwagner         ###   ########.fr       */
+/*   Updated: 2024/07/06 09:06:22 by inwagner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ class Dog : public Animal {
 		~Dog();
 		Dog();
 		Dog(Dog& dog);
-		Dog&  operator=(Dog& other);
+		Dog& operator=(Dog& other);
 
-		void makeSound()const;
+		void makeSound() const;
 };
 
 #endif //DOG_HPP

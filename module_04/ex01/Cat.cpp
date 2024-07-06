@@ -6,7 +6,7 @@
 /*   By: inwagner <inwagner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 12:37:33 by inwagner          #+#    #+#             */
-/*   Updated: 2024/06/19 20:27:13 by inwagner         ###   ########.fr       */
+/*   Updated: 2024/07/06 09:43:33 by inwagner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,30 +14,37 @@
 
 Cat::~Cat() {
 	std::cout << "[Cat] Destructor called" << std::endl;
-	if (this->_brain) {
-		delete this->_brain;
-		this->_brain = NULL;
-	}
+	delete _brain;
 }
 
 Cat::Cat() : Animal() {
+	std::cout << "[Cat] Default constructor called" << std::endl;
 	setType("Cat");
 	_brain = new Brain;
-	std::cout << "[Cat] Default constructor called" << std::endl;
 }
 
-Cat::Cat(Cat &other) : Animal() {
+Cat::Cat(Cat &other) : Animal(other) {
 	std::cout << "[Cat] Copy constructor called" << std::endl;
 	*this = other;
 }
 
 Cat &Cat::operator=(Cat &other) {
 	std::cout << "[Cat] Assign operator called" << std::endl;
-	if (this != &other)
+	if (this != &other) {
 		setType(other.getType());
+		*_brain = *other._brain;
+	}
 	return *this;
 }
 
-void Cat::makeSound()const {
+void Cat::makeSound() const {
 	std::cout << "Miau" << std::endl;
+}
+
+void Cat::setIdea(const std::string idea, int idx) {
+    _brain->setIdea(idea, idx);
+}
+
+const std::string Cat::getIdea(int idx) const {
+    return _brain->getIdea(idx);
 }

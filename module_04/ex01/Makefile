@@ -6,7 +6,7 @@
 #    By: inwagner <inwagner@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/19 19:52:50 by inwagner          #+#    #+#              #
-#    Updated: 2024/06/19 20:30:55 by inwagner         ###   ########.fr        #
+#    Updated: 2024/07/06 09:35:38 by inwagner         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,8 +26,6 @@ FTS		:=	main.cpp \
 			Animal.cpp \
 			Dog.cpp \
 			Cat.cpp \
-			WrongCat.cpp \
-			WrongAnimal.cpp \
 			Brain.cpp
 
 OBJ		:=	$(FTS:%.cpp=$(OSRC)/%.o)

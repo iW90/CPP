@@ -6,7 +6,7 @@
 /*   By: inwagner <inwagner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 12:37:24 by inwagner          #+#    #+#             */
-/*   Updated: 2024/06/19 20:05:11 by inwagner         ###   ########.fr       */
+/*   Updated: 2024/07/06 08:57:42 by inwagner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ Dog::Dog() : Animal() {
 	std::cout << "[Dog] Default constructor called" << std::endl;
 }
 
-Dog::Dog(Dog &other) : Animal() {
+Dog::Dog(Dog &other) : Animal(other) {
 	std::cout << "[Cat] Copy constructor called" << std::endl;
 	*this = other;
 }
@@ -33,6 +33,6 @@ Dog &Dog::operator=(Dog &other) {
 	return *this;
 }
 
-void Dog::makeSound()const {
+void Dog::makeSound() const {
 	std::cout << "AuAu" << std::endl;
 }
