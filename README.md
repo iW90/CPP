@@ -2,7 +2,7 @@
 
 <img src="https://game.42sp.org.br/static/assets/achievements/cppn.png" alt="completion-with-bonus-badge" align="left">
 
-Projeto para praticar C++, linguagem de programação orientada a objetos.
+C++ é uma linguagem de programação de propósito geral, criada por Bjarne Stroustrup em 1979 como uma extensão da linguagem C. A linguagem suporta paradigmas de programação procedimental, orientada a objetos e genérica, oferecendo uma grande flexibilidade para desenvolvedores. Apesar da sua idade, os princípios e recursos introduzidos no C++98 continuam relevantes, pois formam a base para entender e trabalhar com padrões mais recentes do C++.
 
 ## Listas
 
