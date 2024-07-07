@@ -28,7 +28,7 @@ initialization lists, static, const, and some other basic stuf
 ---
 
 - **Module 04:** <img src="https://img.shields.io/badge/GRADE-100%2F100-success?logo=42&logoColor=fff" align="right"/>
-	Subtype polymorphism, abstract classes, interfaces
+	Subtype polymorphism, abstract classes, interfaces, deep copy
 
 ---
 
