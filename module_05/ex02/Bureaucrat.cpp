@@ -67,6 +67,15 @@ void Bureaucrat::decrementGrade() {
         _grade++;
 }
 
+void Bureaucrat::executeForm(const AForm& form) {
+	if (_grade <= form.getGradeToSign()) {
+        form.execute(*this);
+		std::cout << _name << " executed " << form.getName() << "." << std::endl;
+    }
+	else
+		std::cout << _name << " couldn't execute " << form.getName() << "." << std::endl;
+}
+
 // Exceptions
 const char* Bureaucrat::GradeTooHighException::what() const throw() {
     return BOLD RED INVERT "Error:" RESET " Grade too high";

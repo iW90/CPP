@@ -6,7 +6,7 @@
 /*   By: inwagner <inwagner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/07 16:51:03 by inwagner          #+#    #+#             */
-/*   Updated: 2024/07/07 17:33:25 by inwagner         ###   ########.fr       */
+/*   Updated: 2024/07/09 13:33:36 by inwagner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int main(void) {
 	{
-		// Constructor with a bad grade
+		// Constructor with a bad grade		
 		// -49
 		std::cout << "\nCONSTRUCTING WITH GRADE -300:" << std::endl;
 		try {
