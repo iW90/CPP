@@ -6,7 +6,7 @@
 /*   By: inwagner <inwagner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/07 13:33:56 by inwagner          #+#    #+#             */
-/*   Updated: 2024/07/09 18:50:11 by inwagner         ###   ########.fr       */
+/*   Updated: 2024/07/13 17:32:02 by inwagner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ class Bureaucrat {
 		void 				incrementGrade();
 		void 				decrementGrade();
 
+		void 				signForm(AForm& form);
 		void				executeForm(const AForm& form);
 
 		// Exceptions Classes
