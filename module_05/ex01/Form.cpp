@@ -6,7 +6,7 @@
 /*   By: inwagner <inwagner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/07 18:12:53 by inwagner          #+#    #+#             */
-/*   Updated: 2024/07/09 16:57:08 by inwagner         ###   ########.fr       */
+/*   Updated: 2024/07/09 18:51:21 by inwagner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ Form::Form(std::string name, int grade) : _name(name), _isSigned(false), _gradeT
 		throw GradeTooLowException();
 }
 
-Form::Form(Form& other) : _name(other._name), _gradeToSign(other._gradeToSign) {
+Form::Form(const Form& other) : _name(other._name), _gradeToSign(other._gradeToSign) {
 	*this = other;
 }
 
