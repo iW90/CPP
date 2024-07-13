@@ -24,7 +24,7 @@ Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name), _grade(grade)
         throw GradeTooLowException();
 }
 
-Bureaucrat::Bureaucrat(Bureaucrat& other) {
+Bureaucrat::Bureaucrat(const Bureaucrat& other) {
 	*this = other;
 }
 
