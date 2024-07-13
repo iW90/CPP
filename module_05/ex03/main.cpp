@@ -6,7 +6,7 @@
 /*   By: inwagner <inwagner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/13 15:06:56 by inwagner          #+#    #+#             */
-/*   Updated: 2024/07/13 17:53:08 by inwagner         ###   ########.fr       */
+/*   Updated: 2024/07/13 17:56:00 by inwagner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,24 +46,35 @@ int main(void)
 	{
 		// Test forms
 		std::cout << "\nTEST CREATED FORMS:" << std::endl;
-		std::cout << "\t- Newman create Shrubbery Form:" << std::endl;
-		form = newman.makeForm("ShrubberyCreationForm", "diretories");
-		betty.signForm(*form);
-		betty.executeForm(*form);
-		delete form;
+		try {
+			std::cout << "\t- Newman create Shrubbery Form:" << std::endl;
+			form = newman.makeForm("ShrubberyCreationForm", "diretories");
+			betty.signForm(*form);
+			betty.executeForm(*form);
+			delete form;
+		} catch (std::exception &e) {
+			std::cout << e.what() << std::endl;
+		}
 		
-		std::cout << "\t- Newman create Presidential Pardon Form:" << std::endl;
-		form = newman.makeForm("PresidentialPardonForm", "Rudy Redtape");
-		betty.signForm(*form);
-		betty.executeForm(*form);
-		delete form;
+		try {
+			std::cout << "\t- Newman create Presidential Pardon Form:" << std::endl;
+			form = newman.makeForm("PresidentialPardonForm", "Rudy Redtape");
+			betty.signForm(*form);
+			betty.executeForm(*form);
+			delete form;
+		} catch (std::exception &e) {
+			std::cout << e.what() << std::endl;
+		}
 
-		std::cout << "\t- Newman create Robotomy Request Form:" << std::endl;
-		form = newman.makeForm("RobotomyRequestForm", "Barry Formsmith");
-		betty.signForm(*form);
-		betty.executeForm(*form);
-		
-		delete form;
+		try {
+			std::cout << "\t- Newman create Robotomy Request Form:" << std::endl;
+			form = newman.makeForm("RobotomyRequestForm", "Barry Formsmith");
+			betty.signForm(*form);
+			betty.executeForm(*form);
+			delete form;
+		} catch (std::exception &e) {
+			std::cout << e.what() << std::endl;
+		}
 	}
 	
 	return (0);

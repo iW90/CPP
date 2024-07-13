@@ -6,7 +6,7 @@
 /*   By: inwagner <inwagner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/07 18:12:53 by inwagner          #+#    #+#             */
-/*   Updated: 2024/07/13 16:34:08 by inwagner         ###   ########.fr       */
+/*   Updated: 2024/07/13 17:59:28 by inwagner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,15 +72,15 @@ void AForm::beSigned(Bureaucrat& bureaucrat) {
 
 // Exceptions
 const char* AForm::GradeTooHighException::what() const throw() {
-    return BOLD RED INVERT "Error:" RESET " Bureaucrat grade is too high.";
+    return BOLD RED INVERT "Bureaucrat grade is too high." RESET;
 }
 
 const char* AForm::GradeTooLowException::what() const throw() {
-    return BOLD RED INVERT "Error:" RESET " Bureaucrat grade is too low.";
+    return BOLD RED INVERT "Bureaucrat grade is too low." RESET;
 }
 
 const char* AForm::FormNotSignedException::what() const throw() {
-    return BOLD RED INVERT "Error:" RESET " Form not signed.";
+    return BOLD RED INVERT "Form not signed." RESET;
 }
 
 // Non-member function

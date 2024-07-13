@@ -69,11 +69,11 @@ void Bureaucrat::decrementGrade() {
 
 // Exceptions
 const char* Bureaucrat::GradeTooHighException::what() const throw() {
-    return BOLD RED INVERT "Error:" RESET " Grade too high";
+    return BOLD RED INVERT "Grade too high." RESET;
 }
 
 const char* Bureaucrat::GradeTooLowException::what() const throw() {
-    return BOLD RED INVERT "Error:" RESET " Grade too low";
+    return BOLD RED INVERT "Grade too low." RESET;
 }
 
 

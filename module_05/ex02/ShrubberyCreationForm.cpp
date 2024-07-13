@@ -6,7 +6,7 @@
 /*   By: inwagner <inwagner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/09 14:02:50 by inwagner          #+#    #+#             */
-/*   Updated: 2024/07/13 17:20:21 by inwagner         ###   ########.fr       */
+/*   Updated: 2024/07/13 18:00:04 by inwagner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ std::string ShrubberyCreationForm::_binaryTree() {
 
 // Exceptions
 const char* ShrubberyCreationForm::FileOpenException::what() const throw() {
-    return BOLD RED INVERT "Error:" RESET " File not created.";
+    return BOLD RED INVERT "File not created." RESET;
 }
 
 /*

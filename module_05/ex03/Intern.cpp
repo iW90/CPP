@@ -6,7 +6,7 @@
 /*   By: inwagner <inwagner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/13 11:15:30 by inwagner          #+#    #+#             */
-/*   Updated: 2024/07/13 17:43:40 by inwagner         ###   ########.fr       */
+/*   Updated: 2024/07/13 18:00:36 by inwagner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,5 +59,5 @@ AForm* Intern::createShrubberyCreationForm(std::string target) {
 }
 
 const char* Intern::InvalidFormException::what() const throw() {
-    return BOLD RED INVERT "Error:" RESET " Invalid form.";
+    return BOLD RED INVERT "Invalid form." RESET;
 }
