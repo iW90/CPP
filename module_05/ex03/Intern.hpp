@@ -6,7 +6,7 @@
 /*   By: inwagner <inwagner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/13 11:15:35 by inwagner          #+#    #+#             */
-/*   Updated: 2024/07/13 14:38:59 by inwagner         ###   ########.fr       */
+/*   Updated: 2024/07/13 17:41:57 by inwagner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,13 +39,6 @@ class Intern {
         std::string formName;
         FormCreator formCreator;
     };
-	
-	private:
-
-
-
-	protected:
-
 
 	public:
 		~Intern();
