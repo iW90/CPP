@@ -6,7 +6,7 @@
 /*   By: inwagner <inwagner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/07 13:33:56 by inwagner          #+#    #+#             */
-/*   Updated: 2024/07/09 16:47:49 by inwagner         ###   ########.fr       */
+/*   Updated: 2024/07/09 18:50:11 by inwagner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ class Bureaucrat {
 	public:
 		~Bureaucrat();
 		Bureaucrat(std::string name, int grade);
-		Bureaucrat(Bureaucrat& other);
+		Bureaucrat(const Bureaucrat& other);
 		Bureaucrat& operator=(const Bureaucrat& other);
 
 		const std::string& 	getName() const;

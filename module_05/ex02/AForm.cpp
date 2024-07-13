@@ -6,7 +6,7 @@
 /*   By: inwagner <inwagner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/07 18:12:53 by inwagner          #+#    #+#             */
-/*   Updated: 2024/07/09 17:01:07 by inwagner         ###   ########.fr       */
+/*   Updated: 2024/07/13 09:54:39 by inwagner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ AForm::AForm(std::string name, int signGrade, int execGrade) :
 		throw GradeTooLowException();
 }
 
-AForm::AForm(AForm& other) :
+AForm::AForm(const AForm& other) :
 	_name(other._name),
 	_gradeToSign(other._gradeToSign),
 	_gradeToExecute(other._gradeToExecute) {
@@ -51,6 +51,10 @@ const std::string& AForm::getName() const {
 
 const int AForm::getGradeToSign() const {
 	return _gradeToSign;
+}
+
+const int AForm::getGradeToExecute() const {
+	return _gradeToExecute;
 }
 
 bool AForm::isSigned() const {
@@ -78,11 +82,15 @@ void AForm::signForm(Bureaucrat& bureaucrat, std::string reason) {
 
 // Exceptions
 const char* AForm::GradeTooHighException::what() const throw() {
-    return BOLD RED INVERT "Error:" RESET " Bureaucrat grade is too high";
+    return BOLD RED INVERT "Error:" RESET " Bureaucrat grade is too high.";
 }
 
 const char* AForm::GradeTooLowException::what() const throw() {
-    return BOLD RED INVERT "Error:" RESET " Bureaucrat grade is too low";
+    return BOLD RED INVERT "Error:" RESET " Bureaucrat grade is too low.";
+}
+
+const char* AForm::FormNotSignedException::what() const throw() {
+    return BOLD RED INVERT "Error:" RESET " Form not signed.";
 }
 
 // Non-member function

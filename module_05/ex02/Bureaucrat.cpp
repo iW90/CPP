@@ -15,16 +15,20 @@
 
 Bureaucrat::~Bureaucrat() {}
 
-Bureaucrat::Bureaucrat() : _name("Nameless"), _grade(LOWEST_GRADE) {}
+Bureaucrat::Bureaucrat() :
+    _name("Nameless"),
+    _grade(LOWEST_GRADE) {}
 
-Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name), _grade(grade) {
+Bureaucrat::Bureaucrat(std::string name, int grade) : 
+    _name(name),
+    _grade(grade) {
     if (grade < HIGHEST_GRADE)
         throw GradeTooHighException();
     else if (grade > LOWEST_GRADE)
         throw GradeTooLowException();
 }
 
-Bureaucrat::Bureaucrat(Bureaucrat& other) {
+Bureaucrat::Bureaucrat(const Bureaucrat& other) {
 	*this = other;
 }
 
@@ -70,10 +74,10 @@ void Bureaucrat::decrementGrade() {
 void Bureaucrat::executeForm(const AForm& form) {
 	if (_grade <= form.getGradeToSign()) {
         form.execute(*this);
-		std::cout << _name << " executed " << form.getName() << "." << std::endl;
+		std::cout << GREEN << _name << " executed " << form.getName() << "." << RESET << std::endl;
     }
 	else
-		std::cout << _name << " couldn't execute " << form.getName() << "." << std::endl;
+		std::cout << RED << _name << " couldn't execute " << form.getName() << "." << RESET << std::endl;
 }
 
 // Exceptions
