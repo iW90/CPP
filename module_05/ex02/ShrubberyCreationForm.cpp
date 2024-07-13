@@ -6,7 +6,7 @@
 /*   By: inwagner <inwagner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/09 14:02:50 by inwagner          #+#    #+#             */
-/*   Updated: 2024/07/13 17:17:38 by inwagner         ###   ########.fr       */
+/*   Updated: 2024/07/13 17:20:21 by inwagner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ void ShrubberyCreationForm::execute(const Bureaucrat& executor) const {
 }
 
 std::string ShrubberyCreationForm::_binaryTree() {
-    std::string content =
+    std::string tree =
         "        ______10______\n"
         "       /              \\\n"
         "    __5__           __15__\n"
@@ -74,7 +74,7 @@ std::string ShrubberyCreationForm::_binaryTree() {
         " / \\     / \\     /  \\    /  \\\n"
         "1   3   6   8   11  13  18  25\n";
 
-    return content;
+    return tree;
 }
 
 // Exceptions
