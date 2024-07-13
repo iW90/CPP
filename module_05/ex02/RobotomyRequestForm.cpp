@@ -6,7 +6,7 @@
 /*   By: inwagner <inwagner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/09 14:03:11 by inwagner          #+#    #+#             */
-/*   Updated: 2024/07/13 14:44:36 by inwagner         ###   ########.fr       */
+/*   Updated: 2024/07/13 17:17:24 by inwagner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,12 @@ RobotomyRequestForm::RobotomyRequestForm() :
 	AForm() {}
 
 RobotomyRequestForm::RobotomyRequestForm(std::string target) : 
-	_target(target),
-	AForm("RobotomyRequestForm", 72, 45) {}
+	AForm("RobotomyRequestForm", 72, 45),
+	_target(target) {}
 
 RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm& other) :
-	_target(other._target),
-	AForm(other) {
+	AForm(other),
+	_target(other._target) {
 	*this = other;
 }
 
@@ -51,7 +51,7 @@ void RobotomyRequestForm::execute(const Bureaucrat& executor) const {
 	int random = static_cast<int>(std::time(0) % 2);
 
 	if (!random)
-		std::cout << GREEN << getName() << " has been robotomized." << RESET << std::endl;
+		std::cout << GREEN << _target << " has been robotomized." << RESET << std::endl;
     else
         std::cout << RED << "The robotomy failed." << RESET << std::endl;
 }

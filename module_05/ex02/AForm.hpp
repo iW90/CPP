@@ -6,7 +6,7 @@
 /*   By: inwagner <inwagner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/07 18:13:03 by inwagner          #+#    #+#             */
-/*   Updated: 2024/07/13 14:43:31 by inwagner         ###   ########.fr       */
+/*   Updated: 2024/07/13 16:34:22 by inwagner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,13 +39,12 @@ class AForm {
 		AForm& operator=(const AForm& other);
 
 		const std::string& 			getName() const;
-		const int 					getGradeToSign() const;
-		const int 					getGradeToExecute() const;
+		int		 					getGradeToSign() const;
+		int		 					getGradeToExecute() const;
 		bool 						isSigned() const;
 		virtual const std::string&	getTarget() const = 0;
 
 		void 						beSigned(Bureaucrat& bureaucrat);
-		void 						signForm(Bureaucrat& bureaucrat, std::string reason);
 		virtual void 				execute(const Bureaucrat& executor) const = 0;
 	
 		// Exceptions

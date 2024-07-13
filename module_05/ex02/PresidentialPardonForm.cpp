@@ -6,7 +6,7 @@
 /*   By: inwagner <inwagner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/09 14:03:25 by inwagner          #+#    #+#             */
-/*   Updated: 2024/07/13 14:44:31 by inwagner         ###   ########.fr       */
+/*   Updated: 2024/07/13 16:58:06 by inwagner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,12 @@ PresidentialPardonForm::PresidentialPardonForm() :
 	AForm() {}
 
 PresidentialPardonForm::PresidentialPardonForm(std::string target) : 
-	_target(target),
-	AForm("PresidentialPardonForm", 25, 5) {}
+	AForm("PresidentialPardonForm", 25, 5),
+	_target(target) {}
 
 PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm& other) :
-	_target(other._target),
-	AForm(other) {
+	AForm(other),
+	_target(other._target) {
 	*this = other;
 }
 
@@ -47,7 +47,7 @@ void PresidentialPardonForm::execute(const Bureaucrat& executor) const {
 		throw GradeTooLowException();
 		return ;
 	} else
-		std::cout << GREEN << getName() << " has been pardoned by Zaphod Beeblebrox." << RESET << std::endl;
+		std::cout << GREEN << _target << " has been pardoned by Zaphod Beeblebrox." << RESET << std::endl;
 }
 
 /*

@@ -6,7 +6,7 @@
 /*   By: inwagner <inwagner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/09 14:02:50 by inwagner          #+#    #+#             */
-/*   Updated: 2024/07/13 14:44:50 by inwagner         ###   ########.fr       */
+/*   Updated: 2024/07/13 17:17:38 by inwagner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,12 @@ ShrubberyCreationForm::ShrubberyCreationForm() :
 	AForm() {}
 
 ShrubberyCreationForm::ShrubberyCreationForm(std::string target) : 
-	_target(target),
-	AForm("ShrubberyCreationForm", 145, 137) {}
+	AForm("ShrubberyCreationForm", 145, 137),
+	_target(target) {}
 
 ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm& other) :
-	_target(other._target),
-	AForm(other) {
+	AForm(other),
+	_target(other._target) {
 	*this = other;
 }
 
@@ -48,7 +48,7 @@ void ShrubberyCreationForm::execute(const Bureaucrat& executor) const {
 		return ;
 	}
 
-	std::string fileName = getTarget() + "_shrubbery";
+	std::string fileName = _target + "_shrubbery";
 
 	// Abrir o arquivo de saída
 	std::ofstream outputFile; 

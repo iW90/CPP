@@ -6,7 +6,7 @@
 /*   By: inwagner <inwagner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/07 18:12:53 by inwagner          #+#    #+#             */
-/*   Updated: 2024/07/13 09:54:39 by inwagner         ###   ########.fr       */
+/*   Updated: 2024/07/13 16:34:08 by inwagner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,11 +49,11 @@ const std::string& AForm::getName() const {
 	return _name;
 }
 
-const int AForm::getGradeToSign() const {
+int AForm::getGradeToSign() const {
 	return _gradeToSign;
 }
 
-const int AForm::getGradeToExecute() const {
+int AForm::getGradeToExecute() const {
 	return _gradeToExecute;
 }
 
@@ -64,20 +64,10 @@ bool AForm::isSigned() const {
 // Member functions
 void AForm::beSigned(Bureaucrat& bureaucrat) {
 	if (bureaucrat.getGrade() > this->_gradeToSign) {
-		signForm(bureaucrat, "his grade is too low.");
 		throw GradeTooLowException();
 	}
-	else {
-		_isSigned = true;
-		signForm(bureaucrat, "");
-	}
-}
-
-void AForm::signForm(Bureaucrat& bureaucrat, std::string reason) {
-	if (this->_isSigned)
-		std::cout << GREEN << bureaucrat.getName() << " signed " << this->getName() << "." << RESET << std::endl;
 	else
-		std::cout << RED << bureaucrat.getName() << " couldn't sign " << this->getName() << " because " << reason << RESET << std::endl;
+		this->_isSigned = true;
 }
 
 // Exceptions
