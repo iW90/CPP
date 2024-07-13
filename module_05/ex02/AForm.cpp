@@ -6,7 +6,7 @@
 /*   By: inwagner <inwagner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/07 18:12:53 by inwagner          #+#    #+#             */
-/*   Updated: 2024/07/13 17:59:28 by inwagner         ###   ########.fr       */
+/*   Updated: 2024/07/13 18:18:25 by inwagner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,6 @@ const char* AForm::FormNotSignedException::what() const throw() {
 
 // Non-member function
 std::ostream& operator<<(std::ostream& os, const AForm& form) {
-    os << DIMMED ITALIC YELLOW << form.getName() << ", form is " << (form.isSigned() ? "signed." : "not signed.") << RESET;
+    os << ITALIC BLUE << form.getName() << ", form is " << (form.isSigned() ? "signed." : "not signed.") << RESET;
     return os;
 }
