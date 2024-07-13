@@ -6,7 +6,7 @@
 /*   By: inwagner <inwagner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/07 16:51:03 by inwagner          #+#    #+#             */
-/*   Updated: 2024/07/09 13:33:36 by inwagner         ###   ########.fr       */
+/*   Updated: 2024/07/13 16:11:33 by inwagner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,7 @@
 
 int main(void) {
 	{
-		// Constructor with a bad grade		
-		// -49
+		// Create a bureaucrat with grade too high:	-300
 		std::cout << "\nCONSTRUCTING WITH GRADE -300:" << std::endl;
 		try {
 			Bureaucrat bill("Bill", -300);
@@ -23,7 +22,7 @@ int main(void) {
 			std::cout << e.what();
 		}
 
-		// 256
+		// Create a bureaucrat with grade too low:	300
 		std::cout << "\nCONSTRUCTING WITH GRADE 300:" << std::endl;
 		try {
 			Bureaucrat bill("Bill", 300);
