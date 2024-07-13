@@ -6,7 +6,7 @@
 /*   By: inwagner <inwagner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/07 13:33:56 by inwagner          #+#    #+#             */
-/*   Updated: 2024/07/09 18:51:05 by inwagner         ###   ########.fr       */
+/*   Updated: 2024/07/13 15:59:35 by inwagner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <iostream>
 # include <string>
 # include <exception>
+# include "Form.hpp"
 
 # define HIGHEST_GRADE 		1
 # define LOWEST_GRADE 		150
@@ -32,6 +33,8 @@
 # define YELLOW        		"\033[33m"
 # define BLUE	          	"\033[34m"
 # define DIMMED				"\033[2m"
+
+class Form;
 
 class Bureaucrat {
 	private:
@@ -53,6 +56,8 @@ class Bureaucrat {
 
 		void 				incrementGrade();
 		void 				decrementGrade();
+
+		void 				signForm(Form& form);
 
 		// Exceptions Classes
 		class GradeTooHighException : public std::exception {
