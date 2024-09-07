@@ -6,7 +6,7 @@
 /*   By: inwagner <inwagner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/13 15:06:56 by inwagner          #+#    #+#             */
-/*   Updated: 2024/07/13 17:56:00 by inwagner         ###   ########.fr       */
+/*   Updated: 2024/09/06 19:22:38 by inwagner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,7 @@
 #include "AForm.hpp"
 #include "Intern.hpp"
 
-int main(void)
-{
+int main(void) {
 	Intern		newman;
 	AForm		*form;
 	Bureaucrat	betty("Betty Bureaucraft", 5);
