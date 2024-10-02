@@ -6,12 +6,12 @@
 #    By: inwagner <inwagner@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/06 19:17:51 by inwagner          #+#    #+#              #
-#    Updated: 2024/09/06 19:41:41 by inwagner         ###   ########.fr        #
+#    Updated: 2024/10/02 18:38:51 by inwagner         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # TITLE
-NAME	:=	staticcasting
+NAME	:=	scalar_converter
 
 # PATHS
 SRC		:=	./

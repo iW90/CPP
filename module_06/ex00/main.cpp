@@ -6,7 +6,7 @@
 /*   By: inwagner <inwagner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 19:21:46 by inwagner          #+#    #+#             */
-/*   Updated: 2024/10/01 21:30:32 by inwagner         ###   ########.fr       */
+/*   Updated: 2024/10/02 19:43:32 by inwagner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,14 @@ int main(int ac, char **av) {
 }
 
 /* STATIC CAST
- *      static_cast<tipo_desejado>(var)
+ *      static_cast<tipo_desejado>(var);
  *
  * Permite realizar conversões de tipos de maneira segura em tempo de compilação.
  * Mais restrito em comparação com o dynamic_cast, mas oferece mais flexibilidade 
  *  do que um simples C-style cast.
  *
- * Use static_cast quando:
- *   - Você tem certeza de que a conversão é válida e que os tipos estão relacionados.
+ * Use static_cast em:
+ *   - Casos de certeza de que a conversão é válida e que os tipos estão relacionados.
  *   - Conversões entre tipos de dados primitivos (por exemplo, int para float).
  *   - Conversões entre ponteiros e inteiros (com cautela).
  *   - Conversões entre tipos de ponteiros que estão em uma hierarquia de classes 
