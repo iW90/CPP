@@ -19,22 +19,41 @@ void ScalarConverter::convert(const std::string& str) {
     float       convertedFloat;
     double      convertedDouble;
 
-    convertedChar = toChar(str);
-    std::cout << convertedChar << std::endl;
+    std::cout << "char: ";
+    try {
+        convertedChar = toChar(str);
+        if (std::isprint(convertedChar))
+            std::cout << "'" << convertedChar << "'" << std::endl;
+        else
+            std::cout << "Non displayable" << std::endl;
+    } catch (std::exception& e) {
+        std::cout << e.what() << std::endl;
+    }
 
-    convertedInt = toInt(str);
-    std::cout << convertedInt << std::endl;
+    std::cout << "int: ";
+    try {
+        convertedInt = toInt(str);
+        std::cout << convertedInt << std::endl;
+    } catch(std::exception& e) {
+        std::cout << e.what() << std::endl;
+    }
 
-    convertedFloat = toFloat(str);
-    std::cout << convertedInt << std::endl;
+    std::cout << "float: ";
+    try {
+        convertedFloat = toFloat(str);
+        std::cout << convertedFloat << "f"<< std::endl;
+    } catch (std::exception& e) {
+        std::cout << e.what() << std::endl;
+    }
 
-    convertedDouble = toDouble(str);
-    std::cout << convertedDouble << std::endl;
-}
+    std::cout << "double: ";
+    try {
+        convertedDouble = toDouble(str);
+        std::cout << convertedDouble << std::endl;
 
-char ScalarConverter::toChar(const std::string& str) {
-    if (!_isChar(str))
-        return 1;
+    } catch (std::exception& e) {
+        std::cout << e.what() << std::endl;
+    }
 }
 
 int ScalarConverter::toInt(const std::string& str) {
@@ -43,47 +62,66 @@ int ScalarConverter::toInt(const std::string& str) {
 
     ss >> number;
 
-    if (ss.fail()) {
-        std::cerr << "Falha ao converter para inteiro" << std::endl;
-        return 1;
-    }
+    if (ss.fail())
+        throw std::invalid_argument("impossible");
 
-    return number;
+    return static_cast<int>(number);
 }
 
-float ScalarConverter::toFloat(const std::string& str) {
+char ScalarConverter::toChar(const std::string& str) {
+    if (str.empty())
+        throw std::invalid_argument("impossible");
+    
 
-    return 1; 
+    try {
+        int numCh = toInt(str);
+        
+        if (numCh >= 0 && numCh <= 255)
+            return static_cast<char>(numCh);
+
+    } catch (std::exception& e) {
+        if (str.length() == 1)
+            return static_cast<char>(str[0]);
+    }
+
+    throw std::invalid_argument("impossible");
 }
 
 double ScalarConverter::toDouble(const std::string& str) {
+    errno = 0;
+    const char* numCh = str.c_str();
+    char* endptr;
+    double numDoub = std::strtod(numCh, &endptr);
 
-    return 1; 
+    if (numCh == endptr || errno == ERANGE)
+        throw std::invalid_argument("impossible");
+
+    return static_cast<double>(numDoub);
 }
 
 
-// funções auxiliares
+float ScalarConverter::toFloat(const std::string& str) {
+    errno = 0;
+    const char* numCh = str.c_str();
+    char* endptr;
+    double numFl = std::strtof(numCh, &endptr);
 
-bool ScalarConverter::_isChar(const std::string& str) {
-    if (str.empty())
-        return false;
+    if (numCh == endptr || errno == ERANGE)
+        throw std::invalid_argument("impossible");
 
-    
-
-    if (str.length() == 1 && _isPrintableChar(str[0]))
-        return true;
-
+    return static_cast<float>(numFl);
 }
 
-bool ScalarConverter::_isDigitChar(const std::string& str) {
-    for (std::string::const_iterator it = str.begin(); it != str.end(); ++it) {
-        if (!std::isdigit(*it))
-            return false;
-    }
-    return true;
+// Orthodox Canonical Form
+ScalarConverter::~ScalarConverter() {}
+
+ScalarConverter::ScalarConverter() {}
+
+ScalarConverter::ScalarConverter(const ScalarConverter& other) {
+    (void)other;
 }
 
-bool ScalarConverter::_isPrintableChar(int ch) {
-    return (ch >= 0 && ch <= 255) && std::isprint(static_cast<unsigned char>(ch));
+ScalarConverter& ScalarConverter::operator=(const ScalarConverter& other){
+    (void)other;
+	return *this;
 }
-

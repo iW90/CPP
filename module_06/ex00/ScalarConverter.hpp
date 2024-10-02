@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ScalarConverter.hpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: inwagner <inwagner@student.42.fr>          +#+  +:+       +#+        */
+/*   By: inwagner <inwagner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 19:30:53 by inwagner          #+#    #+#             */
-/*   Updated: 2024/09/07 15:02:17 by inwagner         ###   ########.fr       */
+/*   Updated: 2024/10/01 21:06:00 by inwagner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,11 @@
 
 # include <iostream>
 # include <string>
-# include <exception>
 # include <cctype>
-# include <sstream> 
+# include <sstream>
+# include <stdexcept>
+# include <cstdlib>
+# include <cerrno>
 
 class ScalarConverter {
 	private:
@@ -32,14 +34,9 @@ class ScalarConverter {
 		static int		toInt(const std::string& str);
 		static float	toFloat(const std::string& str);
 		static double	toDouble(const std::string& str);
-
-		
-		static bool		_validateChar(const std::string& str);
-		
+	
 	public:
 		static void		convert(const std::string& str);
-
-
 };
 
 #endif
