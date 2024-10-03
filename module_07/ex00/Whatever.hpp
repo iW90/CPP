@@ -6,7 +6,7 @@
 /*   By: inwagner <inwagner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 18:38:11 by inwagner          #+#    #+#             */
-/*   Updated: 2024/10/03 19:19:42 by inwagner         ###   ########.fr       */
+/*   Updated: 2024/10/03 19:30:20 by inwagner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@
 
 template <typename T>
 void swap(T& a, T& b) {
-    a = a + b; // Soma
-    b = a - b; // b agora contém o valor original de a
-    a = a - b; // a agora contém o valor original de b
+    T temp = a;
+    a = b;
+    b = temp;
 }
 
 //min
