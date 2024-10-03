@@ -6,7 +6,7 @@
 /*   By: inwagner <inwagner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/02 18:54:25 by inwagner          #+#    #+#             */
-/*   Updated: 2024/10/02 19:45:30 by inwagner         ###   ########.fr       */
+/*   Updated: 2024/10/02 20:59:16 by inwagner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int main() {
 
 
 /* REINTERPRET CAST
- *      tipo_desejado* ptr = reinterpret_cast<tipo_desejado*>(ptr_original);
+ *      reinterpret_cast<tipo_desejado*>(ptr_original);
  * 
  * Permite realizar conversões de tipos de maneira mais flexível, mas também 
  * mais arriscada. É utilizado principalmente para converter um ponteiro 
