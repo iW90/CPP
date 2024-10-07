@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   BitcoinExchange.hpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: inwagner <inwagner@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: inwagner <inwagner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/06 19:31:11 by inwagner          #+#    #+#             */
-/*   Updated: 2024/10/07 16:16:31 by inwagner         ###   ########.fr       */
+/*   Updated: 2024/10/07 20:37:57 by inwagner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,15 +21,25 @@
 # include <stdexcept>
 # include <sstream>
 # include <iostream>
+# include <limits>
 
 # define DATABASE_NAME "data.csv"
+
+struct Date {
+    int   day;
+    int   month;
+    int   year;
+};
 
 class BitcoinExchange {
     private:
         std::map<std::string, float>     _dataMap;
         
-        void    _readCSVToMap(const char* database);
-        void    _readTxtToMap(const char* filename);
+        void        _readCSVToMap(const char* database);
+        void        _readTxt(const char* filename);
+        bool        _valiDate(std::string date);
+        bool        _isValidDate(int day, int month, int year);
+        std::string _removeSpaces(std::string& str);
 
     public:
         ~BitcoinExchange();
