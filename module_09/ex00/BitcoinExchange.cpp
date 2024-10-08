@@ -6,7 +6,7 @@
 /*   By: inwagner <inwagner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/06 19:31:16 by inwagner          #+#    #+#             */
-/*   Updated: 2024/10/08 18:55:54 by inwagner         ###   ########.fr       */
+/*   Updated: 2024/10/08 20:32:28 by inwagner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,13 +53,19 @@ float   BitcoinExchange::_stringToFloat(const std::string& num) {
     char remaining;
     float value;
 
-    if (!(iss >> value) || iss >> remaining)
-        throw std::invalid_argument("Error: bad input => " + num);
+    if (!(iss >> value) || iss >> remaining) {
+        std::cout << "Error: bad input => " + num << std::endl;
+        return -1.0f;
+    }
 
-    if (value < 0)
-        throw std::invalid_argument("Error: not a positive number.");
-    if (value > INT_MAX)
-        throw std::invalid_argument("Error: too large a number.");
+    if (value < 0) {
+        std::cout << "Error: not a positive number." << std::endl;
+        return -1.0f;
+    }
+    if (static_cast<int>(value) > INT_MAX) {
+        std::cout << "Error: too large a number." << std::endl;
+        return -1.0f;
+    }
 
     return value;
 }
@@ -76,17 +82,22 @@ bool BitcoinExchange::_isValidDate(Date date) {
 }
 
 Date BitcoinExchange::_stringToDate(std::string dateStr) {
+    Date nullDate = {0, 0, 0};
     Date date;
 
-    if (dateStr.size() != 10 || dateStr[4] != '-' || dateStr[7] != '-')
-        throw std::invalid_argument("Error: bad input => " + dateStr);
+    if (dateStr.size() != 10 || dateStr[4] != '-' || dateStr[7] != '-') {
+        std::cout << "Error: bad input => " + dateStr << std::endl;
+        return nullDate;
+    }
     
     date.year = atoi(dateStr.substr(0, 4).c_str());
     date.month = atoi(dateStr.substr(5, 2).c_str());
     date.day = atoi(dateStr.substr(8, 2).c_str());
 
-    if (!_isValidDate(date))
-        throw std::invalid_argument("Error: bad input => " + dateStr);
+    if (!_isValidDate(date)) {
+        std::cout << "Error: bad input => " + dateStr << std::endl;
+        return nullDate;
+    }
 
     return date;
 }
@@ -105,16 +116,33 @@ void BitcoinExchange::_readFile(const char* filename, char delimiter, void (Bitc
     std::getline(file, line);
 
     while (std::getline(file, line)) {
+        if (line.find(delimiter) == std::string::npos) {
+            std::cout << "Error: bad input => " + line << std::endl;
+            continue;
+        }
+
         _removeSpaces(line);
-        std::stringstream  ss(line);
-        std::string strDate;
-        std::string strExch;
-        float       exchange_rate;
-        Date        date;
+        std::stringstream   ss(line);
+        std::string         strDate;
+        std::string         strExch;
+        float               exchange_rate;
+        Date                date;
 
         if (std::getline(ss, strDate, delimiter) && std::getline(ss, strExch, delimiter)) {
-            exchange_rate = _stringToFloat(strExch);
+            if (ss.fail() || strDate.empty() || strExch.empty()) {
+                std::cout << "Error: bad input => " + line << std::endl;
+                continue;
+            }
+
+            
             date = _stringToDate(strDate);
+            if (date.day == 0)
+                continue;
+            
+            exchange_rate = _stringToFloat(strExch);
+
+            if (exchange_rate == -1.0f)
+                continue;
             
             (this->*action)(date, exchange_rate);
         }
@@ -149,16 +177,6 @@ float BitcoinExchange::_searchValueByDate(Date date) {
 void BitcoinExchange::_calculateBitcoin(Date date, float exc) {
     float exchange = _searchValueByDate(date);
     std::cout << date << " => " << exc << " = " << exchange * exc << std::endl;
-}
-
-
-void BitcoinExchange::printDatabase() {
-    for (std::map<Date, float>::const_iterator it = _dataMap.begin(); it != _dataMap.end(); ++it) {
-        std::cout << "Data: ";
-
-        std::cout << ", Date: " << it->first << std::endl;;
-        std::cout << ", Valor: " << it->second << std::endl;  // Imprime o valor
-    }
 }
 
 
