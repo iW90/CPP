@@ -6,7 +6,7 @@
 /*   By: inwagner <inwagner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/06 19:31:02 by inwagner          #+#    #+#             */
-/*   Updated: 2024/10/07 16:05:54 by inwagner         ###   ########.fr       */
+/*   Updated: 2024/10/08 13:28:14 by inwagner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,10 @@ void    validateFileName(int ac, char** av) {
 int     main(int ac, char** av) {
     try {
         validateFileName(ac, av);
-        BitcoinExchange bitData = BitcoinExchange(av[1]);
+        BitcoinExchange bitData = BitcoinExchange();
 
-        bitData.searchDate("2012-01-08");
-
-        bitData.searchDate("2025-01-08");
+        std::cout << av[1] << std::endl;
+        bitData.showResults(av[1]);
         
         
     } catch(const std::exception &e) {
