@@ -6,7 +6,7 @@
 /*   By: inwagner <inwagner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/06 19:31:16 by inwagner          #+#    #+#             */
-/*   Updated: 2024/10/08 13:24:43 by inwagner         ###   ########.fr       */
+/*   Updated: 2024/10/08 18:55:54 by inwagner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ BitcoinExchange::BitcoinExchange(const BitcoinExchange &other) {
 
 BitcoinExchange &BitcoinExchange::operator=(const BitcoinExchange &other) {
     if (this != &other)
-		*this = other;
+		_dataMap = other._dataMap;
     return (*this);
 }
 
@@ -43,8 +43,10 @@ void BitcoinExchange::_removeSpaces(std::string& str) {
         if (str[i] != ' ')
             result += str[i];
     }
-    result = str;
+    str = result;
 }
+
+
 
 float   BitcoinExchange::_stringToFloat(const std::string& num) {
     std::istringstream iss(num);
@@ -56,7 +58,7 @@ float   BitcoinExchange::_stringToFloat(const std::string& num) {
 
     if (value < 0)
         throw std::invalid_argument("Error: not a positive number.");
-    if (value > static_cast<float>(INT_MAX))
+    if (value > INT_MAX)
         throw std::invalid_argument("Error: too large a number.");
 
     return value;
@@ -112,6 +114,7 @@ void BitcoinExchange::_readFile(const char* filename, char delimiter, void (Bitc
 
         if (std::getline(ss, strDate, delimiter) && std::getline(ss, strExch, delimiter)) {
             exchange_rate = _stringToFloat(strExch);
+            date = _stringToDate(strDate);
             
             (this->*action)(date, exchange_rate);
         }
@@ -146,6 +149,16 @@ float BitcoinExchange::_searchValueByDate(Date date) {
 void BitcoinExchange::_calculateBitcoin(Date date, float exc) {
     float exchange = _searchValueByDate(date);
     std::cout << date << " => " << exc << " = " << exchange * exc << std::endl;
+}
+
+
+void BitcoinExchange::printDatabase() {
+    for (std::map<Date, float>::const_iterator it = _dataMap.begin(); it != _dataMap.end(); ++it) {
+        std::cout << "Data: ";
+
+        std::cout << ", Date: " << it->first << std::endl;;
+        std::cout << ", Valor: " << it->second << std::endl;  // Imprime o valor
+    }
 }
 
 

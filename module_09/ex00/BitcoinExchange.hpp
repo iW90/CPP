@@ -6,7 +6,7 @@
 /*   By: inwagner <inwagner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/06 19:31:11 by inwagner          #+#    #+#             */
-/*   Updated: 2024/10/08 13:25:12 by inwagner         ###   ########.fr       */
+/*   Updated: 2024/10/08 18:45:23 by inwagner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@ class BitcoinExchange {
         BitcoinExchange& operator=(const BitcoinExchange& other);
 
         void showResults(const char* filename);
+        void printDatabase();
 };
 
 std::ostream& operator<<(std::ostream &out, const Date &date);
