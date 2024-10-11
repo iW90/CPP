@@ -6,7 +6,7 @@
 /*   By: inwagner <inwagner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/06 19:31:16 by inwagner          #+#    #+#             */
-/*   Updated: 2024/10/11 19:49:20 by inwagner         ###   ########.fr       */
+/*   Updated: 2024/10/11 20:25:26 by inwagner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,24 +46,23 @@ void BitcoinExchange::_removeSpaces(std::string& str) {
     str = result;
 }
 
-
-
 float   BitcoinExchange::_stringToFloat(const std::string& num) {
-    std::istringstream iss(num);
-    char remaining;
-    float value;
+    char    remaining;
+    float   value;
+    long    longValue;
 
+    std::istringstream iss(num);
     if (!(iss >> value) || iss >> remaining) {
         std::cout << "Error: bad input => " + num << std::endl;
         return -1.0f;
     }
-
     if (value < 0) {
         std::cout << "Error: not a positive number." << std::endl;
         return -1.0f;
     }
-    long intValue = static_cast<long>(value);
-    if (intValue > INT_MAX) {
+
+    std::istringstream(num) >> longValue;
+    if (longValue > std::numeric_limits<int>::max()) {
         std::cout << "Error: too large a number." << std::endl;
         return -1.0f;
     }
