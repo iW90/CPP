@@ -6,7 +6,7 @@
 /*   By: inwagner <inwagner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/06 19:31:16 by inwagner          #+#    #+#             */
-/*   Updated: 2024/10/08 20:32:28 by inwagner         ###   ########.fr       */
+/*   Updated: 2024/10/11 19:49:20 by inwagner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,8 @@ float   BitcoinExchange::_stringToFloat(const std::string& num) {
         std::cout << "Error: not a positive number." << std::endl;
         return -1.0f;
     }
-    if (static_cast<int>(value) > INT_MAX) {
+    long intValue = static_cast<long>(value);
+    if (intValue > INT_MAX) {
         std::cout << "Error: too large a number." << std::endl;
         return -1.0f;
     }
@@ -114,13 +115,18 @@ void BitcoinExchange::_readFile(const char* filename, char delimiter, void (Bitc
 
     std::string line;
     std::getline(file, line);
+  
 
     while (std::getline(file, line)) {
+        if (line.length() < 1)
+            continue;
+        
         if (line.find(delimiter) == std::string::npos) {
             std::cout << "Error: bad input => " + line << std::endl;
             continue;
         }
 
+        
         _removeSpaces(line);
         std::stringstream   ss(line);
         std::string         strDate;
@@ -128,24 +134,25 @@ void BitcoinExchange::_readFile(const char* filename, char delimiter, void (Bitc
         float               exchange_rate;
         Date                date;
 
-        if (std::getline(ss, strDate, delimiter) && std::getline(ss, strExch, delimiter)) {
-            if (ss.fail() || strDate.empty() || strExch.empty()) {
-                std::cout << "Error: bad input => " + line << std::endl;
-                continue;
-            }
 
-            
-            date = _stringToDate(strDate);
-            if (date.day == 0)
-                continue;
-            
-            exchange_rate = _stringToFloat(strExch);
-
-            if (exchange_rate == -1.0f)
-                continue;
-            
-            (this->*action)(date, exchange_rate);
+        std::getline(ss, strDate, delimiter) && std::getline(ss, strExch, delimiter);
+        if (ss.fail() || strDate.length() < 1 || strExch.length() < 1) {
+            std::cout << "Error: bad input => " + line << std::endl;
+            continue;
         }
+
+        
+        date = _stringToDate(strDate);
+        if (date.day == 0)
+            continue;
+        
+        exchange_rate = _stringToFloat(strExch);
+
+        if (exchange_rate == -1.0f)
+            continue;
+        
+        (this->*action)(date, exchange_rate);
+        
     }
 
     file.close();
@@ -176,7 +183,8 @@ float BitcoinExchange::_searchValueByDate(Date date) {
 
 void BitcoinExchange::_calculateBitcoin(Date date, float exc) {
     float exchange = _searchValueByDate(date);
-    std::cout << date << " => " << exc << " = " << exchange * exc << std::endl;
+    std::cout << std::fixed << std::setprecision(2) << date << " => " << exc << " = ";
+    std::cout << exchange * exc  << std::endl;
 }
 
 
