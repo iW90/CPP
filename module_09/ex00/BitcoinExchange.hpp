@@ -6,7 +6,7 @@
 /*   By: inwagner <inwagner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/06 19:31:11 by inwagner          #+#    #+#             */
-/*   Updated: 2024/10/11 20:24:58 by inwagner         ###   ########.fr       */
+/*   Updated: 2024/10/11 20:31:06 by inwagner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@
 # include <limits>
 # include <cstdlib>
 # include <iomanip>
-# include <cmath>
 
 
 # define DATABASE_NAME "data.csv"
