@@ -6,7 +6,7 @@
 /*   By: inwagner <inwagner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/06 19:33:26 by inwagner          #+#    #+#             */
-/*   Updated: 2024/10/12 12:07:49 by inwagner         ###   ########.fr       */
+/*   Updated: 2024/10/12 12:09:50 by inwagner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,9 +48,9 @@ int main(int argc, char** argv) {
  *       resultou em um único valor final.
  *
  * Cálculo da expressão "5 1 2 + 4 * +":
- *      Seguindo a mesma lógica do cálculo anterior, mas agora possuindo um operador 
+ *       Seguimos a mesma lógica do cálculo anterior, mas agora possuindo um operador 
  *       a mais no final, temos 
- *       +: Desempilhamos 5 e 12, e somamos. (5 + 12 = 17)
- *       Pilha: [17]
- *       Assim, o resultado da expressão "5 1 2 + 4 * +" é 17.
+ *     +: Desempilhamos 5 e 12, e somamos. (5 + 12 = 17)
+ *     Pilha: [17]
+ *     Assim, o resultado da expressão "5 1 2 + 4 * +" é 17.
  */
