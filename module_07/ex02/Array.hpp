@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Array.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: inwagner <inwagner@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: inwagner <inwagner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 19:48:25 by inwagner          #+#    #+#             */
-/*   Updated: 2024/10/03 21:11:54 by inwagner         ###   ########.fr       */
+/*   Updated: 2024/11/15 16:53:23 by inwagner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,10 @@
 #ifndef ARRAY_HPP
 # define ARRAY_HPP
 
-#include <stdexcept>
-
+# include <stdexcept>
+# include <cstdlib>
+# include <ctime>
+# include <iostream>
 
 template <typename T>
 class Array {
@@ -26,23 +28,13 @@ class Array {
 
     public:
         Array();
-        
         ~Array();
-        
-        Array(const Array& other);
-        
-        Array& operator=(const Array& other);
-
-        // Construtor com parâmetro de tamanho
         Array(unsigned int n);
-
-        // Operador de subscrição
+        Array(const Array& other);
+        Array& operator=(const Array& other);
+        const T& operator[](int index) const;
         T& operator[](int index);
 
-        // Versão const do operador de subscrição
-        const T& operator[](int index) const;
-
-        // Função size
         unsigned int size() const;
 };
 

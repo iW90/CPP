@@ -3,17 +3,30 @@
 /*                                                        :::      ::::::::   */
 /*   Array.tpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: inwagner <inwagner@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: inwagner <inwagner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 20:54:58 by inwagner          #+#    #+#             */
-/*   Updated: 2024/10/03 21:14:33 by inwagner         ###   ########.fr       */
+/*   Updated: 2024/11/15 15:39:12 by inwagner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 // Construction with no parameter
-//	Creates an empty array
 template <typename T>
 Array<T>::Array() : data(NULL), len(0) {}
+
+// Constructor with array len
+//	(creates an array of n elements initialized by default).
+template <typename T>
+Array<T>::Array(unsigned int n) : len(n) {
+	if (n > 0) {
+		data = new T[n];
+		for (unsigned int i = 0; i < n; ++i) {
+			data[i] = T();
+		}
+	} else {
+		data = NULL;
+	}
+}
 
 // Destructor
 template <typename T>
@@ -50,20 +63,6 @@ Array<T>& Array<T>::operator=(const Array& other) {
 		}
 	}
 	return *this;
-}
-
-// Constructor with array len
-//	(creates an array of n elements initialized by default).
-template <typename T>
-Array<T>::Array(unsigned int n) : len(n) {
-	if (n > 0) {
-		data = new T[n];
-		for (unsigned int i = 0; i < n; ++i) {
-			data[i] = T();
-		}
-	} else {
-		data = NULL;
-	}
 }
 
 // Subscript operator
