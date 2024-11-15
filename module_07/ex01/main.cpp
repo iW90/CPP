@@ -3,21 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: inwagner <inwagner@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: inwagner <inwagner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 18:37:44 by inwagner          #+#    #+#             */
-/*   Updated: 2024/10/03 19:44:50 by inwagner         ###   ########.fr       */
+/*   Updated: 2024/11/15 15:18:46 by inwagner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "iter.hpp"
-
-
 
 int main() {
     // Test with an array of integers
-    int intArray[] = {1, 2, 3, 4, 5};
+    int intArray[] = {0, 1, 2, 3, 4, 42, 42, 42, 42, 42};
     size_t intArrayLength = sizeof(intArray) / sizeof(intArray[0]);
     iter(intArray, intArrayLength, printer<int>);
 

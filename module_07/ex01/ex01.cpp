@@ -1,3 +1,5 @@
+#include "iter.hpp"
+
 class Awesome
 {
   public:

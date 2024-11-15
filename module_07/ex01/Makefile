@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: inwagner <inwagner@student.42sp.org.br>    +#+  +:+       +#+         #
+#    By: inwagner <inwagner@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/03 18:37:20 by inwagner          #+#    #+#              #
-#    Updated: 2024/10/03 19:45:28 by inwagner         ###   ########.fr        #
+#    Updated: 2024/11/15 16:18:48 by inwagner         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ OSRC	:=	./objs/
 FLAGS	:=	-Wall -Wextra -Werror -std=c++98 -I $(HSRC)
 
 # OBJECTS
-FTS		:=	main.cpp
+FTS		:=	ex01.cpp
 
 OBJ		:=	$(FTS:%.cpp=$(OSRC)/%.o)
 

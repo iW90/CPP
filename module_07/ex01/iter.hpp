@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   iter.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: inwagner <inwagner@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: inwagner <inwagner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 19:32:28 by inwagner          #+#    #+#             */
-/*   Updated: 2024/10/03 19:45:46 by inwagner         ###   ########.fr       */
+/*   Updated: 2024/11/15 16:18:19 by inwagner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@
 
 #include <iostream>
 
-template <typename T>
-void    iter(T* array, int len, void (*func)(T)) {
+template <typename T, typename F>
+void    iter(T* array, int len, F func) {
     for (int i = 0; i < len; i++) {
         func(array[i]);
     }
