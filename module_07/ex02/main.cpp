@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: inwagner <inwagner@student.42.fr>          +#+  +:+       +#+        */
+/*   By: inwagner <inwagner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 20:26:16 by inwagner          #+#    #+#             */
-/*   Updated: 2024/11/15 17:00:17 by inwagner         ###   ########.fr       */
+/*   Updated: 2024/11/18 19:14:23 by inwagner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,10 +43,7 @@ int main(int, char**)
     int i;
     Array<int> intArray(5);
     Array<double> doubleArray(10);
-    Array<int> intArrayCopy(intArray);
-    Array<double> doubleArrayAssignment = doubleArray;
     Array<s_test> structArray(6);
-    const Array<int> constIntArray(intArray);
     
     // Int
     {
@@ -66,19 +63,6 @@ int main(int, char**)
         std::cout << "\n" << std::endl;        
     }
 
-    // Const
-    {
-        std::cout << "CONST INT" << std::endl;
-        std::cout << "constIntArray size: " << constIntArray.size() << std::endl;
-        std::cout << "constIntArray: ";
-        i = 0;
-        while (i < 5) {
-            std::cout << constIntArray[i] << " ";
-            i++;
-        }
-        std::cout << "\n" << std::endl;  
-    }
-
     // Double
     {
         std::cout << "DOUBLE ARRAY" << std::endl;
@@ -92,32 +76,6 @@ int main(int, char**)
         i = 0;
         while (i < 10) {
             std::cout << doubleArray[i] << " ";
-            i++;
-        }
-        std::cout << "\n" << std::endl;  
-    }
-
-    // Copy constructor
-    {
-        std::cout << "COPY CONSTRUCTOR" << std::endl;
-        std::cout << "intArrayCopy size: " << intArrayCopy.size() << std::endl;
-        std::cout << "intArrayCopy: ";
-        i = 0;
-        while (i < 5) {
-            std::cout << intArrayCopy[i] << " ";
-            i++;
-        }
-        std::cout << "\n" << std::endl;  
-    }
-
-    // Assign Operator
-    {
-        std::cout << "ASSIGNMENT OPERATOR" << std::endl;
-        std::cout << "doubleArrayAssignment size: " << doubleArrayAssignment.size() << std::endl;
-        std::cout << "doubleArrayAssignment: ";
-        i = 0;
-        while (i < 10) {
-            std::cout << doubleArrayAssignment[i] << " ";
             i++;
         }
         std::cout << "\n" << std::endl;  

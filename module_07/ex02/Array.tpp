@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Array.tpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: inwagner <inwagner@student.42.fr>          +#+  +:+       +#+        */
+/*   By: inwagner <inwagner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 20:54:58 by inwagner          #+#    #+#             */
-/*   Updated: 2024/11/15 15:39:12 by inwagner         ###   ########.fr       */
+/*   Updated: 2024/11/18 19:12:31 by inwagner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,7 @@
 template <typename T>
 Array<T>::Array() : data(NULL), len(0) {}
 
-// Constructor with array len
-//	(creates an array of n elements initialized by default).
+// Constructor with array len (creates an array of n elements initialized by default)
 template <typename T>
 Array<T>::Array(unsigned int n) : len(n) {
 	if (n > 0) {
@@ -40,7 +39,7 @@ Array<T>::Array(const Array& other) : len(other.len) {
 	if (len > 0) {
 		data = new T[len];
 		for (unsigned int i = 0; i < len; ++i) {
-		data[i] = other.data[i];
+			data[i] = other.data[i];
 		}
 	} else {
 		data = NULL;
@@ -51,18 +50,17 @@ Array<T>::Array(const Array& other) : len(other.len) {
 template <typename T>
 Array<T>& Array<T>::operator=(const Array& other) {
 	if (this != &other) {
-		delete[] data;
+		delete [] data;
 		len = other.len;
 		if (len > 0) {
 			data = new T[len];
-			for (unsigned int i = 0; i < len; ++i) {
+			for (unsigned int i = 0; i < len; i++)
 				data[i] = other.data[i];
-			}
 		} else {
 			data = NULL;
-		}
+		}		
 	}
-	return *this;
+	return (*this);
 }
 
 // Subscript operator
