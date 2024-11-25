@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PmergeMe.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: inwagner <inwagner@student.42.fr>          +#+  +:+       +#+        */
+/*   By: inwagner <inwagner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/06 19:34:13 by inwagner          #+#    #+#             */
-/*   Updated: 2024/10/12 16:08:07 by inwagner         ###   ########.fr       */
+/*   Updated: 2024/11/24 22:02:10 by inwagner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,18 +18,18 @@
 # include <iostream>
 # include <vector>
 # include <deque>
+# include <list>
 # include <utility>
 # include <sstream>
 # include <stdexcept>
 # include <algorithm>
 
+template<class Container>
 class PmergeMe {
     private:
-        std::vector<std::pair<int, int> >   _pairs;
-        std::deque<int>                     _sorted;
+        std::list<int> _groups;
 
-        int    _convertToNumber(char* number);
-        void   _pairParser(int size, char** numbers);
+
         
     public:
         ~PmergeMe();
@@ -37,8 +37,25 @@ class PmergeMe {
         PmergeMe(const PmergeMe& other);
         PmergeMe& operator=(const PmergeMe& other);
 
-        void    sort(int size, char** numbers);
-    
+
+
+
+        static void    sort(Container& container);
 };
+
+# include "PmergeMe.tpp"
+
+template<class Container>
+void PmergeMe<Container>::sort(Container& container) {
+    typename Container::const_iterator iter = container.begin();
+
+    while (iter != container.end()) {
+        std::cout << *iter++ << "\t";
+    }
+    std::cout << std::endl;
+
+    
+}
+
 
 #endif

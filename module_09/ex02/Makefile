@@ -6,7 +6,7 @@
 #    By: inwagner <inwagner@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/06 19:32:42 by inwagner          #+#    #+#              #
-#    Updated: 2024/10/11 20:28:29 by inwagner         ###   ########.fr        #
+#    Updated: 2024/11/24 21:49:36 by inwagner         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,10 +38,10 @@ $(OSRC)/%.o: $(SRC)%.cpp
 	@c++ $(FLAGS) -c $< -o $@
 
 exec: re
-	@./${NAME} || echo ""
+	@./${NAME} 9 10 55 1 2087 17 113 || echo ""
 
 val: re
-	@valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./${NAME} || echo ""
+	@valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./${NAME} 0 1 2 9 4 5 || echo ""
 
 clean:
 	@[ -d ./objs ] && rm -rf ./objs || echo ""
