@@ -6,7 +6,7 @@
 /*   By: inwagner <inwagner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/12 13:09:07 by inwagner          #+#    #+#             */
-/*   Updated: 2024/11/24 22:02:14 by inwagner         ###   ########.fr       */
+/*   Updated: 2024/11/25 21:32:06 by inwagner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,16 +77,3 @@ int main(int ac, char** av) {
  * 
  * 
  */
-
-
-/*
-
-main:
-- cria um container qualquer
-- passa o container pra função 'sort'
-
-
-
-
-
-*/
