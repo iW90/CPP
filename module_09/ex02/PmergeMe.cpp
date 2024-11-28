@@ -6,7 +6,7 @@
 /*   By: inwagner <inwagner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/06 19:34:17 by inwagner          #+#    #+#             */
-/*   Updated: 2024/11/25 22:10:54 by inwagner         ###   ########.fr       */
+/*   Updated: 2024/11/27 21:24:49 by inwagner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,10 @@
 
 // Utils
 
-void printPair(std::vector<std::pair<int, int> > contCopy) {
-    std::vector<std::pair<int, int> >::const_iterator iter = contCopy.begin();
+void printPair(std::vector<std::pair<int, int> > container_copy) {
+    std::vector<std::pair<int, int> >::const_iterator iter = container_copy.begin();
 
-    while (iter != contCopy.end()) {
+    while (iter != container_copy.end()) {
         std::cout << iter->first << "-" << iter->second << "\t";
         iter++;
     }

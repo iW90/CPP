@@ -6,7 +6,7 @@
 /*   By: inwagner <inwagner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 20:52:20 by inwagner          #+#    #+#             */
-/*   Updated: 2024/11/25 22:12:22 by inwagner         ###   ########.fr       */
+/*   Updated: 2024/11/27 21:26:04 by inwagner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,26 +14,26 @@
 // PmergeMe
 
 template<class Container>
-void PmergeMe<Container>::divider(std::vector<std::pair<int, int> >& lower, std::vector<std::pair<int, int> >& upper, std::vector<std::pair<int, int> > contCopy) {
-    std::vector<std::pair<int, int> >::const_iterator iter_next = contCopy.begin();
+void PmergeMe<Container>::divider(std::vector<std::pair<int, int> >& messed, std::vector<std::pair<int, int> >& sorted, std::vector<std::pair<int, int> > container_copy) {
+    std::vector<std::pair<int, int> >::const_iterator iter_next = container_copy.begin();
     std::vector<std::pair<int, int> >::const_iterator iter = iter_next++;
     int i = 0;
 
-    while (iter != contCopy.end() && iter_next != contCopy.end()) {
+    while (iter != container_copy.end() && iter_next != container_copy.end()) {
         if (iter->first < iter_next->first) {
-            lower.push_back(std::make_pair(iter->first, i));
-            upper.push_back(std::make_pair(iter_next->first, i));
+            messed.push_back(std::make_pair(iter->first, i));
+            sorted.push_back(std::make_pair(iter_next->first, i));
         } else {
-            upper.push_back(std::make_pair(iter->first, i));
-            lower.push_back(std::make_pair(iter_next->first, i));      
+            sorted.push_back(std::make_pair(iter->first, i));
+            messed.push_back(std::make_pair(iter_next->first, i));      
         }
         i++;
         iter += 2;
         iter_next += 2;
     }
 
-    if (iter != contCopy.end())
-        lower.push_back(std::make_pair(iter->first, i));
+    if (iter != container_copy.end())
+        messed.push_back(std::make_pair(iter->first, i));
 }
 
 
