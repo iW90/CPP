@@ -6,7 +6,7 @@
 /*   By: inwagner <inwagner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 20:52:20 by inwagner          #+#    #+#             */
-/*   Updated: 2024/11/27 21:26:04 by inwagner         ###   ########.fr       */
+/*   Updated: 2024/11/28 21:12:27 by inwagner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ void PmergeMe<Container>::divider(std::vector<std::pair<int, int> >& messed, std
 
     if (iter != container_copy.end())
         messed.push_back(std::make_pair(iter->first, i));
+
 }
 
 
