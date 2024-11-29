@@ -6,7 +6,7 @@
 /*   By: inwagner <inwagner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/06 19:34:13 by inwagner          #+#    #+#             */
-/*   Updated: 2024/11/28 21:23:31 by inwagner         ###   ########.fr       */
+/*   Updated: 2024/11/28 21:58:37 by inwagner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ class PmergeMe {
         static void     divider(std::vector<std::pair<int, int> >& messed, std::vector<std::pair<int, int> >& sorted, std::vector<std::pair<int, int> > container_copy);
         static void     ordenate_by_index(std::vector<std::pair<int, int> >& unsorted, std::vector<int>& indexes);
         static void     binary_insert(std::vector<std::pair<int, int> >& sorted, std::vector<std::pair<int, int> >& messed);
+        static void     insert_indexes(std::vector<std::pair<int, int> >& input);
         static std::vector<int> extract_indexes(const std::vector<std::pair<int, int> >& unsorted);
         static std::vector<int> recursive_merge(std::vector<std::pair<int, int> >& input);
         
@@ -82,12 +83,8 @@ template<class Container>
 void PmergeMe<Container>::ordenate_by_index(std::vector<std::pair<int, int> >& unsorted, std::vector<int>& indexes) {
     std::vector<std::pair<int, int> > temp = unsorted;
 
-
     for (size_t i = 0; i < unsorted.size(); i++)
         unsorted[i] = temp[indexes[i]];
-
-    
-    printPair(unsorted);
 
 }
 
@@ -105,6 +102,12 @@ std::vector<int> PmergeMe<Container>::extract_indexes(const std::vector<std::pai
 }
 
 template<class Container>
+void PmergeMe<Container>::insert_indexes(std::vector<std::pair<int, int> >& input) {
+    for (int i = 0; i < (int)input.size(); i++)
+        input[i].second = i;
+}
+
+template<class Container>
 std::vector<int> PmergeMe<Container>::recursive_merge(std::vector<std::pair<int, int> >& input) {
     std::vector<int> indexes;
 
@@ -115,10 +118,15 @@ std::vector<int> PmergeMe<Container>::recursive_merge(std::vector<std::pair<int,
 
     std::vector<std::pair<int, int> > sorted;
     std::vector<std::pair<int, int> > messed;
+    std::vector<std::pair<int, int> > sorted_new;
+    
+    
 
     divider(messed, sorted, input);
-
-    indexes = recursive_merge(sorted);
+    sorted_new = sorted;
+    insert_indexes(sorted_new);
+    
+    indexes = recursive_merge(sorted_new);
     
     ordenate_by_index(sorted, indexes);
     ordenate_by_index(messed, indexes);
@@ -148,7 +156,7 @@ void PmergeMe<Container>::sort(Container& container) {
     ordenate_by_index(container_copy, indexes);
 
 
-    //printPair(container_copy);
+    printPair(container_copy);
     
 }
 

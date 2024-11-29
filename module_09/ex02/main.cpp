@@ -6,7 +6,7 @@
 /*   By: inwagner <inwagner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/12 13:09:07 by inwagner          #+#    #+#             */
-/*   Updated: 2024/11/25 21:32:06 by inwagner         ###   ########.fr       */
+/*   Updated: 2024/11/28 21:51:13 by inwagner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,10 +56,10 @@ int main(int ac, char** av) {
 	}
 
 
-	std::vector<int> vec(array, array + size);
+	// std::vector<int> vec(array, array + size);
 	std::list<int> lst(array, array + size);
 
-	PmergeMe<std::vector<int> >::sort(vec);
+	// PmergeMe<std::vector<int> >::sort(vec);
 	PmergeMe<std::list<int> >::sort(lst);
 	
 
