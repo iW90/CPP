@@ -6,7 +6,7 @@
 /*   By: inwagner <inwagner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/12 13:09:07 by inwagner          #+#    #+#             */
-/*   Updated: 2024/11/28 21:51:13 by inwagner         ###   ########.fr       */
+/*   Updated: 2024/11/29 23:10:24 by inwagner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,13 +56,18 @@ int main(int ac, char** av) {
 	}
 
 
-	// std::vector<int> vec(array, array + size);
+	std::vector<int> vec(array, array + size);
 	std::list<int> lst(array, array + size);
+	std::deque<int> dqe(array, array + size);
 
-	// PmergeMe<std::vector<int> >::sort(vec);
+	PmergeMe<std::vector<int> >::sort(vec);
 	PmergeMe<std::list<int> >::sort(lst);
+	PmergeMe<std::deque<int> >::sort(dqe);
 	
 
+	PmergeMe<std::vector<int> >::is_sorted(vec, "std::vector");
+	PmergeMe<std::list<int> >::is_sorted(lst, "std::list");
+	PmergeMe<std::deque<int> >::is_sorted(dqe, "std::deque");
 	
 	delete[] array;
 	return 0;
@@ -77,3 +82,15 @@ int main(int ac, char** av) {
  * 
  * 
  */
+
+
+/*
+./PmergeMe 10 4 11 6 3 2 8 5 1 12 9 13 7
+./PmergeMe `shuf -i 1-100000 -n 3000 | tr "\n" " "`
+
+
+
+std::deque<int> deque(array, array + size);
+PmergeMe<std::deque, int> dequeMerger;
+dequeMerger.mergeInsertionSort(deque, size);
+*/
