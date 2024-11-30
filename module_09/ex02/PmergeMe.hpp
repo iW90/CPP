@@ -6,7 +6,7 @@
 /*   By: inwagner <inwagner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/06 19:34:13 by inwagner          #+#    #+#             */
-/*   Updated: 2024/11/28 21:58:37 by inwagner         ###   ########.fr       */
+/*   Updated: 2024/11/29 22:20:34 by inwagner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,7 +133,7 @@ std::vector<int> PmergeMe<Container>::recursive_merge(std::vector<std::pair<int,
     
     indexes.clear();
 
-    binary_insert(messed, sorted);
+    binary_insert(sorted, messed);
 
     indexes = extract_indexes(sorted);
 

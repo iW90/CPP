@@ -6,7 +6,7 @@
 #    By: inwagner <inwagner@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/06 19:32:42 by inwagner          #+#    #+#              #
-#    Updated: 2024/11/24 21:49:36 by inwagner         ###   ########.fr        #
+#    Updated: 2024/11/29 22:25:22 by inwagner         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ HSRC	:=	./
 OSRC	:=	./objs/
 
 # FLAGS
-FLAGS	:=	-Wall -Wextra -Werror -std=c++98 -I $(HSRC)
+FLAGS	:=	-Wall -Wextra -Werror -std=c++98 -I $(HSRC) -g
 
 # OBJECTS
 FTS		:=	main.cpp \
@@ -38,10 +38,10 @@ $(OSRC)/%.o: $(SRC)%.cpp
 	@c++ $(FLAGS) -c $< -o $@
 
 exec: re
-	@./${NAME} 9 10 55 1 2087 17 113 || echo ""
+	@./${NAME} 11 12 3 7 9 5 1 13 10 4 6 2 8 || echo ""
 
 val: re
-	@valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./${NAME} 0 1 2 9 4 5 || echo ""
+	@valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./${NAME} 11 12 3 7 9 5 1 13 10 4 6 2 8 || echo ""
 
 clean:
 	@[ -d ./objs ] && rm -rf ./objs || echo ""
