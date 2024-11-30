@@ -6,7 +6,7 @@
 /*   By: inwagner <inwagner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/06 19:34:13 by inwagner          #+#    #+#             */
-/*   Updated: 2024/11/29 22:20:34 by inwagner         ###   ########.fr       */
+/*   Updated: 2024/11/29 22:35:56 by inwagner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,8 +83,11 @@ template<class Container>
 void PmergeMe<Container>::ordenate_by_index(std::vector<std::pair<int, int> >& unsorted, std::vector<int>& indexes) {
     std::vector<std::pair<int, int> > temp = unsorted;
 
-    for (size_t i = 0; i < unsorted.size(); i++)
+    for (size_t i = 0; i < indexes.size(); i++)
         unsorted[i] = temp[indexes[i]];
+
+    // printPair(unsorted);
+    // printIndex(indexes);
 
 }
 
@@ -123,6 +126,7 @@ std::vector<int> PmergeMe<Container>::recursive_merge(std::vector<std::pair<int,
     
 
     divider(messed, sorted, input);
+    
     sorted_new = sorted;
     insert_indexes(sorted_new);
     
