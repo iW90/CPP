@@ -6,35 +6,65 @@
 /*   By: inwagner <inwagner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 20:52:20 by inwagner          #+#    #+#             */
-/*   Updated: 2024/11/29 23:13:20 by inwagner         ###   ########.fr       */
+/*   Updated: 2024/11/30 11:59:22 by inwagner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
-// PmergeMe
+// Orthodox
 
 template<class Container>
-void PmergeMe<Container>::divider(std::vector<std::pair<int, int> >& messed, std::vector<std::pair<int, int> >& sorted, std::vector<std::pair<int, int> > container_copy) {
-    std::vector<std::pair<int, int> >::const_iterator iter_next = container_copy.begin();
-    std::vector<std::pair<int, int> >::const_iterator iter = iter_next++;
+PmergeMe<Container>::~PmergeMe() {}
 
-    while (iter != container_copy.end() && iter_next != container_copy.end()) {
-        if (iter->first < iter_next->first) {
-            messed.push_back(*iter);
-            sorted.push_back(*iter_next);
-        } else {
-            sorted.push_back(*iter);
-            messed.push_back(*iter_next);
-        }
-        iter += 2;
-        iter_next += 2;
-    }
+template<class Container>
+PmergeMe<Container>::PmergeMe() {}
 
-    if (iter != container_copy.end())
-        messed.push_back(*iter);
-
+template<class Container>
+PmergeMe<Container>::PmergeMe(const PmergeMe &other) {
+    *this = other;
 }
 
+template <class Container>
+PmergeMe<Container>& PmergeMe<Container>::operator=(const PmergeMe& other) {
+  if (this != &other) {
+    _groups = other._groups;
+  }
+  return *this;
+}
+
+
+// Utils
+template<class Container>
+void PmergeMe<Container>::print(Container& container) {
+    typename Container::const_iterator iter = container.begin();
+
+    while (iter != container.end()) {
+        std::cout << *iter++ << "\t";
+    }
+    std::cout << std::endl;
+}
+
+template <typename Container>
+std::string PmergeMe<Container>::timer(void (*sortFunc)(Container&), Container& container, const char* container_type) {
+    std::ostringstream output;
+
+    // output << "Sorting container of type: " << container_type << std::endl;
+
+    clock_t start = clock();
+    sortFunc(container);
+    clock_t end = clock();
+
+    double duration = double(end - start) / CLOCKS_PER_SEC;
+
+    // Exibir o tempo em milissegundos
+    output << "\033[36mTime taken for sort '"
+            << container_type 
+            << "': "
+            << std::fixed << std::setprecision(4) 
+            << duration * 1000 << " ms\t\033[0m";  // Convertendo para milissegundos
+
+    return output.str();
+}
 
 template<class Container>
 bool PmergeMe<Container>::is_sorted(const Container& container, const std::string container_name) {
@@ -43,81 +73,40 @@ bool PmergeMe<Container>::is_sorted(const Container& container, const std::strin
     typename Container::const_iterator next = container.begin();
     typename Container::const_iterator iter = next++;
 
+    std::cout << "\033[34mContainer " << container_name << " after:\033[0m" << std::endl;
     while (next != container.end()) {
+        std::cout << "\033[33m" << *iter << "\t\033[0m";
         if (*iter++ > *next++) {
             std::cerr << "\033[31mContainer " << container_name << " is not sorted\033[0m" << std::endl;
             return false;
         }
     }
-    std::cerr << "\033[36mContainer " << container_name << " is sorted\033[0m" << std::endl;
+    std::cout << "\033[33m" << *iter << "\n\033[0m" << std::endl;
     return true;
 }
 
+// PmergeMe
 
+// main function
 template<class Container>
-Container PmergeMe<Container>::return_values(const std::vector<std::pair<int, int> >& sorted) {
-    Container values;
-    std::vector<std::pair<int, int> >::const_iterator iter = sorted.begin();
+void PmergeMe<Container>::sort(Container& container) {
+    typename Container::const_iterator iter = container.begin();
 
-    while (iter != sorted.end()) {
-        values.push_back(iter->first);
-        iter++;
-    }
-
-    return values;
-}
-
-
-
-template<class Container>
-void PmergeMe<Container>::binary_insert(std::vector<std::pair<int, int> >& sorted, std::vector<std::pair<int, int> >& messed) {
-    std::vector<std::pair<int, int> >::const_iterator iter = messed.begin();
-    
-    while (iter != messed.end()) {
-        int lowr = 0;
-        int high = sorted.size();
-
-        while (lowr < high) {
-            int mid = (lowr + high) / 2;
-            if (sorted[mid].first < iter->first)
-                lowr = mid + 1;
-            else
-                high = mid;
-        }
-        sorted.insert(sorted.begin() + lowr, *(iter++));
-    }
-
-
-}
-
-
-template<class Container>
-void PmergeMe<Container>::ordenate_by_index(std::vector<std::pair<int, int> >& unsorted, std::vector<int>& indexes) {
-    std::vector<std::pair<int, int> > temp = unsorted;
-
-    for (size_t i = 0; i < indexes.size(); i++)
-        unsorted[i] = temp[indexes[i]];
-}
-
-template<class Container>
-std::vector<int> PmergeMe<Container>::extract_indexes(const std::vector<std::pair<int, int> >& unsorted) {
+    std::vector<std::pair<int, int> > container_copy;
     std::vector<int> indexes;
-    std::vector<std::pair<int, int> >::const_iterator iter = unsorted.begin();
 
-    while (iter != unsorted.end()) {
-        indexes.push_back(iter->second);
-        iter++;
-    }
+    for (int i = 0; i < (int)container.size() && iter != container.end() ; i++, iter++)
+        container_copy.push_back(std::make_pair(*iter, i));
 
-    return indexes;
+
+    indexes = recursive_merge(container_copy);
+
+    ordenate_by_index(container_copy, indexes);
+
+    container = return_values(container_copy);
 }
 
-template<class Container>
-void PmergeMe<Container>::insert_indexes(std::vector<std::pair<int, int> >& input) {
-    for (int i = 0; i < (int)input.size(); i++)
-        input[i].second = i;
-}
-
+// aux functions
 template<class Container>
 std::vector<int> PmergeMe<Container>::recursive_merge(std::vector<std::pair<int, int> >& input) {
     std::vector<int> indexes;
@@ -152,58 +141,89 @@ std::vector<int> PmergeMe<Container>::recursive_merge(std::vector<std::pair<int,
     return indexes;
 }
 
-template<class Container>
-void PmergeMe<Container>::sort(Container& container) {
-    typename Container::const_iterator iter = container.begin();
 
-    std::vector<std::pair<int, int> > container_copy;
+template<class Container>
+void PmergeMe<Container>::divider(std::vector<std::pair<int, int> >& messed, std::vector<std::pair<int, int> >& sorted, std::vector<std::pair<int, int> > container_copy) {
+    std::vector<std::pair<int, int> >::const_iterator iter_next = container_copy.begin();
+    std::vector<std::pair<int, int> >::const_iterator iter = iter_next++;
+
+    while (iter != container_copy.end() && iter_next != container_copy.end()) {
+        if (iter->first < iter_next->first) {
+            messed.push_back(*iter);
+            sorted.push_back(*iter_next);
+        } else {
+            sorted.push_back(*iter);
+            messed.push_back(*iter_next);
+        }
+        iter += 2;
+        iter_next += 2;
+    }
+
+    if (iter != container_copy.end())
+        messed.push_back(*iter);
+
+}
+
+
+template<class Container>
+Container PmergeMe<Container>::return_values(const std::vector<std::pair<int, int> >& sorted) {
+    Container values;
+    std::vector<std::pair<int, int> >::const_iterator iter = sorted.begin();
+
+    while (iter != sorted.end()) {
+        values.push_back(iter->first);
+        iter++;
+    }
+
+    return values;
+}
+
+
+template<class Container>
+void PmergeMe<Container>::binary_insert(std::vector<std::pair<int, int> >& sorted, std::vector<std::pair<int, int> >& messed) {
+    std::vector<std::pair<int, int> >::const_iterator iter = messed.begin();
+    
+    while (iter != messed.end()) {
+        int lowr = 0;
+        int high = sorted.size();
+
+        while (lowr < high) {
+            int mid = (lowr + high) / 2;
+            if (sorted[mid].first < iter->first)
+                lowr = mid + 1;
+            else
+                high = mid;
+        }
+        sorted.insert(sorted.begin() + lowr, *(iter++));
+    }
+}
+
+
+template<class Container>
+void PmergeMe<Container>::ordenate_by_index(std::vector<std::pair<int, int> >& unsorted, std::vector<int>& indexes) {
+    std::vector<std::pair<int, int> > temp = unsorted;
+
+    for (size_t i = 0; i < indexes.size(); i++)
+        unsorted[i] = temp[indexes[i]];
+}
+
+
+template<class Container>
+std::vector<int> PmergeMe<Container>::extract_indexes(const std::vector<std::pair<int, int> >& unsorted) {
     std::vector<int> indexes;
+    std::vector<std::pair<int, int> >::const_iterator iter = unsorted.begin();
 
-    for (int i = 0; i < (int)container.size() && iter != container.end() ; i++, iter++)
-        container_copy.push_back(std::make_pair(*iter, i));
+    while (iter != unsorted.end()) {
+        indexes.push_back(iter->second);
+        iter++;
+    }
 
-
-    indexes = recursive_merge(container_copy);
-
-    ordenate_by_index(container_copy, indexes);
-
-    // printPair(container_copy);
-
-    container = return_values(container_copy);
+    return indexes;
 }
 
 
-
-// Utils
-
-// template<class Container>
-// void print(Container& container) {
-//     typename Container::const_iterator iter = container.begin();
-
-//     while (iter != container.end()) {
-//         std::cout << *iter++ << "\t";
-//     }
-//     std::cout << std::endl;
-// }
-
-
-// Orthodox
-
 template<class Container>
-PmergeMe<Container>::~PmergeMe() {}
-
-template<class Container>
-PmergeMe<Container>::PmergeMe() {}
-
-template<class Container>
-PmergeMe<Container>::PmergeMe(const PmergeMe &other) {
-    *this = other;
-}
-
-template <class Container>
-PmergeMe<Container>& PmergeMe<Container>::operator=(const PmergeMe& other) {
-  if (this != &other) {
-    _groups = other._groups;
-  }
-  return *this;
+void PmergeMe<Container>::insert_indexes(std::vector<std::pair<int, int> >& input) {
+    for (int i = 0; i < (int)input.size(); i++)
+        input[i].second = i;
 }

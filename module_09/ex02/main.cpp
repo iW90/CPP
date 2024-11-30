@@ -6,14 +6,14 @@
 /*   By: inwagner <inwagner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/12 13:09:07 by inwagner          #+#    #+#             */
-/*   Updated: 2024/11/29 23:10:24 by inwagner         ###   ########.fr       */
+/*   Updated: 2024/11/30 11:54:06 by inwagner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PmergeMe.hpp"
 
 
-int convertToNumber(char* number) {
+static int convertToNumber(char* number) {
     std::stringstream   ss(number);
     int                 num;
 
@@ -28,7 +28,7 @@ int convertToNumber(char* number) {
     return num;
 }
 
-int* parseArguments(int ac, char** av) {
+static int* parseArguments(int ac, char** av) {
 	if (ac < 2)
 		throw std::invalid_argument("nothing to sort");
 
@@ -44,6 +44,13 @@ int* parseArguments(int ac, char** av) {
 	return numbers;
 }
 
+static void printContainer(int* array, int size) {
+    for (int i = 0; i < size; ++i) {
+        std::cout << "\033[35m" << array[i] << "\t\033[0m";
+    }
+    std::cout << "\n" << std::endl;
+}
+
 int main(int ac, char** av) {
 	int* array;
   	int size = ac - 1;
@@ -55,42 +62,38 @@ int main(int ac, char** av) {
         return 1;
 	}
 
+	std::cout << "\033[36mContainer before:\033[0m" << std::endl;
+	printContainer(array, size);
 
 	std::vector<int> vec(array, array + size);
 	std::list<int> lst(array, array + size);
 	std::deque<int> dqe(array, array + size);
 
-	PmergeMe<std::vector<int> >::sort(vec);
-	PmergeMe<std::list<int> >::sort(lst);
-	PmergeMe<std::deque<int> >::sort(dqe);
-	
 
+	// PmergeMe<std::vector<int> >::sort(vec);
+	std::string vecTime = PmergeMe<std::vector<int> >::timer(PmergeMe<std::vector<int> >::sort, vec, "std::vector");
+	std::cout << vecTime << std::endl;
 	PmergeMe<std::vector<int> >::is_sorted(vec, "std::vector");
+
+	// PmergeMe<std::list<int> >::sort(lst);
+	std::string lstTime = PmergeMe<std::list<int> >::timer(PmergeMe<std::list<int> >::sort, lst, "std::list");
+	std::cout << lstTime << std::endl;
 	PmergeMe<std::list<int> >::is_sorted(lst, "std::list");
+	
+	// PmergeMe<std::deque<int> >::sort(dqe);
+	std::string dqeTime = PmergeMe<std::deque<int> >::timer(PmergeMe<std::deque<int> >::sort, dqe, "std::deque");
+	std::cout << dqeTime << std::endl;
 	PmergeMe<std::deque<int> >::is_sorted(dqe, "std::deque");
+	
 	
 	delete[] array;
 	return 0;
 }
 
 /* Ford Johnson Algorithm (Merge Insertion Sort)
- * 
- *
- * 
- * 
- * 
- * 
- * 
  */
 
 
 /*
-./PmergeMe 10 4 11 6 3 2 8 5 1 12 9 13 7
-./PmergeMe `shuf -i 1-100000 -n 3000 | tr "\n" " "`
-
-
-
-std::deque<int> deque(array, array + size);
-PmergeMe<std::deque, int> dequeMerger;
-dequeMerger.mergeInsertionSort(deque, size);
+	./PmergeMe `shuf -i 1-100000 -n 3000 | tr "\n" " "`
 */

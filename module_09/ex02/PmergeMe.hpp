@@ -6,7 +6,7 @@
 /*   By: inwagner <inwagner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/06 19:34:13 by inwagner          #+#    #+#             */
-/*   Updated: 2024/11/29 23:12:26 by inwagner         ###   ########.fr       */
+/*   Updated: 2024/11/30 11:45:31 by inwagner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,17 +23,15 @@
 # include <sstream>
 # include <stdexcept>
 # include <algorithm>
-
-void printPair(std::vector<std::pair<int, int> > contCopy);
-void printIndex(std::vector<int> indexes);
-
+# include <ctime>
+# include <iomanip>
 
 template<class Container>
 class PmergeMe {
     private:
         std::list<int> _groups;
 
-
+        static void     print(Container& container);
         static void     divider(std::vector<std::pair<int, int> >& messed, std::vector<std::pair<int, int> >& sorted, std::vector<std::pair<int, int> > container_copy);
         static void     ordenate_by_index(std::vector<std::pair<int, int> >& unsorted, std::vector<int>& indexes);
         static void     binary_insert(std::vector<std::pair<int, int> >& sorted, std::vector<std::pair<int, int> >& messed);
@@ -49,9 +47,9 @@ class PmergeMe {
         PmergeMe(const PmergeMe& other);
         PmergeMe& operator=(const PmergeMe& other);
 
-
-        static void     sort(Container& container);
-        static bool     is_sorted(const Container& container, const std::string container_name);
+        static void         sort(Container& container);
+        static bool         is_sorted(const Container& container, const std::string container_name);
+        static std::string  timer(void (*sortFunc)(Container&), Container& container, const char* container_type);
 };
 
 # include "PmergeMe.tpp"
