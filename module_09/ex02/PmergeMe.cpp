@@ -6,15 +6,11 @@
 /*   By: inwagner <inwagner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/06 19:34:17 by inwagner          #+#    #+#             */
-/*   Updated: 2024/11/30 11:09:47 by inwagner         ###   ########.fr       */
+/*   Updated: 2024/12/02 20:16:30 by inwagner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PmergeMe.hpp"
-
-// 
-// void printPair(std::vector<std::pair<int, int> > contCopy);
-// void printIndex(std::vector<int> indexes);
 
 // Utils
 

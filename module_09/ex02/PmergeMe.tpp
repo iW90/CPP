@@ -6,7 +6,7 @@
 /*   By: inwagner <inwagner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 20:52:20 by inwagner          #+#    #+#             */
-/*   Updated: 2024/11/30 11:59:22 by inwagner         ###   ########.fr       */
+/*   Updated: 2024/12/02 21:06:11 by inwagner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,6 @@ PmergeMe<Container>::PmergeMe(const PmergeMe &other) {
 
 template <class Container>
 PmergeMe<Container>& PmergeMe<Container>::operator=(const PmergeMe& other) {
-  if (this != &other) {
-    _groups = other._groups;
-  }
   return *this;
 }
 
@@ -94,12 +91,16 @@ void PmergeMe<Container>::sort(Container& container) {
 
     std::vector<std::pair<int, int> > container_copy;
     std::vector<int> indexes;
+    std::vector<int> partition;
+
+    partition = create_partition_sizes(container.size());
+
 
     for (int i = 0; i < (int)container.size() && iter != container.end() ; i++, iter++)
         container_copy.push_back(std::make_pair(*iter, i));
 
 
-    indexes = recursive_merge(container_copy);
+    indexes = recursive_merge(container_copy, partition);
 
     ordenate_by_index(container_copy, indexes);
 
@@ -108,26 +109,24 @@ void PmergeMe<Container>::sort(Container& container) {
 
 // aux functions
 template<class Container>
-std::vector<int> PmergeMe<Container>::recursive_merge(std::vector<std::pair<int, int> >& input) {
+std::vector<int> PmergeMe<Container>::recursive_merge(std::vector<std::pair<int, int> >& input, const std::vector<int> partition) {
     std::vector<int> indexes;
 
     if (input.size() < 2) {
         indexes = extract_indexes(input);
         return indexes;
     }
-
+    (void)partition;
     std::vector<std::pair<int, int> > sorted;
     std::vector<std::pair<int, int> > messed;
     std::vector<std::pair<int, int> > sorted_new;
     
-    
-
     divider(messed, sorted, input);
     
     sorted_new = sorted;
     insert_indexes(sorted_new);
     
-    indexes = recursive_merge(sorted_new);
+    indexes = recursive_merge(sorted_new, partition);
     
     ordenate_by_index(sorted, indexes);
     ordenate_by_index(messed, indexes);
@@ -200,6 +199,54 @@ void PmergeMe<Container>::binary_insert(std::vector<std::pair<int, int> >& sorte
 
 
 template<class Container>
+std::vector<int, std::pair<int, int> > PmergeMe<Container>::generate_partition(std::vector<std::pair<int, int> >& messed, std::vector<int> partition) {
+    std::vector<std::pair<int, int> >::const_iterator iter = messed.begin();
+    std::vector<std::pair<int, int>, int> indexed_partition;
+
+    int i = 0;
+
+    
+    return indexed_partition;
+}
+
+
+template<class Container>
+std::vector<int> PmergeMe<Container>::create_partition_sizes(int container_size) {
+    std::vector<int> partition;
+    
+    if (container_size == 0)
+        return partition;
+
+    partition.push_back(2);
+    if (container_size == 1)
+        return partition;
+
+    
+    int i = 2, sum = 2;
+
+    while (true) {
+        int next_value = std::pow(2, i) - partition[i - 2];
+        if (sum + next_value <= container_size) {
+            partition.push_back(next_value);
+            sum += next_value;
+            i++;
+        } else {
+            if (container_size - sum ) partition.push_back(container_size - sum);
+            break;
+        }
+    }
+    return partition;
+}
+
+
+template<class Container>
+void PmergeMe<Container>::insert_indexes(std::vector<std::pair<int, int> >& input) {
+    for (int i = 0; i < (int)input.size(); i++)
+        input[i].second = i;
+}
+
+
+template<class Container>
 void PmergeMe<Container>::ordenate_by_index(std::vector<std::pair<int, int> >& unsorted, std::vector<int>& indexes) {
     std::vector<std::pair<int, int> > temp = unsorted;
 
@@ -219,11 +266,4 @@ std::vector<int> PmergeMe<Container>::extract_indexes(const std::vector<std::pai
     }
 
     return indexes;
-}
-
-
-template<class Container>
-void PmergeMe<Container>::insert_indexes(std::vector<std::pair<int, int> >& input) {
-    for (int i = 0; i < (int)input.size(); i++)
-        input[i].second = i;
 }
