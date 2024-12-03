@@ -6,7 +6,7 @@
 /*   By: inwagner <inwagner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 20:52:20 by inwagner          #+#    #+#             */
-/*   Updated: 2024/12/02 21:06:11 by inwagner         ###   ########.fr       */
+/*   Updated: 2024/12/02 21:39:40 by inwagner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -194,6 +194,28 @@ void PmergeMe<Container>::binary_insert(std::vector<std::pair<int, int> >& sorte
                 high = mid;
         }
         sorted.insert(sorted.begin() + lowr, *(iter++));
+    }
+}
+
+template<class Container>
+void PmergeMe<Container>::reverse_in_partition_blocks(std::vector<int>& messed, const std::vector<int>& partition_sizes) {
+    int start_idx = 0;
+    
+    for (int i = 0; i < (int)partition_sizes.size(); i++) {
+        int block_size = partition_sizes[i];
+        
+        if (start_idx + block_size > messed.size())
+            block_size = messed.size() - start_idx;
+
+        // Inverte o bloco de elementos
+        int end_idx = start_idx + block_size - 1;
+        while (start_idx < end_idx) {
+            std::swap(messed[start_idx], messed[end_idx]);
+            start_idx++;
+            end_idx--;
+        }
+
+        start_idx += block_size;
     }
 }
 

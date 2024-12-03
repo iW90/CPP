@@ -6,7 +6,7 @@
 /*   By: inwagner <inwagner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/06 19:34:13 by inwagner          #+#    #+#             */
-/*   Updated: 2024/12/02 21:04:50 by inwagner         ###   ########.fr       */
+/*   Updated: 2024/12/02 21:40:52 by inwagner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@
 # include <ctime>
 # include <cmath>
 # include <iomanip>
+# include <utility>
 
 void printIndex(std::vector<int> indexes);
 
@@ -37,6 +38,7 @@ class PmergeMe {
         static void     ordenate_by_index(std::vector<std::pair<int, int> >& unsorted, std::vector<int>& indexes);
         static void     binary_insert(std::vector<std::pair<int, int> >& sorted, std::vector<std::pair<int, int> >& messed);
         static void     insert_indexes(std::vector<std::pair<int, int> >& input);
+        static void     reverse_in_partition_blocks(std::vector<int>& messed, const std::vector<int>& partition_sizes);
         static std::vector<int> create_partition_sizes(int container_size);
         static std::vector<int> extract_indexes(const std::vector<std::pair<int, int> >& unsorted);
         static std::vector<int> recursive_merge(std::vector<std::pair<int, int> >& input, const std::vector<int> partition);
