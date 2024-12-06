@@ -6,7 +6,7 @@
 #    By: inwagner <inwagner@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/06 19:32:42 by inwagner          #+#    #+#              #
-#    Updated: 2024/11/30 11:55:10 by inwagner         ###   ########.fr        #
+#    Updated: 2024/12/05 20:30:54 by inwagner         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,6 +51,9 @@ fclean: clean
 
 re: fclean all
 
-
+z:
+	c++ $(FLAGS) teste.cpp -o teste
+	./teste
+	rm teste
 
 .PHONY: all clean fclean re val

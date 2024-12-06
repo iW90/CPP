@@ -6,7 +6,7 @@
 /*   By: inwagner <inwagner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/06 19:34:13 by inwagner          #+#    #+#             */
-/*   Updated: 2024/12/02 21:40:52 by inwagner         ###   ########.fr       */
+/*   Updated: 2024/12/05 21:21:29 by inwagner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,10 @@ class PmergeMe {
         static std::vector<int, std::pair<int, int> > generate_partition(std::vector<std::pair<int, int> >& messed, std::vector<int> partition);
         static Container return_values(const std::vector<std::pair<int, int> >& sorted);
 
+
+static void insert_partitions(std::vector<std::pair<int, int> >& sorted, const std::vector<std::pair<int, int> >& messed);
+static int get_next_partition(int previous, int current);
+static void binary_insert(std::vector<std::pair<int, int> >& sorted, std::pair<int, int> > pair , int max);
         
     public:
         ~PmergeMe();
