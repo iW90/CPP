@@ -6,7 +6,7 @@
 /*   By: inwagner <inwagner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 20:52:20 by inwagner          #+#    #+#             */
-/*   Updated: 2024/12/05 21:21:41 by inwagner         ###   ########.fr       */
+/*   Updated: 2024/12/08 09:12:01 by inwagner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,20 +45,17 @@ template <typename Container>
 std::string PmergeMe<Container>::timer(void (*sortFunc)(Container&), Container& container, const char* container_type) {
     std::ostringstream output;
 
-    // output << "Sorting container of type: " << container_type << std::endl;
-
     clock_t start = clock();
     sortFunc(container);
     clock_t end = clock();
 
     double duration = double(end - start) / CLOCKS_PER_SEC;
 
-    // Exibir o tempo em milissegundos
     output << "\033[36mTime taken for sort '"
             << container_type 
             << "': "
             << std::fixed << std::setprecision(4) 
-            << duration * 1000 << " ms\t\033[0m";  // Convertendo para milissegundos
+            << duration * 1000 << " ms\t\033[0m";
 
     return output.str();
 }
@@ -91,32 +88,26 @@ void PmergeMe<Container>::sort(Container& container) {
 
     std::vector<std::pair<int, int> > container_copy;
     std::vector<int> indexes;
-    std::vector<int> partition;
-
-    partition = create_partition_sizes(container.size());
-
 
     for (int i = 0; i < (int)container.size() && iter != container.end() ; i++, iter++)
         container_copy.push_back(std::make_pair(*iter, i));
 
-
-    indexes = recursive_merge(container_copy, partition);
+    indexes = recursive_merge(container_copy);
 
     ordenate_by_index(container_copy, indexes);
 
-    container = return_values(container_copy);
+    container = discard_indexes(container_copy);
 }
 
 // aux functions
 template<class Container>
-std::vector<int> PmergeMe<Container>::recursive_merge(std::vector<std::pair<int, int> >& input, const std::vector<int> partition) {
+std::vector<int> PmergeMe<Container>::recursive_merge(std::vector<std::pair<int, int> >& input) {
     std::vector<int> indexes;
 
     if (input.size() < 2) {
         indexes = extract_indexes(input);
         return indexes;
     }
-    (void)partition;
     std::vector<std::pair<int, int> > sorted;
     std::vector<std::pair<int, int> > messed;
     std::vector<std::pair<int, int> > sorted_new;
@@ -126,14 +117,14 @@ std::vector<int> PmergeMe<Container>::recursive_merge(std::vector<std::pair<int,
     sorted_new = sorted;
     insert_indexes(sorted_new);
     
-    indexes = recursive_merge(sorted_new, partition);
+    indexes = recursive_merge(sorted_new);
     
     ordenate_by_index(sorted, indexes);
     ordenate_by_index(messed, indexes);
     
     indexes.clear();
 
-    binary_insert(sorted, messed);
+    insert_partitions(sorted, messed);
 
     indexes = extract_indexes(sorted);
 
@@ -165,7 +156,7 @@ void PmergeMe<Container>::divider(std::vector<std::pair<int, int> >& messed, std
 
 
 template<class Container>
-Container PmergeMe<Container>::return_values(const std::vector<std::pair<int, int> >& sorted) {
+Container PmergeMe<Container>::discard_indexes(const std::vector<std::pair<int, int> >& sorted) {
     Container values;
     std::vector<std::pair<int, int> >::const_iterator iter = sorted.begin();
 
@@ -178,67 +169,14 @@ Container PmergeMe<Container>::return_values(const std::vector<std::pair<int, in
 }
 
 
-// template<class Container>
-// void PmergeMe<Container>::binary_insert(std::vector<std::pair<int, int> >& sorted, std::vector<std::pair<int, int> >& messed) {
-//     std::vector<std::pair<int, int> >::const_iterator iter = messed.begin();
-    
-//     while (iter != messed.end()) {
-//         int lowr = 0;
-//         int high = sorted.size();
-
-//         while (lowr < high) {
-//             int mid = (lowr + high) / 2;
-//             if (sorted[mid].first < iter->first)
-//                 lowr = mid + 1;
-//             else
-//                 high = mid;
-//         }
-//         sorted.insert(sorted.begin() + lowr, *(iter++));
-//     }
-// }
-
-// template<class Container>
-// void PmergeMe<Container>::reverse_in_partition_blocks(std::vector<int>& messed, const std::vector<int>& partition_sizes) {
-//     int start_idx = 0;
-    
-//     for (int i = 0; i < (int)partition_sizes.size(); i++) {
-//         int block_size = partition_sizes[i];
-        
-//         if (start_idx + block_size > messed.size())
-//             block_size = messed.size() - start_idx;
-
-//         // Inverte o bloco de elementos
-//         int end_idx = start_idx + block_size - 1;
-//         while (start_idx < end_idx) {
-//             std::swap(messed[start_idx], messed[end_idx]);
-//             start_idx++;
-//             end_idx--;
-//         }
-
-//         start_idx += block_size;
-//     }
-// }
-
-
-// template<class Container>
-// std::vector<int, std::pair<int, int> > PmergeMe<Container>::generate_partition(std::vector<std::pair<int, int> >& messed, std::vector<int> partition) {
-//     std::vector<std::pair<int, int> >::const_iterator iter = messed.begin();
-//     std::vector<std::pair<int, int>, int> indexed_partition;
-
-//     int i = 0;
-
-    
-//     return indexed_partition;
-// }
-
 template<class Container>
-void PmergeMe<Container>::binary_insert(std::vector<std::pair<int, int> >& sorted, std::pair<int, int> > pair , int max) {
+void PmergeMe<Container>::binary_insert(std::vector<std::pair<int, int> >& sorted, std::pair<int, int> pair, int max) {
     int lowr = 0;
-    int high = std::min(max, sorted.size());
+    int high = std::min(max, (int)sorted.size());
 
     while (lowr < high) {
         int mid = (lowr + high) / 2;
-        if (sorted[mid].first < pair->first)
+        if (sorted[mid].first < pair.first)
             lowr = mid + 1;
         else
             high = mid;
@@ -264,45 +202,17 @@ void PmergeMe<Container>::insert_partitions(std::vector<std::pair<int, int> >& s
         return;
     }
 
-    while (lower >= messed.size()) {
-        upper = std::min(get_next_partition(previous, current), messed.size() - 1);
-        for (int i = upper; i > lower; i--) {
-            binary_insert(sorted, messed[i], i);
-        }
+    sorted.insert(sorted.begin(), messed[0]);
+
+    while (lower < (int)messed.size()) {
+        upper = std::min(get_next_partition(previous, current), (int)messed.size() - 1);
+        for (int i = upper; i > lower; i--)
+            binary_insert(sorted, messed[i], i + 2);
         lower = upper + 1;
         previous = current;
         current = upper;
     }
 }
-
-// template<class Container>
-// std::vector<int> PmergeMe<Container>::create_partition_sizes(int container_size) {
-//     std::vector<int> partition;
-    
-//     if (container_size == 0)
-//         return partition;
-
-//     partition.push_back(2);
-//     if (container_size == 1)
-//         return partition;
-
-    
-//     int i = 2, sum = 2;
-
-//     while (true) {
-//         int next_value = std::pow(2, i) - partition[i - 2];
-//         if (sum + next_value <= container_size) {
-//             partition.push_back(next_value);
-//             sum += next_value;
-//             i++;
-//         } else {
-//             if (container_size - sum )
-//                 partition.push_back(container_size - sum);
-//             break;
-//         }
-//     }
-//     return partition;
-// }
 
 
 template<class Container>

@@ -6,7 +6,7 @@
 /*   By: inwagner <inwagner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/12 13:09:07 by inwagner          #+#    #+#             */
-/*   Updated: 2024/11/30 11:54:06 by inwagner         ###   ########.fr       */
+/*   Updated: 2024/12/08 08:48:52 by inwagner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,10 +90,25 @@ int main(int ac, char** av) {
 	return 0;
 }
 
-/* Ford Johnson Algorithm (Merge Insertion Sort)
- */
 
 
 /*
 	./PmergeMe `shuf -i 1-100000 -n 3000 | tr "\n" " "`
 */
+
+
+
+/* Ford Johnson Algorithm (Merge Insertion Sort)
+ *
+ *
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ */
