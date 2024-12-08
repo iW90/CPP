@@ -6,7 +6,7 @@
 #    By: inwagner <inwagner@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/06 19:32:42 by inwagner          #+#    #+#              #
-#    Updated: 2024/12/05 20:30:54 by inwagner         ###   ########.fr        #
+#    Updated: 2024/12/08 11:00:32 by inwagner         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,7 +38,7 @@ $(OSRC)/%.o: $(SRC)%.cpp
 	@c++ $(FLAGS) -c $< -o $@
 
 exec: re
-	@./${NAME} `shuf -i 1-100 -n 20 | tr "\n" " "` || echo ""
+	@./${NAME} `shuf -i 1-100 -n 125 | tr "\n" " "` || echo ""
 
 val: re
 	@valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./${NAME} `shuf -i 1-100000 -n 3000 | tr "\n" " "` || echo ""

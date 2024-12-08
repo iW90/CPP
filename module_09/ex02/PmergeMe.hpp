@@ -6,7 +6,7 @@
 /*   By: inwagner <inwagner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/06 19:34:13 by inwagner          #+#    #+#             */
-/*   Updated: 2024/12/08 09:15:49 by inwagner         ###   ########.fr       */
+/*   Updated: 2024/12/08 10:27:06 by inwagner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,15 +38,13 @@ class PmergeMe {
         static void     divider(std::vector<std::pair<int, int> >& messed, std::vector<std::pair<int, int> >& sorted, std::vector<std::pair<int, int> > container_copy);
         static void     ordenate_by_index(std::vector<std::pair<int, int> >& unsorted, std::vector<int>& indexes);
         static void     insert_indexes(std::vector<std::pair<int, int> >& input);
+        static void     insert_partitions(std::vector<std::pair<int, int> >& sorted, const std::vector<std::pair<int, int> >& messed);
+        static void     binary_insert(std::vector<std::pair<int, int> >& sorted, std::pair<int, int> pair, int max);
+        static int      get_next_partition(int previous, int current);
         static std::vector<int> extract_indexes(const std::vector<std::pair<int, int> >& unsorted);
         static std::vector<int> recursive_merge(std::vector<std::pair<int, int> >& input);
         static Container discard_indexes(const std::vector<std::pair<int, int> >& sorted);
 
-
-        static int      get_next_partition(int previous, int current);
-        static void     insert_partitions(std::vector<std::pair<int, int> >& sorted, const std::vector<std::pair<int, int> >& messed);
-        static void     binary_insert(std::vector<std::pair<int, int> >& sorted, std::pair<int, int> pair, int max);
-        
     public:
         ~PmergeMe();
         PmergeMe();

@@ -6,7 +6,7 @@
 /*   By: inwagner <inwagner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 20:52:20 by inwagner          #+#    #+#             */
-/*   Updated: 2024/12/08 09:56:47 by inwagner         ###   ########.fr       */
+/*   Updated: 2024/12/08 10:59:32 by inwagner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,6 @@ void PmergeMe<Container>::sort(Container& container) {
 
     ordenate_by_index(container_copy, indexes);
 
-    printPair(container_copy);
     container = discard_indexes(container_copy);
 }
 
@@ -195,7 +194,7 @@ void PmergeMe<Container>::insert_partitions(std::vector<std::pair<int, int> >& s
     int inserted = 0;
     int previous = 2;
     int current = 2;
-    int lower = 0;
+    int lower = 1;
     int upper;
 
     if (messed.size() < 5) {
@@ -208,7 +207,7 @@ void PmergeMe<Container>::insert_partitions(std::vector<std::pair<int, int> >& s
 
     while (lower < (int)messed.size()) {
         upper = std::min(get_next_partition(previous, current), (int)messed.size() - 1);
-        for (int i = upper; i > lower; i--) 
+        for (int i = upper; i >= lower; i--) 
             binary_insert(sorted, messed[i], i + 2 + inserted++);
         lower = upper + 1;
         previous = current;
