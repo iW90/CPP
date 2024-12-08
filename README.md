@@ -32,18 +32,18 @@ initialization lists, static, const, and some other basic stuf
 
 ---
 
-- **Module 05:** <img src="https://img.shields.io/badge/GRADE-0%2F100-fail?logo=42&logoColor=fff&color=f00" align="right"/>
+- **Module 05:** <img src="https://img.shields.io/badge/GRADE-100%2F100-success?logo=42&logoColor=fff" align="right"/>
 	Repetition and Exceptions
 
 ---
 
-- **Module 06:** <img src="https://img.shields.io/badge/GRADE-0%2F100-fail?logo=42&logoColor=fff&color=f00" align="right"/>
-	C++ casts
+- **Module 06:** <img src="https://img.shields.io/badge/GRADE-100%2F100-success?logo=42&logoColor=fff" align="right"/>
+	Static cast, dynamic cast and reinterpret cast
 
 ---
 
-- **Module 07:** <img src="https://img.shields.io/badge/GRADE-0%2F100-fail?logo=42&logoColor=fff&color=f00" align="right"/>
-	C++ templates
+- **Module 07:** <img src="https://img.shields.io/badge/GRADE-100%2F100-success?logo=42&logoColor=fff" align="right"/>
+	Templates introduction
 
 ---
 
@@ -53,6 +53,6 @@ initialization lists, static, const, and some other basic stuf
 ---
 
 - **Module 09:** <img src="https://img.shields.io/badge/GRADE-0%2F100-fail?logo=42&logoColor=fff&color=f00" align="right"/>
-	Standard Template Library (STL)
+	Standard Template Library (STL), containers
 
 ---
