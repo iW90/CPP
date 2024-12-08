@@ -6,7 +6,7 @@
 /*   By: inwagner <inwagner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/06 19:31:16 by inwagner          #+#    #+#             */
-/*   Updated: 2024/10/11 20:25:26 by inwagner         ###   ########.fr       */
+/*   Updated: 2024/12/08 08:35:23 by inwagner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,17 +53,17 @@ float   BitcoinExchange::_stringToFloat(const std::string& num) {
 
     std::istringstream iss(num);
     if (!(iss >> value) || iss >> remaining) {
-        std::cout << "Error: bad input => " + num << std::endl;
+        std::cerr << "Error: bad input => " + num << std::endl;
         return -1.0f;
     }
     if (value < 0) {
-        std::cout << "Error: not a positive number." << std::endl;
+        std::cerr << "Error: not a positive number." << std::endl;
         return -1.0f;
     }
 
     std::istringstream(num) >> longValue;
     if (longValue > std::numeric_limits<int>::max()) {
-        std::cout << "Error: too large a number." << std::endl;
+        std::cerr << "Error: too large a number." << std::endl;
         return -1.0f;
     }
 
@@ -95,7 +95,7 @@ Date BitcoinExchange::_stringToDate(std::string dateStr) {
     date.day = atoi(dateStr.substr(8, 2).c_str());
 
     if (!_isValidDate(date)) {
-        std::cout << "Error: bad input => " + dateStr << std::endl;
+        std::cerr << "Error: bad input => " + dateStr << std::endl;
         return nullDate;
     }
 
@@ -114,18 +114,20 @@ void BitcoinExchange::_readFile(const char* filename, char delimiter, void (Bitc
 
     std::string line;
     std::getline(file, line);
-  
+    _removeSpaces(line);
+
+    if (line != "date,exchange_rate" && line != "date|value")
+        throw std::invalid_argument("Error: invalid header.");
 
     while (std::getline(file, line)) {
         if (line.length() < 1)
             continue;
         
         if (line.find(delimiter) == std::string::npos) {
-            std::cout << "Error: bad input => " + line << std::endl;
+            std::cerr << "Error: bad input => " + line << std::endl;
             continue;
         }
 
-        
         _removeSpaces(line);
         std::stringstream   ss(line);
         std::string         strDate;
@@ -136,7 +138,7 @@ void BitcoinExchange::_readFile(const char* filename, char delimiter, void (Bitc
 
         std::getline(ss, strDate, delimiter) && std::getline(ss, strExch, delimiter);
         if (ss.fail() || strDate.length() < 1 || strExch.length() < 1) {
-            std::cout << "Error: bad input => " + line << std::endl;
+            std::cerr << "Error: bad input => " + line << std::endl;
             continue;
         }
 
