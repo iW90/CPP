@@ -6,7 +6,7 @@
 /*   By: inwagner <inwagner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/06 19:34:13 by inwagner          #+#    #+#             */
-/*   Updated: 2024/12/08 08:58:13 by inwagner         ###   ########.fr       */
+/*   Updated: 2024/12/08 09:15:49 by inwagner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@
 # include <utility>
 
 void printIndex(std::vector<int> indexes);
+void printPair(std::vector<std::pair<int, int> > container_copy);
 
 template<class Container>
 class PmergeMe {
