@@ -6,7 +6,7 @@
 /*   By: inwagner <inwagner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/06 09:33:59 by inwagner          #+#    #+#             */
-/*   Updated: 2024/10/06 12:42:37 by inwagner         ###   ########.fr       */
+/*   Updated: 2024/12/09 16:06:32 by inwagner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,14 +41,11 @@ int Span::shortestSpan() {
     if (_numbers.size() < 2)
         throw std::logic_error("Not enough numbers to find a span.");
 
-    int shortest = INT_MAX;
-
-    for (std::set<int>::iterator it1 = _numbers.begin(), it2 = ++_numbers.begin(); it2 != _numbers.end(); ++it1, ++it2) {
-        int span = *it2 - *it1;
-        if (span < shortest)
-            shortest = span;
-    }
-    return shortest;
+    std::vector<int> differences;
+    std::set<int>::const_iterator start = _numbers.begin();
+    std::set<int>::const_iterator final = _numbers.end();
+    std::adjacent_difference(start, final, std::back_inserter(differences));
+    return *std::min_element(differences.begin() + 1, differences.end());
 }
 
 //Find out the longest span

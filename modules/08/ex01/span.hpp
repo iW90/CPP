@@ -6,7 +6,7 @@
 /*   By: inwagner <inwagner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/06 09:34:03 by inwagner          #+#    #+#             */
-/*   Updated: 2024/10/06 13:23:34 by inwagner         ###   ########.fr       */
+/*   Updated: 2024/12/09 16:03:39 by inwagner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,9 @@
 # include <stdexcept>
 # include <climits>
 # include <set>
+# include <algorithm>
+# include <numeric>
+# include <vector>
 
 # define RESET         		"\033[0m"
 # define YELLOW        		"\033[33m"
