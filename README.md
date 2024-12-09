@@ -47,7 +47,7 @@ initialization lists, static, const, and some other basic stuf
 
 ---
 
-- [**Module 08:**](./modules/08) <img src="https://img.shields.io/badge/GRADE-0%2F100-fail?logo=42&logoColor=fff&color=f00" align="right"/>
+- [**Module 08:**](./modules/08) <img src="https://img.shields.io/badge/GRADE-100%2F100-success?logo=42&logoColor=fff" align="right"/>
 	Templated containers, iterators, algorithms
 
 ---
