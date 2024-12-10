@@ -6,7 +6,7 @@
 /*   By: inwagner <inwagner@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/06 19:31:16 by inwagner          #+#    #+#             */
-/*   Updated: 2024/12/08 08:35:23 by inwagner         ###   ########.fr       */
+/*   Updated: 2024/12/10 11:31:54 by inwagner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ float   BitcoinExchange::_stringToFloat(const std::string& num) {
     }
 
     std::istringstream(num) >> longValue;
-    if (longValue > std::numeric_limits<int>::max()) {
+    if (longValue > 1000) {
         std::cerr << "Error: too large a number." << std::endl;
         return -1.0f;
     }
