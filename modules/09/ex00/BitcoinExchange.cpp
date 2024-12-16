@@ -6,7 +6,7 @@
 /*   By: inwagner <inwagner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/06 19:31:16 by inwagner          #+#    #+#             */
-/*   Updated: 2024/12/16 19:52:39 by inwagner         ###   ########.fr       */
+/*   Updated: 2024/12/16 20:16:43 by inwagner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ Date BitcoinExchange::_stringToDate(std::string dateStr) {
     Date date;
 
     if (dateStr.size() != 10 || dateStr[4] != '-' || dateStr[7] != '-') {
-        std::cout << "Error: bad input => " + dateStr << std::endl;
+        std::cerr << "Error: bad input => " + dateStr << std::endl;
         return nullDate;
     }
     
