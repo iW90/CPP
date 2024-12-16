@@ -6,26 +6,17 @@
 /*   By: inwagner <inwagner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/06 19:31:02 by inwagner          #+#    #+#             */
-/*   Updated: 2024/12/16 19:45:32 by inwagner         ###   ########.fr       */
+/*   Updated: 2024/12/16 20:04:16 by inwagner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "BitcoinExchange.hpp"
 
-void    validateFileName(int ac, char** av) {
-    if (ac < 2)
-        throw std::invalid_argument("Error: could not open file.");
-
-    std::string filename = av[1];
-    if (filename.size() < 4 || filename.substr(filename.size() - 4) != ".txt")
-        throw std::invalid_argument("Error: could not open file.");
-}
-
-
-
 int     main(int ac, char** av) {
     try {
-        validateFileName(ac, av);
+        if (ac != 2)
+            throw std::invalid_argument("Error: could not open file.");
+        
         BitcoinExchange bitData = BitcoinExchange();
 
         bitData.showResults(av[1]);
