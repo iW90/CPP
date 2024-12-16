@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PmergeMe.tpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: inwagner <inwagner@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: inwagner <inwagner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 20:52:20 by inwagner          #+#    #+#             */
-/*   Updated: 2024/12/08 10:59:32 by inwagner         ###   ########.fr       */
+/*   Updated: 2024/12/16 20:08:25 by inwagner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@ PmergeMe<Container>::PmergeMe(const PmergeMe &other) {
 
 template <class Container>
 PmergeMe<Container>& PmergeMe<Container>::operator=(const PmergeMe& other) {
-  return *this;
+    (void)other;
+    return *this;
 }
 
 
