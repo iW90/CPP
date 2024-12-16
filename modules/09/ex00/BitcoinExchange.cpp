@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   BitcoinExchange.cpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: inwagner <inwagner@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: inwagner <inwagner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/06 19:31:16 by inwagner          #+#    #+#             */
-/*   Updated: 2024/12/10 11:31:54 by inwagner         ###   ########.fr       */
+/*   Updated: 2024/12/16 19:52:39 by inwagner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ float   BitcoinExchange::_stringToFloat(const std::string& num) {
     }
 
     std::istringstream(num) >> longValue;
-    if (longValue > 1000) {
+    if (longValue > std::numeric_limits<int>::max()) {
         std::cerr << "Error: too large a number." << std::endl;
         return -1.0f;
     }
@@ -183,6 +183,11 @@ float BitcoinExchange::_searchValueByDate(Date date) {
 }
 
 void BitcoinExchange::_calculateBitcoin(Date date, float exc) {
+    if (exc > 1000) {
+        std::cerr << "Error: too large a number." << std::endl;
+        return ;
+    }
+    
     float exchange = _searchValueByDate(date);
     std::cout << std::fixed << std::setprecision(2) << date << " => " << exc << " = ";
     std::cout << exchange * exc  << std::endl;

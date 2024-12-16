@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: inwagner <inwagner@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: inwagner <inwagner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/06 19:31:02 by inwagner          #+#    #+#             */
-/*   Updated: 2024/10/08 13:28:14 by inwagner         ###   ########.fr       */
+/*   Updated: 2024/12/16 19:45:32 by inwagner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ int     main(int ac, char** av) {
         validateFileName(ac, av);
         BitcoinExchange bitData = BitcoinExchange();
 
-        std::cout << av[1] << std::endl;
         bitData.showResults(av[1]);
         
         
