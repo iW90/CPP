@@ -9,15 +9,6 @@ TargetGenerator::~TargetGenerator() {
     this->_targets.clear();
 }
 
-TargetGenerator::TargetGenerator(const TargetGenerator& other) {
-    *this = other;
-}
-
-TargetGenerator& TargetGenerator::operator=(const TargetGenerator& other) {
-    this->_targets = other._targets;
-    return *this;
-}
-
 void TargetGenerator::learnTargetType(ATarget* target) {
     if (target && this->_targets.find(target->getType()) == _targets.end())
         _targets[target->getType()] = target->clone();

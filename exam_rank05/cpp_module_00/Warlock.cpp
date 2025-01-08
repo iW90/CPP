@@ -1,19 +1,12 @@
 #include "Warlock.hpp"
 
-Warlock::Warlock() {}
-Warlock::Warlock(const Warlock& other) { *this = other; }
+
 Warlock::Warlock(std::string name, std::string title) : _name(name), _title(title) {
      std::cout << this->_name << ": This looks like another boring day." << std::endl; 
 }
 
 Warlock::~Warlock() {
     std::cout << this->_name << ": My job here is done!" << std::endl;
-}
-
-Warlock& Warlock::operator=(const Warlock& other) { 
-    this->_name = other._name;
-    this->_title = other._title;
-    return *this;
 }
 
 const std::string& Warlock::getName() const { return this->_name; }

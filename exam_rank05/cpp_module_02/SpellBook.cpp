@@ -9,15 +9,6 @@ SpellBook::~SpellBook() {
     this->_spells.clear();
 }
 
-SpellBook::SpellBook(const SpellBook& other) {
-    *this = other;
-}
-
-SpellBook& SpellBook::operator=(const SpellBook& other) {
-    this->_spells = other._spells;
-    return *this;
-}
-
 void SpellBook::learnSpell(ASpell* spell) {
     if (spell && this->_spells.find(spell->getName()) == _spells.end())
         _spells[spell->getName()] = spell->clone();

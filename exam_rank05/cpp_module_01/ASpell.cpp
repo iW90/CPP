@@ -2,19 +2,11 @@
 
 
 ASpell::~ASpell() {}
-ASpell::ASpell() {}
-ASpell::ASpell(std::string name, std::string effect) : _name(name), _effect(effect) {}
-ASpell::ASpell(const ASpell& other) { *this = other; }
+ASpell::ASpell(std::string name, std::string effects) : _name(name), _effects(effects) {}
 
-const ASpell& ASpell::operator=(const ASpell& other) {
-    this->_name = other._name;
-    this->_effect = other._effect;
-    return *this;
-}
+const std::string& ASpell::getName() const { return _name; }
+const std::string& ASpell::getEffects() const { return _effects; }
 
-std::string ASpell::getName() const { return _name; }
-std::string ASpell::getEffect() const { return _effect; }
-
-void ASpell::launch(const ATarget& target) {
+void ASpell::launch(const ATarget& target) const {
     target.getHitBySpell(*this);
 }
